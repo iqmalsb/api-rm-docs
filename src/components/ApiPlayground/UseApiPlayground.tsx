@@ -199,7 +199,6 @@ export function useApiPlayground(props: PlaygroundProps) {
     }
 
 
-
     try {
       setLoading(true);
       setResponse(null);
