@@ -1,3 +1,3 @@
 # Revenue Monster Documentation
 
-Our documentation is here: [RM Documentation](https://revenuemonster.onrender.com/).
+Our documentation is here: [RM Documentation](https://doc.revenuemonster.my/).
