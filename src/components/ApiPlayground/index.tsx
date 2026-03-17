@@ -92,7 +92,7 @@ export default function ApiPlayground(props: PlaygroundProps) {
 
       {/* AUTH BANNERS */}
       {requiresAccessToken && (
-        <TokenBanner status={tokenStatus} onClear={handleClearToken} />
+        <TokenBanner status={tokenStatus} env={env} onClear={handleClearToken} />
       )}
       {requiresSignature && (
         <PrivateKeyBanner
@@ -111,7 +111,7 @@ export default function ApiPlayground(props: PlaygroundProps) {
         contentEditable
         suppressContentEditableWarning
         onBlur={(e) => {
-          try { setHeaders(JSON.parse(e.currentTarget.innerText)); } catch {}
+          try { setHeaders(JSON.parse(e.currentTarget.innerText)); } catch { }
         }}
         dangerouslySetInnerHTML={{
           __html: highlightJson(JSON.stringify(headers, null, 2)),

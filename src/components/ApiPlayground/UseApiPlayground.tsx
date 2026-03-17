@@ -1,9 +1,8 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import {
-  getToken,
-  setTokenWithExpiry,
-  isTokenExpired,
-  clearToken,
+  deriveTokenStatus,
+  setTokenExpiry,
+  clearTokenExpiry,
 } from "../../utils/auth";
 import {
   getPrivateKey,
@@ -25,18 +24,10 @@ export type PlaygroundProps = {
   body?: string | { type: "json"; example?: string };
   requiresSignature?: boolean;
   requiresAccessToken?: boolean;
-  /** Raw cURL from frontmatter examples.request */
   exampleRequest?: string;
 };
 
 /* ─── helpers ─────────────────────────────────────────────────────── */
-
-function deriveTokenStatus(): TokenStatus {
-  const token = getToken();
-  if (!token) return "missing";
-  if (isTokenExpired()) return "expired";
-  return "active";
-}
 
 const sortObject = (obj: any): any => {
   if (Array.isArray(obj)) return obj.map(sortObject);
@@ -63,7 +54,6 @@ export function useApiPlayground(props: PlaygroundProps) {
   const [env, setEnv] = useState<"sandbox" | "prod">("sandbox");
   const baseUrl =
     typeof props.url === "string" ? props.url : (props.url as any)?.[env] ?? "";
-
   const sandboxUrl =
     typeof props.url === "string"
       ? props.url
@@ -85,9 +75,24 @@ export function useApiPlayground(props: PlaygroundProps) {
   );
 
   /* ── auth ── */
-  const [tokenStatus, setTokenStatus] = useState<TokenStatus>(deriveTokenStatus);
+  const [tokenStatus, setTokenStatus] = useState<TokenStatus>(
+    () => deriveTokenStatus()
+  );
   const [keyLoaded, setKeyLoaded] = useState(hasPrivateKey);
 
+  // Track previous env to only clear when switching FROM prod TO sandbox
+  // not on initial mount
+  const prevEnvRef = useRef<"sandbox" | "prod" | null>(null);
+
+  useEffect(() => {
+    if (prevEnvRef.current === "prod" && env === "sandbox") {
+      clearTokenExpiry();
+    }
+    prevEnvRef.current = env;
+    setTokenStatus(deriveTokenStatus());
+  }, [env]);
+
+  // Re-check on tab focus
   useEffect(() => {
     const check = () => setTokenStatus(deriveTokenStatus());
     window.addEventListener("focus", check);
@@ -95,7 +100,7 @@ export function useApiPlayground(props: PlaygroundProps) {
   }, []);
 
   const handleClearToken = () => {
-    clearToken();
+    clearTokenExpiry();
     setTokenStatus("missing");
   };
 
@@ -127,8 +132,6 @@ export function useApiPlayground(props: PlaygroundProps) {
   const [response, setResponse] = useState<any>(null);
   const [status, setStatus] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
-
-  // Tracks what was missing when the last request was sent
   const [missedSignature, setMissedSignature] = useState(false);
   const [missedToken, setMissedToken] = useState(false);
 
@@ -136,64 +139,35 @@ export function useApiPlayground(props: PlaygroundProps) {
   const generateNonce = () => crypto.randomUUID().replace(/-/g, "");
   const generateTimestamp = () => Math.floor(Date.now() / 1000).toString();
 
-  /** Encode a DER length field (short and long form) */
   const derLen = (n: number): number[] => {
     if (n < 0x80) return [n];
     if (n < 0x100) return [0x81, n];
     return [0x82, (n >> 8) & 0xff, n & 0xff];
   };
 
-  /**
-   * Supports both PKCS#1 (-----BEGIN RSA PRIVATE KEY-----)
-   * and PKCS#8 (-----BEGIN PRIVATE KEY-----).
-   * Web Crypto only supports PKCS#8 natively — PKCS#1 is wrapped in memory.
-   *
-   * PKCS#8 structure:
-   *   SEQUENCE {
-   *     INTEGER 0                    -- version
-   *     SEQUENCE { OID, NULL }       -- AlgorithmIdentifier (rsaEncryption)
-   *     OCTET STRING { <pkcs1 der> } -- privateKey
-   *   }
-   */
   const importPrivateKey = async (pem: string): Promise<CryptoKey> => {
     const isPkcs1 = pem.includes("BEGIN RSA PRIVATE KEY");
-
     const cleaned = pem
       .replace(/-----BEGIN[^-]*-----/, "")
       .replace(/-----END[^-]*-----/, "")
       .replace(/\s/g, "");
-
     const pkcs1 = Uint8Array.from(window.atob(cleaned), (c) => c.charCodeAt(0));
-
     let der: Uint8Array;
-
     if (isPkcs1) {
-      // AlgorithmIdentifier: SEQUENCE { OID rsaEncryption, NULL }
       const algoId = new Uint8Array([
         0x30, 0x0d,
         0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01, 0x01,
         0x05, 0x00,
       ]);
-
-      // OCTET STRING { pkcs1 }
       const octetString = new Uint8Array([
         0x04, ...derLen(pkcs1.length), ...pkcs1,
       ]);
-
-      // version INTEGER 0
       const version = new Uint8Array([0x02, 0x01, 0x00]);
-
-      // Inner content
-      const inner = new Uint8Array([
-        ...version, ...algoId, ...octetString,
-      ]);
-
-      // Outer SEQUENCE
+      const inner = new Uint8Array([...version, ...algoId, ...octetString]);
       der = new Uint8Array([0x30, ...derLen(inner.length), ...inner]);
     } else {
       der = pkcs1;
     }
-
     try {
       return await crypto.subtle.importKey(
         "pkcs8",
@@ -219,12 +193,10 @@ export function useApiPlayground(props: PlaygroundProps) {
   ) => {
     const nonce = generateNonce();
     const timestamp = generateTimestamp();
-
     let base64Data = "";
     if (body && Object.keys(body).length > 0) {
       base64Data = btoa(JSON.stringify(sortObject(body)));
     }
-
     let plainText = "";
     if (base64Data) plainText += `data=${base64Data}&`;
     plainText +=
@@ -233,7 +205,6 @@ export function useApiPlayground(props: PlaygroundProps) {
       `&requestUrl=${fullUrl}` +
       `&signType=sha256` +
       `&timestamp=${timestamp}`;
-
     const key = await importPrivateKey(privateKeyPem);
     const signatureBuffer = await crypto.subtle.sign(
       "RSASSA-PKCS1-v1_5",
@@ -247,9 +218,6 @@ export function useApiPlayground(props: PlaygroundProps) {
   };
 
   /* ── send ── */
-  // Neither missing token nor missing key blocks the request.
-  // Both are soft warnings — the request goes through and the real
-  // API error is shown so the developer knows exactly what to fix.
   const send = async () => {
     try {
       setLoading(true);
@@ -270,14 +238,12 @@ export function useApiPlayground(props: PlaygroundProps) {
       }
 
       if (!isOAuth) {
-        if (requiresAccessToken) {
-          if (tokenStatus === "active") {
-            finalHeaders["Authorization"] = `Bearer ${getToken()}`;
-          } else {
-            // Soft warning — send without token, API will return auth error
-            setMissedToken(true);
-          }
+        // Token is handled by HttpOnly cookie — worker injects it automatically
+        // We only warn if token status is not active
+        if (requiresAccessToken && tokenStatus !== "active") {
+          setMissedToken(true);
         }
+
         if (requiresSignature) {
           if (hasPrivateKey()) {
             const { signature, nonce, timestamp } = await signRSA(
@@ -290,7 +256,6 @@ export function useApiPlayground(props: PlaygroundProps) {
             finalHeaders["X-Nonce-Str"] = nonce;
             finalHeaders["X-Signature"] = `sha256 ${signature}`;
           } else {
-            // Soft warning — send without signature, API will return INVALID_SIGNATURE
             setMissedSignature(true);
           }
         }
@@ -300,6 +265,7 @@ export function useApiPlayground(props: PlaygroundProps) {
         "https://rm-api-proxy.aiman-danish.workers.dev",
         {
           method: "POST",
+          credentials: "include", // sends HttpOnly cookie automatically
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             url: resolvedUrl,
@@ -322,14 +288,15 @@ export function useApiPlayground(props: PlaygroundProps) {
 
       setResponse(parsed);
 
-      // Auto-store token from OAuth response
+      // OAuth response — store only expiry metadata
+      // actual token is in HttpOnly cookie, never in JS
       if (
         isOAuth &&
         res.ok &&
-        parsed?.accessToken &&
+        parsed?.success &&
         typeof parsed.expiresIn === "number"
       ) {
-        setTokenWithExpiry(parsed.accessToken, parsed.expiresIn);
+        setTokenExpiry(parsed.expiresIn);
         setTokenStatus("active");
       }
     } catch (err: any) {
@@ -341,26 +308,18 @@ export function useApiPlayground(props: PlaygroundProps) {
   };
 
   /* ── derived ── */
-  // Nothing blocks sending — notReady is kept for UI hints only
   const notReady =
     (requiresAccessToken && tokenStatus !== "active") ||
     (requiresSignature && !keyLoaded);
 
   return {
-    // env
     env, setEnv, hasEnv, baseUrl, sandboxUrl, resolvedUrl,
-    // params
     params, setParams, paramKeys,
-    // auth
     tokenStatus, keyLoaded,
     handleClearToken, handleLoadKey, handleClearKey,
-    // form
     headers, setHeaders, jsonBody, setJsonBody,
-    // request flags
     isOAuth, requiresSignature, requiresAccessToken, notReady,
-    // response
     response, status, loading, missedSignature, missedToken,
-    // actions
     send,
   };
 }
