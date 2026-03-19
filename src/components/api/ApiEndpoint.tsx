@@ -9,26 +9,14 @@ type Props = {
 };
 
 export default function ApiEndpoint({ method, sandbox, prod }: Props) {
+  const path = sandbox || prod;
+
   return (
     <div className={styles.wrapper}>
       <span className={clsx(styles.badge, styles[method.toLowerCase()])}>
         {method}
       </span>
-
-      <div className={styles.urls}>
-        {sandbox && (
-          <div>
-            <span className={styles.label}>Sandbox</span>
-            <code>{sandbox}</code>
-          </div>
-        )}
-        {prod && (
-          <div>
-            <span className={styles.label}>Production</span>
-            <code>{prod}</code>
-          </div>
-        )}
-      </div>
+      {path && <code className={styles.path}>{path}</code>}
     </div>
   );
 }

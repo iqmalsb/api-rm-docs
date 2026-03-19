@@ -1,21 +1,16 @@
 .wrapper {
   display: flex;
-  align-items: flex-start;
-  gap: clamp(12px, 2vw, 20px);
-  padding: clamp(12px, 2vw, 20px);
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
   border-radius: 12px;
   background: var(--ifm-color-emphasis-100);
   margin-bottom: 24px;
   font-family: monospace;
-
-  /* Prevent overflow issues */
-  flex-wrap: wrap;
 }
 
-/* ================= BADGE ================= */
-
 .badge {
-  padding: 6px 12px;
+  padding: 4px 10px;
   font-size: 12px;
   font-weight: 700;
   border-radius: 6px;
@@ -23,7 +18,6 @@
   flex-shrink: 0;
 }
 
-/* Method colors */
 .get {
   background: #16a34a;
   color: white;
@@ -45,49 +39,14 @@
 }
 
 .patch {
-  background: #f59e0b;
+  background: #808080;
   color: white;
 }
 
-/* ================= URL SECTION ================= */
-
-.urls {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-  min-width: 0; /* important for overflow handling */
-}
-
-/* Label */
-.label {
-  font-size: 11px;
-  opacity: 0.6;
-  display: block;
-  margin-bottom: 2px;
-}
-
-/* Code styling */
-.urls code {
-  display: block;
+.path {
   background: var(--ifm-code-background);
-  padding: 8px 10px;
-  border-radius: 8px;
-
-  font-size: clamp(12px, 1.1vw, 14px);
-
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
   word-break: break-all;
-  overflow-x: auto;
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 768px) {
-  .wrapper {
-    flex-direction: column;
-  }
-
-  .badge {
-    align-self: flex-start;
-  }
 }
