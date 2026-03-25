@@ -115,22 +115,20 @@ Quick Pay is an offline payment method and it's subscription will based on offli
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter              | Type   | Validation  | Required | Description                                         |
-| ---------------------- | ------ | ----------- | -------- | --------------------------------------------------- |
-| `authCode`             | String |             | Yes      | Auth code of QR code/barcode being scanned          |
-| `ipAddress`            | String | IPV4 / IPV6 | Yes      | IP address of terminal/application for payment      |
-| `storeId`              | String |             | Yes      | Revenue Monster Store ID                            |
-| `order.id`             | String | Length(24)  | Yes      | Order ID                                            |
-| `order.title`          | String | Length(32)  | Yes      | Order Title                                         |
-| `order.currencyType`   | String | ENUM("MYR") | Yes      | Order Currency Type ( currently supported MYR only) |
-| `order.amount`         | Uint64 |             | Yes      | Order Amount                                        |
-| `order.detail`         | String | Length(600) | No       | Order Detail                                        |
-| `order.additionalData` | String | Length(128) | No       | Order Additional Data                               |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "authCode", type: "String", required: true, description: "Auth code of QR code/barcode being scanned" },
+    { name: "ipAddress", type: "String", required: true, description: "IP address of terminal/application for payment" },
+    { name: "storeId", type: "String", required: true, description: "Revenue Monster Store ID" },
+    { name: "order.id", type: "String", required: true, description: "Order ID" },
+    { name: "order.title", type: "String", required: true, description: "Order Title" },
+    { name: "order.currencyType", type: "String", required: true, description: "Order Currency Type ( currently supported MYR only)" },
+    { name: "order.amount", type: "Uint64", required: true, description: "Order Amount" },
+    { name: "order.detail", type: "String", description: "Order Detail" },
+    { name: "order.additionalData", type: "String", description: "Order Additional Data" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -151,18 +149,16 @@ Quick Pay is an offline payment method and it's subscription will based on offli
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                                      | Description                    |
-| --------------- | ------ | --------------------------------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](./query-transaction.md#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                                                 | Determine request have success |
-| `error.code`    | String |                                                                 | Error code                     |
-| `error.message` | String |                                                                 | Error message                  |
-| `error.debug`   | String |                                                                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ## Quick Pay + Voucher
@@ -174,23 +170,21 @@ Voucher can be generated as a QRCode for scanning the voucher code, so we sugges
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter              | Type   | Validation  | Required | Description                                         |
-| ---------------------- | ------ | ----------- | -------- | --------------------------------------------------- |
-| `authCode`             | String |             | Yes      | Auth code of QR code/barcode being scanned          |
-| `ipAddress`            | String | IPV4 / IPV6 | Yes      | IP address of terminal/application for payment      |
-| `storeId`              | String |             | Yes      | Revenue Monster Store ID                            |
-| `order.id`             | String | Length(24)  | Yes      | Order ID                                            |
-| `order.title`          | String | Length(32)  | Yes      | Order Title                                         |
-| `order.currencyType`   | String | ENUM("MYR") | Yes      | Order Currency Type ( currently supported MYR only) |
-| `order.amount`         | Uint64 |             | Yes      | Order Amount                                        |
-| `order.detail`         | String | Length(600) | No       | Order Detail                                        |
-| `order.additionalData` | String | Length(128) | No       | Order Additional Data                               |
-| `voucher.code`         | String |             | No       | Revenue Monster Voucher Code                        |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "authCode", type: "String", required: true, description: "Auth code of QR code/barcode being scanned" },
+    { name: "ipAddress", type: "String", required: true, description: "IP address of terminal/application for payment" },
+    { name: "storeId", type: "String", required: true, description: "Revenue Monster Store ID" },
+    { name: "order.id", type: "String", required: true, description: "Order ID" },
+    { name: "order.title", type: "String", required: true, description: "Order Title" },
+    { name: "order.currencyType", type: "String", required: true, description: "Order Currency Type ( currently supported MYR only)" },
+    { name: "order.amount", type: "Uint64", required: true, description: "Order Amount" },
+    { name: "order.detail", type: "String", description: "Order Detail" },
+    { name: "order.additionalData", type: "String", description: "Order Additional Data" },
+    { name: "voucher.code", type: "String", description: "Revenue Monster Voucher Code" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -214,18 +208,16 @@ Voucher can be generated as a QRCode for scanning the voucher code, so we sugges
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                                      | Description                    |
-| --------------- | ------ | --------------------------------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](./query-transaction.md#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                                                 | Determine request have success |
-| `error.code`    | String |                                                                 | Error code                     |
-| `error.message` | String |                                                                 | Error message                  |
-| `error.debug`   | String |                                                                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ## Quick Pay + Spending Loyalty
@@ -239,26 +231,24 @@ Reference: [Transaction Object > Spending Loyalty](./query-transaction.md#spendi
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter              | Type   | Validation                          | Required    | Description                                          |
-| ---------------------- | ------ | ----------------------------------- | ----------- | ---------------------------------------------------- |
-| `authCode`             | String |                                     | Yes         | Auth code of QR code/barcode being scanned           |
-| `ipAddress`            | String | IPV4 / IPV6                         | Yes         | IP address of terminal/application for payment       |
-| `storeId`              | String |                                     | Yes         | Revenue Monster Store ID                             |
-| `order.id`             | String | Length(24)                          | Yes         | Order ID                                             |
-| `order.title`          | String | Length(32)                          | Yes         | Order Title                                          |
-| `order.currencyType`   | String | ENUM("MYR")                         | Yes         | Order Currency Type ( currently supported MYR only ) |
-| `order.amount`         | Uint64 |                                     | Yes         | Order Amount                                         |
-| `order.detail`         | String | Length(600)                         | No          | Order Detail                                         |
-| `order.additionalData` | String | Length(128)                         | No          | Order Additional Data                                |
-| `loyalty.type`         | String | ENUM("QRCODE", "PHONENUMBER", "ID") | No          | Loyalty type                                         |
-| `loyalty.memberId`     | String | Required when type="ID"             | Conditional | Loyalty Member's ID                                  |
-| `loyalty.countryCode`  | String | Required when type="PHONENUMBER"    | Conditional | Loyalty Member's Country Code                        |
-| `loyalty.phoneNumber`  | String | Required when type="PHONENUMBER"    | Conditional | Loyalty Member's Phone Number                        |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "authCode", type: "String", required: true, description: "Auth code of QR code/barcode being scanned" },
+    { name: "ipAddress", type: "String", required: true, description: "IP address of terminal/application for payment" },
+    { name: "storeId", type: "String", required: true, description: "Revenue Monster Store ID" },
+    { name: "order.id", type: "String", required: true, description: "Order ID" },
+    { name: "order.title", type: "String", required: true, description: "Order Title" },
+    { name: "order.currencyType", type: "String", required: true, description: "Order Currency Type ( currently supported MYR only )" },
+    { name: "order.amount", type: "Uint64", required: true, description: "Order Amount" },
+    { name: "order.detail", type: "String", description: "Order Detail" },
+    { name: "order.additionalData", type: "String", description: "Order Additional Data" },
+    { name: "loyalty.type", type: "String", description: "Loyalty type" },
+    { name: "loyalty.memberId", type: "String", description: "Loyalty Member's ID" },
+    { name: "loyalty.countryCode", type: "String", description: "Loyalty Member's Country Code" },
+    { name: "loyalty.phoneNumber", type: "String", description: "Loyalty Member's Phone Number" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -284,18 +274,16 @@ Reference: [Transaction Object > Spending Loyalty](./query-transaction.md#spendi
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                                      | Description                    |
-| --------------- | ------ | --------------------------------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](./query-transaction.md#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                                                 | Determine request have success |
-| `error.code`    | String |                                                                 | Error code                     |
-| `error.message` | String |                                                                 | Error message                  |
-| `error.debug`   | String |                                                                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ## Quick Pay + Membership Card
@@ -310,15 +298,13 @@ Currently available membership card only Alipay's Gourmet Card ( 马来西亚美
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Validation | Required | Description             |
-| ------------ | ------ | ---------- | -------- | ----------------------- |
-| memberCardId | String |            | Yes      | Alipay's Member Card ID |
-| storeId      | String |            | Yes      | Store ID                |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "memberCardId", type: "String", required: true, description: "Alipay's Member Card ID" },
+    { name: "storeId", type: "String", required: true, description: "Store ID" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -330,17 +316,15 @@ Currently available membership card only Alipay's Gourmet Card ( 马来西亚美
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation      | Description                    |
-| --------------- | ------ | --------------- | ------------------------------ |
-| `code`          | String | ENUM("SUCCESS") | Determine request have success |
-| `error.code`    | String |                 | Error code                     |
-| `error.message` | String |                 | Error message                  |
-| `error.debug`   | String |                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 
@@ -349,24 +333,22 @@ Currently available membership card only Alipay's Gourmet Card ( 马来西亚美
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter              | Type   | Validation  | Required | Description                                         |
-| ---------------------- | ------ | ----------- | -------- | --------------------------------------------------- |
-| `authCode`             | String |             | Yes      | Auth code of QR code/barcode being scanned          |
-| `ipAddress`            | String | IPV4 / IPV6 | Yes      | IP address of terminal/application for payment      |
-| `storeId`              | String |             | Yes      | Revenue Monster Store ID                            |
-| `order.id`             | String | Length(24)  | Yes      | Order ID                                            |
-| `order.title`          | String | Length(32)  | Yes      | Order Title                                         |
-| `order.currencyType`   | String | ENUM("MYR") | Yes      | Order Currency Type ( currently supported MYR only) |
-| `order.amount`         | Uint64 |             | Yes      | Order Amount                                        |
-| `order.detail`         | String | Length(600) | No       | Order Detail                                        |
-| `order.additionalData` | String | Length(128) | No       | Order Additional Data                               |
-| `extraInfo.type`       | String |             | No       | Extra Type "MEMBERSHIP"                             |
-| `extraInfo.reference`  | String |             | No       | Membership Card ID                                  |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "authCode", type: "String", required: true, description: "Auth code of QR code/barcode being scanned" },
+    { name: "ipAddress", type: "String", required: true, description: "IP address of terminal/application for payment" },
+    { name: "storeId", type: "String", required: true, description: "Revenue Monster Store ID" },
+    { name: "order.id", type: "String", required: true, description: "Order ID" },
+    { name: "order.title", type: "String", required: true, description: "Order Title" },
+    { name: "order.currencyType", type: "String", required: true, description: "Order Currency Type ( currently supported MYR only)" },
+    { name: "order.amount", type: "Uint64", required: true, description: "Order Amount" },
+    { name: "order.detail", type: "String", description: "Order Detail" },
+    { name: "order.additionalData", type: "String", description: "Order Additional Data" },
+    { name: "extraInfo.type", type: "String", description: "Extra Type \"MEMBERSHIP\"" },
+    { name: "extraInfo.reference", type: "String", description: "Membership Card ID" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -391,15 +373,13 @@ Currently available membership card only Alipay's Gourmet Card ( 马来西亚美
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                                      | Description                    |
-| --------------- | ------ | --------------------------------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](./query-transaction.md#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                                                 | Determine request have success |
-| `error.code`    | String |                                                                 | Error code                     |
-| `error.message` | String |                                                                 | Error message                  |
-| `error.debug`   | String |                                                                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>

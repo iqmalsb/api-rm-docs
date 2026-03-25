@@ -57,24 +57,20 @@ Cancel the Spending Loyalty Point by ID
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter | Type   | Required | Description                                    | Example                                                     |
-| --------- | ------ | -------- | ---------------------------------------------- | ----------------------------------------------------------- |
-| `id`      | String | Yes      | Get the **id** from spending loyalty point api | "dee13d3470f2dd43466c252cfc67f967" ( from Respond QR code ) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "id", type: "String", required: true, description: "Get the id from spending loyalty point api", example: "\"dee13d3470f2dd43466c252cfc67f967\" ( from Respond QR code )" }
+  ]}
+/>
 
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   |                                                                           Description                                                                            | Example   |
-| --------- | ------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | --------- |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer [Appendix 1: Error Codes](https://doc.revenuemonster.my/#appendix-1-error-codes)) | "SUCCESS" |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 

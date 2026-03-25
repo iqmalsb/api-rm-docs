@@ -216,38 +216,34 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter  | Type   | Description                       | Example                      |
-| ---------- | ------ | --------------------------------- | ---------------------------- |
-| `service`  | String | alacarte service                  | "alacarte"                   |
-| `version`  | String | Currently only support 'v1"       | "v1"                         |
-| `function` | String | Function that provide by alacarte | "get.store.orders"           |
-| `request`  | Object | Refer to explanation below        | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "service", type: "String", description: "alacarte service", example: "\"alacarte\"" },
+    { name: "version", type: "String", description: "Currently only support 'v1\"", example: "\"v1\"" },
+    { name: "function", type: "String", description: "Function that provide by alacarte", example: "\"get.store.orders\"" },
+    { name: "request", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter         | Type     | Required | Description                                                                               | Example                                     |
-| ----------------- | -------- | -------- | ----------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `storeId`         | String   | Yes      | ID of the Store that Create from RM                                                       | "2808912573238362402"                       |
-| `orderId`         | String   | Optional | Filter by part of Order ID                                                                | "610a61722c0efd453116420c"                  |
-| `shortOrderId`    | String   | Optional | Filter by part of short order ID                                                          | "jm9espv4"                                  |
-| `cursor`          | String   | Optional | Filter by cursor                                                                          | ""                                          |
-| `paymentStatus`   | Array    | Optional | Filter by Payment Status                                                                  | ["COMPLETED"]                               |
-| `startOrderAt`    | DateTime | Optional | Filter by Start Order At                                                                  | "2020-09-22T02:00:00.000Z"                  |
-| `endOrderAt`      | DateTime | Optional | Filter by End Order At                                                                    | "2020-09-22T02:00:00.000Z"                  |
-| `startDeliveryAt` | DateTime | Optional | Filter by Start Delivery At                                                               | "2020-09-22T02:00:00.000Z"                  |
-| `endDeliveryAt`   | DateTime | Optional | Filter by End Delivery At                                                                 | "2020-09-22T02:00:00.000Z"                  |
-| `type`            | Array    | Optional | Filter by Type                                                                            | ["DINEIN","DELIVERY"]                       |
-| `deliveryStatus`  | Array    | Optional | Filter by Delivery Status                                                                 | ["WAIT_FOR_CONFIRMATION","FINDING_COURIER"] |
-| `sort`            | Array    | Optional | Filter by Sort **"deliveryAt"** or **"orderAt"** ("-" mean descending "+" mean ascending) | ["-deliveryAt"]                             |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "storeId", type: "String", required: true, description: "ID of the Store that Create from RM", example: "\"2808912573238362402\"" },
+    { name: "orderId", type: "String", description: "Filter by part of Order ID", example: "\"610a61722c0efd453116420c\"" },
+    { name: "shortOrderId", type: "String", description: "Filter by part of short order ID", example: "\"jm9espv4\"" },
+    { name: "cursor", type: "String", description: "Filter by cursor", example: "\"\"" },
+    { name: "paymentStatus", type: "Array", description: "Filter by Payment Status", example: "[\"COMPLETED\"]" },
+    { name: "startOrderAt", type: "DateTime", description: "Filter by Start Order At", example: "\"2020-09-22T02:00:00.000Z\"" },
+    { name: "endOrderAt", type: "DateTime", description: "Filter by End Order At", example: "\"2020-09-22T02:00:00.000Z\"" },
+    { name: "startDeliveryAt", type: "DateTime", description: "Filter by Start Delivery At", example: "\"2020-09-22T02:00:00.000Z\"" },
+    { name: "endDeliveryAt", type: "DateTime", description: "Filter by End Delivery At", example: "\"2020-09-22T02:00:00.000Z\"" },
+    { name: "type", type: "Array", description: "Filter by Type", example: "[\"DINEIN\",\"DELIVERY\"]" },
+    { name: "deliveryStatus", type: "Array", description: "Filter by Delivery Status", example: "[\"WAIT_FOR_CONFIRMATION\",\"FINDING_COURIER\"]" },
+    { name: "sort", type: "Array", description: "Filter by Sort \"deliveryAt\" or \"orderAt\" (\"-\" mean descending \"+\" mean ascending)", example: "[\"-deliveryAt\"]" }
+  ]}
+/>
 
 
 Optional
@@ -280,22 +276,20 @@ Optional
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type   | Description                     | Example                      |
-| --------- | ------ | ------------------------------- | ---------------------------- |
-| `cursor`  | String | Optional, if pagination exists. | "3235"                       |
-| `count`   | Uint   | Current page record             | 25                           |
-| `items`   | Array  | Refer to explanation below      | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "cursor", type: "String", description: "Optional, if pagination exists.", example: "\"3235\"" },
+    { name: "count", type: "Uint", description: "Current page record", example: "25" },
+    { name: "items", type: "Array", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
 ### Inside Items (parameter)
 
-<details>
-<summary><strong>Inside Items (parameter)</strong></summary>
+
+
 
 | Parameter    | Type     | Description                          | Example                          |
 | ------------ | -------- | ------------------------------------ | -------------------------------- |
@@ -316,13 +310,13 @@ Optional
 | `type`       | String   | Type of the item                     | ""                               |
 | `updatedAt`  | DateTime | Last update date time                | "2020-10-01T08:44:16.863Z"       |
 
-</details>
+
 
 
 ### Inside Customer (parameter)
 
-<details>
-<summary><strong>Inside Customer (parameter)</strong></summary>
+
+
 
 | Parameter     | Type   | Description             | Example                    |
 | ------------- | ------ | ----------------------- | -------------------------- |
@@ -332,13 +326,13 @@ Optional
 | `phoneNumber` | String | Customer contact number | "1123621544"               |
 | `id`          | String | Customer ID             | "5f63082ae9c755d6ba3122ac" |
 
-</details>
+
 
 
 ### Inside Delivery (parameter)
 
-<details>
-<summary><strong>Inside Delivery (parameter)</strong></summary>
+
+
 
 | Parameter         | Type   | Description                  | Example                      |
 | ----------------- | ------ | ---------------------------- | ---------------------------- |
@@ -349,13 +343,13 @@ Optional
 | `method`          | String | Customer ID                  | "OWN"                        |
 | `vendorId`        | String | Customer ID                  | "5f815e2c3c6920f1233a540f"   |
 
-</details>
+
 
 
 ### Inside Address (parameter)
 
-<details>
-<summary><strong>Inside Address (parameter)</strong></summary>
+
+
 
 | Parameter      | Type   | Description                  | Example |
 | -------------- | ------ | ---------------------------- | ------- |
@@ -371,7 +365,7 @@ Optional
 | `state`        | String | Address State                | ""      |
 | `unit`         | String | Address Unit                 | ""      |
 
-</details>
+
 
 
 ### Inside Courier (parameter)
@@ -382,20 +376,18 @@ Optional
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter   | Type   | Description                  | Example      |
-| ----------- | ------ | ---------------------------- | ------------ |
-| `id`        | String | Courier ID                   | ""           |
-| `latitude`  | Float  | Address latitude (In Meter)  | 0            |
-| `longitude` | Float  | Address longitude (In Meter) | 0            |
-| `name`      | String | Courier Name                 | "Testing123" |
-| `phone`     | String | Courier Contact Number       | "163698122"  |
-| `photoURL`  | String | Courier Image                | ""           |
-| `surname`   | String | Courier Surname              | ""           |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Courier ID", example: "\"\"" },
+    { name: "latitude", type: "Float", description: "Address latitude (In Meter)", example: "0" },
+    { name: "longitude", type: "Float", description: "Address longitude (In Meter)", example: "0" },
+    { name: "name", type: "String", description: "Courier Name", example: "\"Testing123\"" },
+    { name: "phone", type: "String", description: "Courier Contact Number", example: "\"163698122\"" },
+    { name: "photoURL", type: "String", description: "Courier Image", example: "\"\"" },
+    { name: "surname", type: "String", description: "Courier Surname", example: "\"\"" }
+  ]}
+/>
 
 
 ### Inside Drive Thru (parameter)
@@ -406,21 +398,19 @@ Optional
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter            | Type   | Description         | Example   |
-| -------------------- | ------ | ------------------- | --------- |
-| `vehicleDescription` | String | Vehicle description | ""        |
-| `vehicleNo`          | String | Vehicle Number      | "TLA3202" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "vehicleDescription", type: "String", description: "Vehicle description", example: "\"\"" },
+    { name: "vehicleNo", type: "String", description: "Vehicle Number", example: "\"TLA3202\"" }
+  ]}
+/>
 
 
 ### Inside Items (parameter)
 
-<details>
-<summary><strong>Inside Items (parameter)</strong></summary>
+
+
 
 | Parameter     | Type   | Description                               | Example                              |
 | ------------- | ------ | ----------------------------------------- | ------------------------------------ |
@@ -434,7 +424,7 @@ Optional
 | `remark`      | String | Customer Remark                           | ""                                   |
 | `sides`       | Array  | Refer to the <b>Sides parameter</b>       | ( Refer to the Sides parameter)      |
 
-</details>
+
 
 
 ### Inside Preferences (parameter)
@@ -445,31 +435,29 @@ Optional
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter   | Type   | Description                | Example                      |
-| ----------- | ------ | -------------------------- | ---------------------------- |
-| `id`        | String | Preferences ID             | "5f698149585d7cc1ae35a38d"   |
-| `name`      | String | Preferences name           | "Sweetness"                  |
-| `minChoice` | Uint   | Set minimum choice         | 1                            |
-| `maxChoice` | Uint   | Set maximum choice         | 3                            |
-| `labels`    | Array  | Refer to explanation below | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Preferences ID", example: "\"5f698149585d7cc1ae35a38d\"" },
+    { name: "name", type: "String", description: "Preferences name", example: "\"Sweetness\"" },
+    { name: "minChoice", type: "Uint", description: "Set minimum choice", example: "1" },
+    { name: "maxChoice", type: "Uint", description: "Set maximum choice", example: "3" },
+    { name: "labels", type: "Array", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
 ### Inside Labels (parameter)
 
-<details>
-<summary><strong>Inside Labels (parameter)</strong></summary>
+
+
 
 | Parameter | Type   | Description | Example                    |
 | --------- | ------ | ----------- | -------------------------- |
 | `id`      | String | Label ID    | "5f698149585d7cc1ae35a38e" |
 | `name`    | String | Label name  | "Basic"                    |
 
-</details>
+
 
 
 ### Inside Sides (parameter)
@@ -480,22 +468,20 @@ Optional
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter   | Type   | Description                             | Example                                 |
-| ----------- | ------ | --------------------------------------- | --------------------------------------- |
-| `id`        | String | Side ID                                 | ""                                      |
-| `name`      | String | Side Name                               | "test"                                  |
-| `sideItems` | Array  | Refer to the <b>SideItems parameter</b> | Refer to the <b>SideItems parameter</b> |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Side ID", example: "\"\"" },
+    { name: "name", type: "String", description: "Side Name", example: "\"test\"" },
+    { name: "sideItems", type: "Array", description: "Refer to the SideItems parameter", example: "Refer to the SideItems parameter" }
+  ]}
+/>
 
 
 ### Inside SideItems (parameter)
 
-<details>
-<summary><strong>Inside SideItems (parameter)</strong></summary>
+
+
 
 | Parameter | Type   | Description                         | Example                             |
 | --------- | ------ | ----------------------------------- | ----------------------------------- |
@@ -503,7 +489,7 @@ Optional
 | `name`    | String | Side Name                           | "Hainan Chicken Rice"               |
 | `price`   | Object | Refer to the <b>Price parameter</b> | Refer to the <b>Price parameter</b> |
 
-</details>
+
 
 
 ### Inside Payment (parameter)
@@ -516,21 +502,19 @@ Current type in <b>Payment</b> will be :-
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter             | Type   | Description                         | Example                         |
-| --------------------- | ------ | ----------------------------------- | ------------------------------- |
-| `deliveryFee`         | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `rounding`            | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `serviceFee`          | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `serviceTax`          | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `status`              | String | Payment Status                      | "NOTPAID"                       |
-| `subTotal`            | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `totalAfterRounding`  | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `totalBeforeRounding` | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "deliveryFee", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "rounding", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "serviceFee", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "serviceTax", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "status", type: "String", description: "Payment Status", example: "\"NOTPAID\"" },
+    { name: "subTotal", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "totalAfterRounding", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "totalBeforeRounding", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" }
+  ]}
+/>
 
 
 ### Inside Price (parameter)
@@ -541,22 +525,20 @@ Only `serviceFee` and `serviceTax` have <b>percentage</b>
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter      | Type   | Description                                      | Example |
-| -------------- | ------ | ------------------------------------------------ | ------- |
-| `amount`       | Uint   | Amount in cent (min RM 0.10 <b>10 = RM 0.10</b>) | 100     |
-| `currencyType` | String | Current only support Ringgit Malaysia            | "MYR"   |
-| `percentage`   | Uint   | precentage will be divide 100 eg: 1300/100       | 1300    |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "amount", type: "Uint", description: "Amount in cent (min RM 0.10 10 = RM 0.10)", example: "100" },
+    { name: "currencyType", type: "String", description: "Current only support Ringgit Malaysia", example: "\"MYR\"" },
+    { name: "percentage", type: "Uint", description: "precentage will be divide 100 eg: 1300/100", example: "1300" }
+  ]}
+/>
 
 
 ### Inside Table (parameter)
 
-<details>
-<summary><strong>Inside Table (parameter)</strong></summary>
+
+
 
 | Parameter     | Type   | Description    | Example                    |
 | ------------- | ------ | -------------- | -------------------------- |
@@ -565,5 +547,5 @@ Only `serviceFee` and `serviceTax` have <b>percentage</b>
 | `isDefault`   | Bool   | Vehicle Number | true                       |
 | `name`        | String | Table Name     | "Default Table"            |
 
-</details>
+
 

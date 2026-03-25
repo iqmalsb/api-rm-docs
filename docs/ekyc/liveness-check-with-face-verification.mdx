@@ -94,15 +94,13 @@ A simple HTML example below should be sufficient to get the liveness app started
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter             | Type   | Description                                | Example                    |
-| --------------------- | ------ | ------------------------------------------ | -------------------------- |
-| `mykad_request_id`    | String | Request ID from mykad recognition response | "62201d48a694817dede84b35" |
-| `query_image_content` | String | Face image (Base64 image string)           | ""                         |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "mykad_request_id", type: "String", description: "Request ID from mykad recognition response", example: "\"62201d48a694817dede84b35\"" },
+    { name: "query_image_content", type: "String", description: "Face image (Base64 image string)", example: "\"\"" }
+  ]}
+/>
 
 
 ### Response Parameters
@@ -124,18 +122,16 @@ A simple HTML example below should be sufficient to get the liveness app started
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter      | Type     | Description                           | Example                      |
-| -------------- | -------- | ------------------------------------- | ---------------------------- |
-| `id`           | String   | Table ID                              | "60f79b737b03abf23ad65206"   |
-| `ekycId`       | String   | EKYC ID                               | "62201e0b239b18052126e28b"   |
-| `action`       | String   | Action Required                       | NONE_REQUIRED                |
-| `status`       | String   | Verfication Status                    | SUCCESS                      |
-| `isSamePerson` | Boolean  | Visualization for result image        | true                         |
-| `similarity`   | Int      | Percentage of similarity of two faces | 99                           |
-| `updatedAt`    | DateTime | Last update date time                 | "2021-07-21T15:07:43.266243" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Table ID", example: "\"60f79b737b03abf23ad65206\"" },
+    { name: "ekycId", type: "String", description: "EKYC ID", example: "\"62201e0b239b18052126e28b\"" },
+    { name: "action", type: "String", description: "Action Required", example: "NONE_REQUIRED" },
+    { name: "status", type: "String", description: "Verfication Status", example: "SUCCESS" },
+    { name: "isSamePerson", type: "Boolean", description: "Visualization for result image", example: "true" },
+    { name: "similarity", type: "Int", description: "Percentage of similarity of two faces", example: "99" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2021-07-21T15:07:43.266243\"" }
+  ]}
+/>
 

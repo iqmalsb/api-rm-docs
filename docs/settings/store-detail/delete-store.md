@@ -58,12 +58,10 @@ Deleted stores cannot be revoked!
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example   |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | --------- |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS" |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 

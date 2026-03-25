@@ -53,30 +53,26 @@ You should always store either **Transaction ID** or **Order ID** for transactio
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type  | Validation | Required | Description |
-| --------- | ----- | ---------- | -------- | ----------- |
-| `id`      | Param |            | Yes      | Order ID    |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "Param", required: true, description: "Order ID" }
+  ]}
+/>
 
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                | Description                    |
-| --------------- | ------ | ----------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                           | Determine request have success |
-| `error.code`    | String |                                           | Error code                     |
-| `error.message` | String |                                           | Error message                  |
-| `error.debug`   | String |                                           | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ## Query By Transaction ID
@@ -84,30 +80,26 @@ You should always store either **Transaction ID** or **Order ID** for transactio
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type  | Validation | Required | Description    |
-| --------- | ----- | ---------- | -------- | -------------- |
-| `id`      | Param |            | Yes      | Transaction ID |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "Param", required: true, description: "Transaction ID" }
+  ]}
+/>
 
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                | Description                    |
-| --------------- | ------ | ----------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                           | Determine request have success |
-| `error.code`    | String |                                           | Error code                     |
-| `error.message` | String |                                           | Error message                  |
-| `error.debug`   | String |                                           | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ## Get All Transactions
@@ -116,38 +108,34 @@ URL with limit : `https://sb-open.revenuemonster.my/v3/payment/transactions?limi
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type       | Validation | Required | Description              |
-| --------- | ---------- | ---------- | -------- | ------------------------ |
-| `limit`   | QueryParam |            | No       | Transaction search limit |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "limit", type: "QueryParam", description: "Transaction search limit" }
+  ]}
+/>
 
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type      | Validation                                         | Description                    |
-| --------------- | --------- | -------------------------------------------------- | ------------------------------ |
-| `items`         | JSONArray | Array of [Transaction Object](#transaction-object) | List of transaction response   |
-| `code`          | String    | ENUM("SUCCESS")                                    | Determine request have success |
-| `error.code`    | String    |                                                    | Error code                     |
-| `error.message` | String    |                                                    | Error message                  |
-| `error.debug`   | String    |                                                    | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "items", type: "JSONArray", description: "List of transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 
 
 ## Transaction Object
 
-<details>
-<summary><strong>Transaction Object</strong></summary>
+
+
 
 | Parameter                   | Type   | Validation                                                                            | Required | Description                                                |
 | --------------------------- | ------ | ------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------- |
@@ -186,7 +174,7 @@ URL with limit : `https://sb-open.revenuemonster.my/v3/payment/transactions?limi
 | `extraInfo.onlineBanking`   | JSON   | [Transaction Object: Online Banking](#online-banking--fpx-)                           | No       | FPX online banking transaction info                        |
 | `extraInfo.loyalty`         | JSON   | [Transaction Object: Spending Loyalty](#spending-loyalty)                             | No       | Spending loyalty info                                      |
 
-</details>
+
 
 
 
@@ -225,8 +213,8 @@ URL with limit : `https://sb-open.revenuemonster.my/v3/payment/transactions?limi
 ### Store 
 
 
-<details>
-<summary><strong>Store</strong></summary>
+
+
 
 | Parameter               | Type    | Validation | Required | Description                        |
 | ----------------------- | ------- | ---------- | -------- | ---------------------------------- |
@@ -247,7 +235,7 @@ URL with limit : `https://sb-open.revenuemonster.my/v3/payment/transactions?limi
 | `createdAt`             | String  | RFC3339    |          | Store created time                 |
 | `updatedAt`             | String  | RFC3339    |          | Store last updated time            |
 
-</details>
+
 
 
 ```json title="Example"
@@ -276,15 +264,15 @@ URL with limit : `https://sb-open.revenuemonster.my/v3/payment/transactions?limi
 ### BuyNowPayLater ( BNPL )
 
 
-<details>
-<summary><strong>BuyNowPayLater ( BNPL )</strong></summary>
+
+
 
 | Parameter          | Type   | Validation | Required | Description                                       |
 | ------------------ | ------ | ---------- | -------- | ------------------------------------------------- |
 | `isBuyNowPayLater` | bool   |            | No       | Determine wether is buy now pay later transaction |
 | `installmentMonth` | Uint64 |            | No       | How many month selected for BNPL transaction      |
 
-</details>
+
 
 
 ```json title="Example"
@@ -296,15 +284,15 @@ URL with limit : `https://sb-open.revenuemonster.my/v3/payment/transactions?limi
 
 ### Online Banking ( FPX )
 
-<details>
-<summary><strong>Online Banking ( FPX )</strong></summary>
+
+
 
 | Parameter   | Type   | Validation | Required | Description    |
 | ----------- | ------ | ---------- | -------- | -------------- |
 | `buyerName` | String |            | No       | FPX Buyer Name |
 | `bankID`    | String |            | No       | FPX Bank ID    |
 
-</details>
+
 
 
 
@@ -317,8 +305,8 @@ URL with limit : `https://sb-open.revenuemonster.my/v3/payment/transactions?limi
 
 ### Card Payment
 
-<details>
-<summary><strong>Card Payment</strong></summary>
+
+
 
 | Parameter              | Type   | Validation                   | Required | Description                                   |
 | ---------------------- | ------ | ---------------------------- | -------- | --------------------------------------------- |
@@ -337,7 +325,7 @@ URL with limit : `https://sb-open.revenuemonster.my/v3/payment/transactions?limi
 | `secondaryReferenceId` | String |                              | No       | Card transaction invoice number               |
 | `domain`               | String |                              | No       | Online card payment domain                    |
 
-</details>
+
 
 
 
@@ -375,16 +363,14 @@ URL with limit : `https://sb-open.revenuemonster.my/v3/payment/transactions?limi
 If you're using QRCODE mode when doing payment, you will receive this object in transaction response. So when receipt printing you can print the `qrcode` parameters as the qrcode content and customer will able to scan and retrieve the points.
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type   | Validation | Required | Description                     |
-| --------- | ------ | ---------- | -------- | ------------------------------- |
-| `code`    | String |            | No       | Spending loyalty code           |
-| `qrcode`  | String |            | No       | Spending loyalty qrcode content |
-| `id`      | String |            | No       | Spending loyalty id             |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "code", type: "String", description: "Spending loyalty code" },
+    { name: "qrcode", type: "String", description: "Spending loyalty qrcode content" },
+    { name: "id", type: "String", description: "Spending loyalty id" }
+  ]}
+/>
 
 
 ```json title="Example"
@@ -397,8 +383,8 @@ If you're using QRCODE mode when doing payment, you will receive this object in 
 
 ### Payment Provider Discount Info
 
-<details>
-<summary><strong>Payment Provider Discount Info</strong></summary>
+
+
 
 | Parameter        | Type   | Validation | Required | Description                        |
 | ---------------- | ------ | ---------- | -------- | ---------------------------------- |
@@ -406,7 +392,7 @@ If you're using QRCODE mode when doing payment, you will receive this object in 
 | `discountAmount` | Uint64 |            | No       | Payment provider discount amount   |
 | `grossAmount`    | Uint64 |            | No       | Sales amount after discount amount |
 
-</details>
+
 
 
 ```json title="Example"
@@ -419,8 +405,8 @@ If you're using QRCODE mode when doing payment, you will receive this object in 
 
 ### Membership Discount Info
 
-<details>
-<summary><strong>Membership Discount Info</strong></summary>
+
+
 
 | Parameter        | Type   | Validation | Required | Description                |
 | ---------------- | ------ | ---------- | -------- | -------------------------- |
@@ -428,7 +414,7 @@ If you're using QRCODE mode when doing payment, you will receive this object in 
 | `voucherId`      | String |            | No       | Membership Voucher ID      |
 | `discountAmount` | Uint64 |            | No       | Membership Discount Amount |
 
-</details>
+
 
 
 ```json title="Example"
@@ -441,8 +427,8 @@ If you're using QRCODE mode when doing payment, you will receive this object in 
 
 ### (Internal) Inhouse Promotion
 
-<details>
-<summary><strong>(Internal) Inhouse Promotion</strong></summary>
+
+
 
 | Parameter          | Type   | Validation | Required | Description                           |
 | ------------------ | ------ | ---------- | -------- | ------------------------------------- |
@@ -452,7 +438,7 @@ If you're using QRCODE mode when doing payment, you will receive this object in 
 | `info[*].source`   | String |            | No       | (Internal) Inhouse promo info source  |
 | `info[*].amount`   | String |            | No       | (Internal) Inhouse promo info amount  |
 
-</details>
+
 
 
 ```json title="Example"
@@ -473,8 +459,8 @@ If you're using QRCODE mode when doing payment, you will receive this object in 
 
 ### Transaction Type
 
-<details>
-<summary><strong>Transaction Type</strong></summary>
+
+
 
 | Value                | Description                                           |
 | -------------------- | ----------------------------------------------------- |
@@ -488,14 +474,14 @@ If you're using QRCODE mode when doing payment, you will receive this object in 
 | `QR_PAY`             | (Deprecated) Platform Specific QR Payment transaction |
 | `MOBILE_PAYMENT`     | (Deprecated) Now known as "WEB_MOBILE_PAYMENT"        |
 
-</details>
+
 
 
 
 ### Transaction Status
 
-<details>
-<summary><strong>Transaction Status</strong></summary>
+
+
 
 | Value              | Description                                                                       |
 | ------------------ | --------------------------------------------------------------------------------- |
@@ -506,7 +492,7 @@ If you're using QRCODE mode when doing payment, you will receive this object in 
 | `PARTIAL_REFUNDED` | Transaction partial refunded                                                      |
 | `REVERSED`         | Transaction reversed, when timeout our system will initiate reverse automatically |
 
-</details>
+
 
 
 ### Transaction Method & Region
@@ -515,8 +501,8 @@ If you're using QRCODE mode when doing payment, you will receive this object in 
 For online payment checkout you will need to append region name to system method. Example malaysia will be 'MY' and full method name will be 'ALIPAYPLUS_MY'
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
+
+
 
 | Method       | Region      | Description                                                                                                                                |
 | ------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -549,7 +535,7 @@ For online payment checkout you will need to append region name to system method
 | `HOOLAH`     | `MALAYSIA`  | Quick Pay: ❌<br />Web Payment: ✅<br />Web Mobile/Mobile Payment: ✅<br />Checkout By URL: ✅<br />Checkout By QRCode: ❌<br />Retail QRPay: ❌ |
 | `GOPAYZ`     | `MALAYSIA`  | Quick Pay: ❌<br />Web Payment: ✅<br />Web Mobile/Mobile Payment: ✅<br />Checkout By URL: ✅<br />Checkout By QRCode: ❌<br />Retail QRPay: ❌ |
 
-</details>
+
 
 
 <!-- | `ABLR`       | `MALAYSIA`  | Quick Pay: ✅<br />Web Payment: ✅<br />Web Mobile/Mobile Payment: ✅<br />Checkout By URL: ✅<br />Checkout By QRCode: ❌<br />Retail QRPay: ❌ |

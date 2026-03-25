@@ -75,41 +75,37 @@ Use `Store ID` to check a particular store details.
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type     | Description                                                                                               | Example                      |
-| --------- | -------- | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object[] | Array of store object                                                                                     | (Refer to explanation below) |
-| `code`    | String   | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object[]", description: "Array of store object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br/>
 <strong>Array of store object (item):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter              | Type              | Description                                    | Example                                                      |
-| ---------------------- | ----------------- | ---------------------------------------------- | ------------------------------------------------------------ |
-| `id`                   | String            | Store ID                                       | "6170506694335521334"                                        |
-| `merchantSettlementId` | String            | Linkage with payment settlement account        |                                                              |
-| `name`                 | String            | Store Name                                     | "REVENUE MONSTER"                                            |
-| `imageUrl`             | String            | Image of your Store                            | "https://storage.googleapis.com/rm-prod-asset/img/store.png" |
-| `addressLine1`         | String            | Store Address 1                                | "B-5-30, 5th Floor, Block Bougainvillea,"                    |
-| `addressLine2`         | String            | Store Address 2                                | "PJU 6A, Lebuhraya SPRINT, 10 Boulevard,"                    |
-| `postCode`             | String            | Postcode of store                              | "55100"                                                      |
-| `city`                 | String            | City of store                                  | "Petaling Jaya"                                              |
-| `state`                | String            | State of store                                 | "Selangor"                                                   |
-| `country`              | String            | Country of store                               | "Malaysia"                                                   |
-| `countryCode`          | String            | Country code of store contact number           | "60"                                                         |
-| `phoneNumber`          | String            | Phone number of store                          | "377334080"                                                  |
-| `geoLocation`          | Object of [Float] | Geo Location (latitude and longitude) of store | {"Lat": 3.1349857, "Lng": 101.6136659 }                      |
-| `status`               | String            | Current status of store                        | "ACTIVE"                                                     |
-| `createdAt`            | DateTime          | Creation date time of store                    | "2018-02-12T08:53:13Z"                                       |
-| `updatedAt`            | DateTime          | Last update date time of store                 | "2018-02-12T08:53:13Z"                                       |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Store ID", example: "\"6170506694335521334\"" },
+    { name: "merchantSettlementId", type: "String", description: "Linkage with payment settlement account" },
+    { name: "name", type: "String", description: "Store Name", example: "\"REVENUE MONSTER\"" },
+    { name: "imageUrl", type: "String", description: "Image of your Store", example: "\"https://storage.googleapis.com/rm-prod-asset/img/store.png\"" },
+    { name: "addressLine1", type: "String", description: "Store Address 1", example: "\"B-5-30, 5th Floor, Block Bougainvillea,\"" },
+    { name: "addressLine2", type: "String", description: "Store Address 2", example: "\"PJU 6A, Lebuhraya SPRINT, 10 Boulevard,\"" },
+    { name: "postCode", type: "String", description: "Postcode of store", example: "\"55100\"" },
+    { name: "city", type: "String", description: "City of store", example: "\"Petaling Jaya\"" },
+    { name: "state", type: "String", description: "State of store", example: "\"Selangor\"" },
+    { name: "country", type: "String", description: "Country of store", example: "\"Malaysia\"" },
+    { name: "countryCode", type: "String", description: "Country code of store contact number", example: "\"60\"" },
+    { name: "phoneNumber", type: "String", description: "Phone number of store", example: "\"377334080\"" },
+    { name: "geoLocation", type: "Object of [Float]", description: "Geo Location (latitude and longitude) of store", example: "{\"Lat\": 3.1349857, \"Lng\": 101.6136659 }" },
+    { name: "status", type: "String", description: "Current status of store", example: "\"ACTIVE\"" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time of store", example: "\"2018-02-12T08:53:13Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time of store", example: "\"2018-02-12T08:53:13Z\"" }
+  ]}
+/>
 

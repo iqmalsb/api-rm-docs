@@ -67,62 +67,56 @@ Update Application Client
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter          | Type         | Example |
-| ------------------ | ------------ | ------- | ---------------------- |
-| `userId`           | String       |         | "1647501978916382207"  |
-| `name`             | String       |         | "Name"                 |
-| `homePageUrl`      | String       |         | "https://google.com"   |
-| `logoUrl`          | String       |         | "https://google.com"   |
-| `privacyPolicyUrl` | String       |         | "https://google.com"   |
-| `redirectUri`      | Array String |         | ["https://google.com"] |
-| `publicKey`        | String       |         | "......"               |
-| `isActive`         | Boolean      |         | true                   |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "userId", type: "String" },
+    { name: "name", type: "String" },
+    { name: "homePageUrl", type: "String" },
+    { name: "logoUrl", type: "String" },
+    { name: "privacyPolicyUrl", type: "String" },
+    { name: "redirectUri", type: "Array String" },
+    { name: "publicKey", type: "String" },
+    { name: "isActive", type: "Boolean" }
+  ]}
+/>
 
 
 <br />
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example                      |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object |                                                                                                           | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br />
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter             | Type           | Description                       | Example                                                                             |
-| --------------------- | -------------- | --------------------------------- | ----------------------------------------------------------------------------------- |
-| `clientId`            | String         |                                   | "1647502414730379278"                                                               |
-| `clientSecret`        | String         |                                   | "dtbDsFgbLDzGhMleKjTFZXGxrDKFnMqe"                                                  |
-| `client`              | Object         |                                   | {publicKey: "**refer below example**"}                                              |
-| `server`              | Object         |                                   | {publicKey: "**refer below example**" , privateKey :"**refer below example**"}      |
-| `name`                | String         |                                   | "required name"                                                                     |
-| `homePageUrl`         | String         |                                   | "https://google.com"                                                                |
-| `logoUrl`             | String         |                                   | "https://storage.googleapis.com/rm-sandbox-asset/img/default-application-logo.png", |
-| `privacyPolicyUrl`    | String         |                                   | "https://google.com"                                                                |
-| `merchantIdy`         | String         |                                   | "1647501978894816174"                                                               |
-| `userId`              | String         |                                   | "1647501978916382207"                                                               |
-| `oAuthClientProducts` | Array          |                                   | []                                                                                  |
-| `isActive`            | Bool           |                                   | false                                                                               |
-| `redirectUri`         | Array (String) |                                   | ["https://google.com"],                                                             |
-| `createdAt`           | DateTime       | Creation date time of merchant    | "2021-02-12T08:53:13Z"                                                              |
-| `updatedAt`           | DateTime       | Last update date time of merchant | "2021-02-12T08:53:13Z"                                                              |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "clientId", type: "String", example: "\"1647502414730379278\"" },
+    { name: "clientSecret", type: "String", example: "\"dtbDsFgbLDzGhMleKjTFZXGxrDKFnMqe\"" },
+    { name: "client", type: "Object", example: "{publicKey: \"refer below example\"}" },
+    { name: "server", type: "Object", example: "{publicKey: \"refer below example\" , privateKey :\"refer below example\"}" },
+    { name: "name", type: "String", example: "\"required name\"" },
+    { name: "homePageUrl", type: "String", example: "\"https://google.com\"" },
+    { name: "logoUrl", type: "String", example: "\"https://storage.googleapis.com/rm-sandbox-asset/img/default-application-logo.png\"," },
+    { name: "privacyPolicyUrl", type: "String", example: "\"https://google.com\"" },
+    { name: "merchantIdy", type: "String", example: "\"1647501978894816174\"" },
+    { name: "userId", type: "String", example: "\"1647501978916382207\"" },
+    { name: "oAuthClientProducts", type: "Array", example: "[]" },
+    { name: "isActive", type: "Bool", example: "false" },
+    { name: "redirectUri", type: "Array (String)", example: "[\"https://google.com\"]," },
+    { name: "createdAt", type: "DateTime", description: "Creation date time of merchant", example: "\"2021-02-12T08:53:13Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time of merchant", example: "\"2021-02-12T08:53:13Z\"" }
+  ]}
+/>
 
 
 <br />

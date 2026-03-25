@@ -57,18 +57,16 @@ For authorization code, only `client_id` is needed. You are required to use the 
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter      | Type   | Required | Description                                                                                                                                                                                                                                | Example                  |
-| -------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
-| `responseType` | String | Yes      | Only support authorization code                                                                                                                                                                                                            | code                     |
-| `clientId`     | String | Yes      | Client ID or AppID as obtained from [RM Merchant Portal](https://merchant.revenuemonster.my/).                                                                                                                                             | 3675930941412424316      |
-| `redirectUri`  | String | Yes      | Specify your desired redirect Uri after request successful. This Uri must be EXACTLY the same as the one entered in [RM Merchant Portal](https://merchant.revenuemonster.my/)                                                              | <https://www.google.com> |
-| `scope`        | String | Yes      | Scope of authorization granted to user, to perform action(s) when calling other API endpoints. (Currently only support `manage_payment`, `get_merchant_profile`, `get_user_profile`, `manage_store`). Separated by comma(s) without space. | manage_payment           |
-| `state`        | String | No       | Optional field for user reference, will be passed back in response                                                                                                                                                                         | Anything                 |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "responseType", type: "String", required: true, description: "Only support authorization code", example: "code" },
+    { name: "clientId", type: "String", required: true, description: "Client ID or AppID as obtained from RM Merchant Portal.", example: "3675930941412424316" },
+    { name: "redirectUri", type: "String", required: true, description: "Specify your desired redirect Uri after request successful. This Uri must be EXACTLY the same as the one entered in RM Merchant Portal" },
+    { name: "scope", type: "String", required: true, description: "Scope of authorization granted to user, to perform action(s) when calling other API endpoints. (Currently only support manage_payment, get_merchant_profile, get_user_profile, manage_store). Separated by comma(s) without space.", example: "manage_payment" },
+    { name: "state", type: "String", description: "Optional field for user reference, will be passed back in response", example: "Anything" }
+  ]}
+/>
 
 
 **Example Request URL :**
@@ -84,15 +82,13 @@ state=123456</a>
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                        | Example       |
-| --------- | ------ | ---------------------------------- | ------------- |
-| `code`    | String | Required for subsequent request(s) | Random string |
-| `state`   | String | Optional field for user reference  | Anything      |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "code", type: "String", description: "Required for subsequent request(s)", example: "Random string" },
+    { name: "state", type: "String", description: "Optional field for user reference", example: "Anything" }
+  ]}
+/>
 
 
 **Example Response URL :**

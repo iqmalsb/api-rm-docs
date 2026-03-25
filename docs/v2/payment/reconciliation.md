@@ -49,18 +49,16 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter         | Type         | Validation                                                            | Required | Description        |
-| ----------------- | ------------ | --------------------------------------------------------------------- | -------- | ------------------ |
-| `transactionType` | String       | ENUM("PAYMENT", "REFUND")                                             | No       | Terminal ID        |
-| `date`            | String       | YYYY-MM-DD                                                            | Yes      | Transaction date   |
-| `method`          | List(String) | [Appendix: Method](./query-transaction.md#transaction-method--region) | No       | Transaction method |
-| `region`          | List(String) | [Appendix: Region](./query-transaction.md#transaction-method--region) | No       | Transaction region |
-| `cursor`          | String       |                                                                       | No       | Pagination cursor  |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "transactionType", type: "String", description: "Terminal ID" },
+    { name: "date", type: "String", required: true, description: "Transaction date" },
+    { name: "method", type: "List(String)", description: "Transaction method" },
+    { name: "region", type: "List(String)", description: "Transaction region" },
+    { name: "cursor", type: "String", description: "Pagination cursor" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -75,32 +73,30 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                  | Type   | Validation                                                | Description                        |
-| -------------------------- | ------ | --------------------------------------------------------- | ---------------------------------- |
-| `items.*.transactionAt`    | String | RFC3339                                                   | Transaction date time              |
-| `items.*.merchantId`       | String |                                                           | Merchant ID                        |
-| `items.*.merchantName`     | String |                                                           | Merchant Name                      |
-| `items.*.storeId`          | String |                                                           | Store ID                           |
-| `items.*.storeName`        | String |                                                           | Store Name                         |
-| `items.*.region`           | String |                                                           | Transaction region                 |
-| `items.*.method`           | String |                                                           | Transaction method                 |
-| `items.*.transactionType`  | String | ENUM("PAYMENT", "REFUND")                                 | Transaction payment or refund type |
-| `items.*.type`             | String | [Appendix: Type](./query-transaction.md#transaction-type) | Transaction type                   |
-| `items.*.transactionId`    | String |                                                           | Transaction ID                     |
-| `items.*.orderId`          | String |                                                           | Order ID                           |
-| `items.*.currencyType`     | String | ENUM("MYR")                                               | Transaction currency type          |
-| `items.*.grossAmount`      | String |                                                           | Transaction gross amount           |
-| `items.*.mdr`              | String |                                                           | Transaction mdr amount             |
-| `items.*.serviceFee`       | String |                                                           | Transaction service fee            |
-| `items.*.settlementAmount` | String |                                                           | Transaction settlement amount      |
-| `meta.cursor`              | String |                                                           | Pagination cursor                  |
-| `code`                     | String | ENUM("SUCCESS")                                           | Determine request have success     |
-| `error.code`               | String |                                                           | Error code                         |
-| `error.message`            | String |                                                           | Error message                      |
-| `error.debug`              | String |                                                           | Debug message ( sandbox only )     |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "items.*.transactionAt", type: "String", description: "Transaction date time" },
+    { name: "items.*.merchantId", type: "String", description: "Merchant ID" },
+    { name: "items.*.merchantName", type: "String", description: "Merchant Name" },
+    { name: "items.*.storeId", type: "String", description: "Store ID" },
+    { name: "items.*.storeName", type: "String", description: "Store Name" },
+    { name: "items.*.region", type: "String", description: "Transaction region" },
+    { name: "items.*.method", type: "String", description: "Transaction method" },
+    { name: "items.*.transactionType", type: "String", description: "Transaction payment or refund type" },
+    { name: "items.*.type", type: "String", description: "Transaction type" },
+    { name: "items.*.transactionId", type: "String", description: "Transaction ID" },
+    { name: "items.*.orderId", type: "String", description: "Order ID" },
+    { name: "items.*.currencyType", type: "String", description: "Transaction currency type" },
+    { name: "items.*.grossAmount", type: "String", description: "Transaction gross amount" },
+    { name: "items.*.mdr", type: "String", description: "Transaction mdr amount" },
+    { name: "items.*.serviceFee", type: "String", description: "Transaction service fee" },
+    { name: "items.*.settlementAmount", type: "String", description: "Transaction settlement amount" },
+    { name: "meta.cursor", type: "String", description: "Pagination cursor" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 

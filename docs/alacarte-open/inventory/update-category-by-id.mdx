@@ -85,57 +85,49 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Description                       | Example                      |
-| ---------- | ------ | --------------------------------- | ---------------------------- |
-| `service`  | String | alacarte service                  | "alacarte"                   |
-| `version`  | String | Currently only support 'v1"       | "v1"                         |
-| `function` | String | Function that provide by alacarte | "update.category"            |
-| `request`  | Object | Refer to explanation below        | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "service", type: "String", description: "alacarte service", example: "\"alacarte\"" },
+    { name: "version", type: "String", description: "Currently only support 'v1\"", example: "\"v1\"" },
+    { name: "function", type: "String", description: "Function that provide by alacarte", example: "\"update.category\"" },
+    { name: "request", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter        | Type   | Description                                                | Example                    |
-| ---------------- | ------ | ---------------------------------------------------------- | -------------------------- |
-| `categoryId`     | String | ID of the Category                                         | "5f68485ccb3285b9d3955696" |
-| `name`           | String | Category name                                              | "Drinks"                   |
-| `status`         | String | Status of Category **"ACTIVE"** and **"INACTIVE"**         | "ACTIVE"                   |
-| `positionChange` | Int    | Move **UP** or **DOWN** the position using **-1** or **1** | 1                          |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "categoryId", type: "String", description: "ID of the Category", example: "\"5f68485ccb3285b9d3955696\"" },
+    { name: "name", type: "String", description: "Category name", example: "\"Drinks\"" },
+    { name: "status", type: "String", description: "Status of Category \"ACTIVE\" and \"INACTIVE\"", example: "\"ACTIVE\"" },
+    { name: "positionChange", type: "Int", description: "Move UP or DOWN the position using -1 or 1", example: "1" }
+  ]}
+/>
 
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                  | Example                      |
-| --------- | ------ | ---------------------------- | ---------------------------- |
-| `item`    | Object | (Refer to explanation below) | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", description: "(Refer to explanation below)", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type     | Description                         | Example                          |
-| ------------ | -------- | ----------------------------------- | -------------------------------- |
-| `categoryId` | String   | Category ID                         | "5f68485ccb3285b9d3955696"       |
-| `storeId`    | String   | ID of the Store that Create from RM | "10946114768247530"              |
-| `itemIds`    | Array    | Category Items                      | null                             |
-| `name`       | String   | Item Name                           | "Drinks"                         |
-| `status`     | String   | Status of Item                      | "ACTIVE"                         |
-| `position`   | Uint     | Current position among Category     | 1                                |
-| `createdAt`  | DateTime | Creation date time                  | "2020-09-22T04:25:23.684330293Z" |
-| `updatedAt`  | DateTime | Last update date time               | "2020-09-22T04:25:23.684330293Z" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "categoryId", type: "String", description: "Category ID", example: "\"5f68485ccb3285b9d3955696\"" },
+    { name: "storeId", type: "String", description: "ID of the Store that Create from RM", example: "\"10946114768247530\"" },
+    { name: "itemIds", type: "Array", description: "Category Items", example: "null" },
+    { name: "name", type: "String", description: "Item Name", example: "\"Drinks\"" },
+    { name: "status", type: "String", description: "Status of Item", example: "\"ACTIVE\"" },
+    { name: "position", type: "Uint", description: "Current position among Category", example: "1" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time", example: "\"2020-09-22T04:25:23.684330293Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2020-09-22T04:25:23.684330293Z\"" }
+  ]}
+/>
 

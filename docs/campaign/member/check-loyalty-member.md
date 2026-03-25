@@ -66,15 +66,13 @@ Check user is it a member by input the **country code** and **phone number**
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example   |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | --------- |
-| `item`    | Object | Inside `item` is an `"exist":true`                                                                        | true      |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS" |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", description: "Inside item is an \"exist\":true", example: "true" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br />

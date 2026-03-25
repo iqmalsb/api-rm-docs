@@ -81,28 +81,24 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Description                 | Example                      |
-| ---------- | ------ | --------------------------- | ---------------------------- |
-| `service`  | String | EKYC service                | "ekyc"                       |
-| `version`  | String | Currently only support 'v1" | "v1"                         |
-| `function` | String | Selected function           | "face-compare"               |
-| `request`  | Object | Refer to explanation below  | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "service", type: "String", description: "EKYC service", example: "\"ekyc\"" },
+    { name: "version", type: "String", description: "Currently only support 'v1\"", example: "\"v1\"" },
+    { name: "function", type: "String", description: "Selected function", example: "\"face-compare\"" },
+    { name: "request", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter               | Type   | Description                             | Example |
-| ----------------------- | ------ | --------------------------------------- | ------- |
-| `query_image_content_1` | String | First face image (Base64 image string)  | ""      |
-| `query_image_content_2` | String | Second face image (Base64 image string) | ""      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "query_image_content_1", type: "String", description: "First face image (Base64 image string)", example: "\"\"" },
+    { name: "query_image_content_2", type: "String", description: "Second face image (Base64 image string)", example: "\"\"" }
+  ]}
+/>
 
 
 ### Response Parameters
@@ -123,17 +119,15 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter            | Type     | Description                           | Example                      |
-| -------------------- | -------- | ------------------------------------- | -----------------------------|
-| `id`                 | String   | Table ID                              | "60f79b737b03abf23ad65206"   |
-| `action`             | String   | Action Required                       | NONE_REQUIRED                |
-| `status`             | String   | Verfication Status                    | SUCCESS                      |
-| `isSamePerson`       | Boolean  | Visualization for result image        | true                         |
-| `similarity`         | Int      | Percentage of similarity of two faces | 99                           |
-| `updatedAt`          | DateTime | Last update date time                 | "2021-07-21T15:07:43.266243" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Table ID", example: "\"60f79b737b03abf23ad65206\"" },
+    { name: "action", type: "String", description: "Action Required", example: "NONE_REQUIRED" },
+    { name: "status", type: "String", description: "Verfication Status", example: "SUCCESS" },
+    { name: "isSamePerson", type: "Boolean", description: "Visualization for result image", example: "true" },
+    { name: "similarity", type: "Int", description: "Percentage of similarity of two faces", example: "99" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2021-07-21T15:07:43.266243\"" }
+  ]}
+/>
 

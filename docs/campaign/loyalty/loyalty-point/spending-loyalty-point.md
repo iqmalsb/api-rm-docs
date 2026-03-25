@@ -57,19 +57,17 @@ To give loyalty point(s) based on amount to customers using phone number or memb
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter      | Type   | Required | Description                                        | Example                                                    |
-| -------------- | ------ | -------- | -------------------------------------------------- | ---------------------------------------------------------- |
-| `currencyType` | String | Yes      | Currently `MYR` only                               | MYR                                                        |
-| `amount`       | Uint   | Yes      | Loyalty point given to customers.                  | 100                                                        |
-| `type`         | String | Yes      | "ID" ,"PHONENUMBER" or "QRCODE"                    | Use phone number , ID or QR Code to give loyalty point(s). |
-| `memberId`     | String | No       | Member ID if type "ID" being provided.             | "2777058682717858418"                                      |
-| `countryCode`  | String | No       | Country code if type "PHONENUMBER" being provided. | "60"                                                       |
-| `phoneNumber`  | String | No       | Phone number if type "PHONENUMBER" being provided. | "172826990"                                                |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "currencyType", type: "String", required: true, description: "Currently MYR only", example: "MYR" },
+    { name: "amount", type: "Uint", required: true, description: "Loyalty point given to customers.", example: "100" },
+    { name: "type", type: "String", required: true, description: "\"ID\" ,\"PHONENUMBER\" or \"QRCODE\"", example: "Use phone number , ID or QR Code to give loyalty point(s)." },
+    { name: "memberId", type: "String", description: "Member ID if type \"ID\" being provided.", example: "\"2777058682717858418\"" },
+    { name: "countryCode", type: "String", description: "Country code if type \"PHONENUMBER\" being provided.", example: "\"60\"" },
+    { name: "phoneNumber", type: "String", description: "Phone number if type \"PHONENUMBER\" being provided.", example: "\"172826990\"" }
+  ]}
+/>
 
 
 > Example Request Phone Number
@@ -127,14 +125,12 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/loyalty/rew
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   |                                                                           Description                                                                            | Example   |
-| --------- | ------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | --------- |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer [Appendix 1: Error Codes](https://doc.revenuemonster.my/#appendix-1-error-codes)) | "SUCCESS" |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 > Example Response (PhoneNumber & Member ID)

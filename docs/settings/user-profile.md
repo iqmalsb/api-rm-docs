@@ -64,38 +64,34 @@ No request parameter is required for this endpoint.
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type     | Description                                                                                               | Example                      |
-| --------- | -------- | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object[] | Array of user object                                                                                      | (Refer to explanation below) |
-| `code`    | String   | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object[]", description: "Array of user object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br/>
 
 <strong>Array of store object (item):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter     | Type     | Description                         | Example                                                       |
-| ------------- | -------- | ----------------------------------- | ------------------------------------------------------------- |
-| `id`          | String   | User ID                             | “8190656045166232716”                                         |
-| `firstName`   | String   | First name of user                  | “MOHAMED”                                                     |
-| `lastName`    | String   | Last name of user                   | “YUSSUF”                                                      |
-| `countryCode` | String   | Country code of user contact number | "60"                                                          |
-| `phoneNumber` | String   | Phone number of user                | "377334080"                                                   |
-| `email`       | String   | Email address of user               | "yussuf@revenuemonster.my"                                    |
-| `avatarUrl`   | String   | Public URL to show user’s avatar    | "https://storage.googleapis.com/rm-prod-asset/img/avatar.png" |
-| `status`      | String   | Current status of user              | “ACTIVE”                                                      |
-| `storeId`     | String   | Store ID                            | "6170506694335521334"                                         |
-| `isActive`    | Boolean  | User active or deactivated status   | true                                                          |
-| `createdAt`   | DateTime | Creation date time of user          | "2018-02-12T08:53:13Z"                                        |
-| `updatedAt`   | DateTime | Last update date time of user       | "2018-02-12T08:53:13Z"                                        |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "User ID", example: "“8190656045166232716”" },
+    { name: "firstName", type: "String", description: "First name of user", example: "“MOHAMED”" },
+    { name: "lastName", type: "String", description: "Last name of user", example: "“YUSSUF”" },
+    { name: "countryCode", type: "String", description: "Country code of user contact number", example: "\"60\"" },
+    { name: "phoneNumber", type: "String", description: "Phone number of user", example: "\"377334080\"" },
+    { name: "email", type: "String", description: "Email address of user", example: "\"yussuf@revenuemonster.my\"" },
+    { name: "avatarUrl", type: "String", description: "Public URL to show user’s avatar", example: "\"https://storage.googleapis.com/rm-prod-asset/img/avatar.png\"" },
+    { name: "status", type: "String", description: "Current status of user", example: "“ACTIVE”" },
+    { name: "storeId", type: "String", description: "Store ID", example: "\"6170506694335521334\"" },
+    { name: "isActive", type: "Boolean", description: "User active or deactivated status", example: "true" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time of user", example: "\"2018-02-12T08:53:13Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time of user", example: "\"2018-02-12T08:53:13Z\"" }
+  ]}
+/>
 

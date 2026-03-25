@@ -57,14 +57,12 @@ If a transaction is timed out, the merchant should perform a reverse order befor
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type   | Validation | Required | Description |
-| --------- | ------ | ---------- | -------- | ----------- |
-| `orderId` | String |            | Yes      | Order ID    |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "orderId", type: "String", required: true, description: "Order ID" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -75,18 +73,16 @@ If a transaction is timed out, the merchant should perform a reverse order befor
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                                      | Description                    |
-| --------------- | ------ | --------------------------------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](./query-transaction.md#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                                                 | Determine request have success |
-| `error.code`    | String |                                                                 | Error code                     |
-| `error.message` | String |                                                                 | Error message                  |
-| `error.debug`   | String |                                                                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ## Refund
@@ -108,18 +104,16 @@ Reason for refund request/s: Exceed refund period and would like to request manu
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter             | Type   | Validation   | Required | Description          |
-| --------------------- | ------ | ------------ | -------- | -------------------- |
-| `transactionId`       | String |              | Yes      | Transaction ID       |
-| `refund.type`         | String | ENUM("FULL") | Yes      | Refund type          |
-| `refund.currencyType` | String | ENUM("MYR")  | Yes      | Refund currency type |
-| `refund.amount`       | Uint64 |              | Yes      | Refund amount        |
-| `reason`              | String |              | Yes      |                      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "transactionId", type: "String", required: true, description: "Transaction ID" },
+    { name: "refund.type", type: "String", required: true, description: "Refund type" },
+    { name: "refund.currencyType", type: "String", required: true, description: "Refund currency type" },
+    { name: "refund.amount", type: "Uint64", required: true, description: "Refund amount" },
+    { name: "reason", type: "String", required: true }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -136,15 +130,13 @@ Reason for refund request/s: Exceed refund period and would like to request manu
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                                      | Description                    |
-| --------------- | ------ | --------------------------------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](./query-transaction.md#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                                                 | Determine request have success |
-| `error.code`    | String |                                                                 | Error code                     |
-| `error.message` | String |                                                                 | Error message                  |
-| `error.debug`   | String |                                                                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>

@@ -135,83 +135,75 @@ Get loyalty balances
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example                      |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `items`   | Array  |                                                                                                           | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-| `meta`    | Object | Inside `meta` have `count`and `cursor`                                                                    | { "count": 2 , "cursor":""}  |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "items", type: "Array", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" },
+    { name: "meta", type: "Object", description: "Inside meta have countand cursor", example: "{ \"count\": 2 , \"cursor\":\"\"}" }
+  ]}
+/>
 
 
 <br />
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type     | Description                       | Example                 |
-| --------------- | -------- | --------------------------------- | ----------------------- |
-| `id`            | String   |                                   | "1647502414730379278"   |
-| `store`         | Object   |                                   | **refer below example** |
-| `transactionId` | String   |                                   | ""                      |
-| `method`        | String   |                                   | "LOYALTY_CREDIT"        |
-| `type`          | String   |                                   | "QUICK_PAY"             |
-| `order`         | Object   |                                   | **refer below example** |
-| `terminalId`    | String   |                                   | ""                      |
-| `currencyType`  | String   |                                   | "MYR"                   |
-| `transactionAt` | DateTime |                                   | "2022-01-27T04:02:46Z"  |
-| `status`        | String   |                                   | "SUCCESS"               |
-| `createdAt`     | DateTime | Creation date time of merchant    | "2022-01-27T04:02:46Z"  |
-| `updatedAt`     | DateTime | Last update date time of merchant | "2022-01-27T04:02:46Z"  |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", example: "\"1647502414730379278\"" },
+    { name: "store", type: "Object", example: "refer below example" },
+    { name: "transactionId", type: "String", example: "\"\"" },
+    { name: "method", type: "String", example: "\"LOYALTY_CREDIT\"" },
+    { name: "type", type: "String", example: "\"QUICK_PAY\"" },
+    { name: "order", type: "Object", example: "refer below example" },
+    { name: "terminalId", type: "String", example: "\"\"" },
+    { name: "currencyType", type: "String", example: "\"MYR\"" },
+    { name: "transactionAt", type: "DateTime", example: "\"2022-01-27T04:02:46Z\"" },
+    { name: "status", type: "String", example: "\"SUCCESS\"" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time of merchant", example: "\"2022-01-27T04:02:46Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time of merchant", example: "\"2022-01-27T04:02:46Z\"" }
+  ]}
+/>
 
 
 <br />
 
 <strong>Store object (store):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter              | Type     | Description                                    | Example                                                      |
-| ---------------------- | -------- | ---------------------------------------------- | ------------------------------------------------------------ |
-| `id`                   | String   | Store ID                                       | "1601912947341252990"                                        |
-| `merchantSettlementId` | String   | Merchant Settlement ID                         | "1596124535165747709"                                        |
-| `name`                 | String   | Store Name                                     | "Mountain Food - Aeon Mall Shah Alam"                        |
-| `imageUrl`             | String   | Yes                                            | "https://storage.googleapis.com/rm-prod-asset/img/store.png" |
-| `addressLine1`         | String   | Store Address 1                                | "B-5-30, 5th Floor, Block Bougainvillea,"                    |
-| `addressLine2`         | String   | Store Address 2                                | "PJU 6A, Lebuhraya SPRINT, 10 Boulevard,"                    |
-| `postCode`             | String   | Postcode of store                              | "47400"                                                      |
-| `city`                 | String   | City of store                                  | "Petaling Jaya"                                              |
-| `state`                | String   | State of store                                 | "Selangor"                                                   |
-| `country`              | String   | Country of store                               | "Malaysia"                                                   |
-| `countryCode`          | String   | Country code of store contact number           | "60"                                                         |
-| `phoneNumber`          | String   | Phone number of store                          | "377334080"                                                  |
-| `geoLocation`          | Object   | Geo Location (latitude and longitude) of store | {"latitude": 3.1349857, "longitude": 101.6136659 }           |
-| `status`               | String   | Current status of store                        | "ACTIVE"                                                     |
-| `createdAt`            | DateTime | Creation date time of store                    | "2020-09-14T03:01:20Z"                                       |
-| `updatedAt`            | DateTime | Last update date time of store                 | "2020-09-14T03:01:20Z"                                       |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Store ID", example: "\"1601912947341252990\"" },
+    { name: "merchantSettlementId", type: "String", description: "Merchant Settlement ID", example: "\"1596124535165747709\"" },
+    { name: "name", type: "String", description: "Store Name", example: "\"Mountain Food - Aeon Mall Shah Alam\"" },
+    { name: "imageUrl", type: "String", description: "Yes", example: "\"https://storage.googleapis.com/rm-prod-asset/img/store.png\"" },
+    { name: "addressLine1", type: "String", description: "Store Address 1", example: "\"B-5-30, 5th Floor, Block Bougainvillea,\"" },
+    { name: "addressLine2", type: "String", description: "Store Address 2", example: "\"PJU 6A, Lebuhraya SPRINT, 10 Boulevard,\"" },
+    { name: "postCode", type: "String", description: "Postcode of store", example: "\"47400\"" },
+    { name: "city", type: "String", description: "City of store", example: "\"Petaling Jaya\"" },
+    { name: "state", type: "String", description: "State of store", example: "\"Selangor\"" },
+    { name: "country", type: "String", description: "Country of store", example: "\"Malaysia\"" },
+    { name: "countryCode", type: "String", description: "Country code of store contact number", example: "\"60\"" },
+    { name: "phoneNumber", type: "String", description: "Phone number of store", example: "\"377334080\"" },
+    { name: "geoLocation", type: "Object", description: "Geo Location (latitude and longitude) of store", example: "{\"latitude\": 3.1349857, \"longitude\": 101.6136659 }" },
+    { name: "status", type: "String", description: "Current status of store", example: "\"ACTIVE\"" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time of store", example: "\"2020-09-14T03:01:20Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time of store", example: "\"2020-09-14T03:01:20Z\"" }
+  ]}
+/>
 
 
 <br />
 
 <strong>Order object (order):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type   | Required | Description                                         | Example              |
-| --------- | ------ | -------- | --------------------------------------------------- | -------------------- |
-| `id`      | String | Yes      | Order ID (from Merchant), max: 24                   | "134850717797247290" |
-| `title`   | String | Yes      |                                                     | ""                   |
-| `detail`  | String | Yes      |                                                     | ""                   |
-| `amount`  | Uint   | Yes      | Amount of order in cent (min RM 0.10 or amount: 10) | 100                  |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", required: true, description: "Order ID (from Merchant), max: 24", example: "\"134850717797247290\"" },
+    { name: "title", type: "String", required: true, example: "\"\"" },
+    { name: "detail", type: "String", required: true, example: "\"\"" },
+    { name: "amount", type: "Uint", required: true, description: "Amount of order in cent (min RM 0.10 or amount: 10)", example: "100" }
+  ]}
+/>
 

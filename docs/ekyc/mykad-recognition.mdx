@@ -71,28 +71,24 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Description                 | Example                      |
-| ---------- | ------ | --------------------------- | ---------------------------- |
-| `service`  | String | EKYC service                | "ekyc"                       |
-| `version`  | String | Currently only support 'v1" | "v1"                         |
-| `function` | String | Selected function           | "id-mykad"                   |
-| `request`  | Object | Refer to explanation below  | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "service", type: "String", description: "EKYC service", example: "\"ekyc\"" },
+    { name: "version", type: "String", description: "Currently only support 'v1\"", example: "\"v1\"" },
+    { name: "function", type: "String", description: "Selected function", example: "\"id-mykad\"" },
+    { name: "request", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter             | Type   | Description                       | Example |
-| --------------------- | ------ | --------------------------------- | ------- |
-| `notify_url`          | String | URL to receive ekyc result        | ""      |
-| `query_image_content` | String | Mykad image (Base64 image string) | ""      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "notify_url", type: "String", description: "URL to receive ekyc result", example: "\"\"" },
+    { name: "query_image_content", type: "String", description: "Mykad image (Base64 image string)", example: "\"\"" }
+  ]}
+/>
 
 ### How to use notify URL
 Clients can retrieve ekyc result by passing in a `notify_url` as a webhook callback. For instance, client provides a `POST` API handler that has an address of `https://client-api/rm-ekyc-callback`, pass this address as the `notify_url` when sending the OpenAPI request. Our webhook will subsequently return the result to this API address.
@@ -103,12 +99,10 @@ Clients can retrieve ekyc result by passing in a `notify_url` as a webhook callb
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter   | Type   | Description | Example                    |
-| ----------- | ------ | ----------- | -------------------------- |
-| `requestID` | String | Request ID  | "62201d48a694817dede84b35" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "requestID", type: "String", description: "Request ID", example: "\"62201d48a694817dede84b35\"" }
+  ]}
+/>
 

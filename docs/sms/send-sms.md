@@ -64,17 +64,15 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter     | Type   | Description | Example       |
-| ------------- | ------ | ----------- | ------------- |
-| `countryCode` | String |             | "60"          |
-| `phoneNumber` | String | User Number | "163877652"   |
-| `message`     | String |             | "test"        |
-| `type`        | String |             | "VERIFY_CODE" |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "countryCode", type: "String", example: "\"60\"" },
+    { name: "phoneNumber", type: "String", description: "User Number", example: "\"163877652\"" },
+    { name: "message", type: "String", example: "\"test\"" },
+    { name: "type", type: "String", example: "\"VERIFY_CODE\"" }
+  ]}
+/>
 
 
 <!-- :::note

@@ -93,62 +93,56 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Description                       | Example                      |
-| ---------- | ------ | --------------------------------- | ---------------------------- |
-| `service`  | String | alacarte service                  | "alacarte"                   |
-| `version`  | String | Currently only support 'v1"       | "v1"                         |
-| `function` | String | Function that provide by alacarte | "updates.store.avaiablility" |
-| `request`  | Object | Refer to explanation below        | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "service", type: "String", description: "alacarte service", example: "\"alacarte\"" },
+    { name: "version", type: "String", description: "Currently only support 'v1\"", example: "\"v1\"" },
+    { name: "function", type: "String", description: "Function that provide by alacarte", example: "\"updates.store.avaiablility\"" },
+    { name: "request", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter     | Type     | Description                         | Example                    |
-| ------------- | -------- | ----------------------------------- | -------------------------- |
-| `storeId`     | String   | ID of the Store that Create from RM | "2808912573238362402"      |
-| `closedUntil` | DateTime | Set when your store will close      | "2020-09-22T05:00:06.741Z" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "storeId", type: "String", description: "ID of the Store that Create from RM", example: "\"2808912573238362402\"" },
+    { name: "closedUntil", type: "DateTime", description: "Set when your store will close", example: "\"2020-09-22T05:00:06.741Z\"" }
+  ]}
+/>
 
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter        | Type     | Description                       | Example                                        |
-| ---------------- | -------- | --------------------------------- | ---------------------------------------------- |
-| `closedUntil`    | DateTime | Set when your store will close    | "2020-09-22T05:00:06.741Z"                     |
-| `supportedTypes` | Array    | We have 4 type for user to choose | ["DELIVERY", "DINEIN", "DRIVE_THRU", "PICKUP"] |
-| `delivery`       | Object   | Refer to explanation below        | (Refer to explanation below)                   |
-| `updatedAt`      | DateTime | Last update date time             | "2020-09-22T04:44:57.950398414Z"               |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "closedUntil", type: "DateTime", description: "Set when your store will close", example: "\"2020-09-22T05:00:06.741Z\"" },
+    { name: "supportedTypes", type: "Array", description: "We have 4 type for user to choose", example: "[\"DELIVERY\", \"DINEIN\", \"DRIVE_THRU\", \"PICKUP\"]" },
+    { name: "delivery", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2020-09-22T04:44:57.950398414Z\"" }
+  ]}
+/>
 
 
 ### Inside Delivery (parameter)
 
-<details>
-<summary><strong>Inside Delivery (parameter)</strong></summary>
+
+
 
 | Parameter | Type   | Description                                                                        | Example                      |
 | --------- | ------ | ---------------------------------------------------------------------------------- | ---------------------------- |
 | `method`  | String | Current delivery service for merchant to select "OWN" , "MRSPEEDY" , "GRABEXPRESS" | "OWN"                        |
 | `cost`    | Array  | Refer to explanation below                                                         | (Refer to explanation below) |
 
-</details>
+
 
 
 ### Inside Cost (parameter)
 
-<details>
-<summary><strong>Inside Cost (parameter)</strong></summary>
+
+
 
 | Parameter              | Type   | Description                     | Example |
 | ---------------------- | ------ | ------------------------------- | ------- |
@@ -157,5 +151,5 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 | `endDistanceInMeter`   | Uint   | Set a End Distance (In Meter)   | 5000    |
 | `amount`               | Uint   | Set Distance amount             | 0       |
 
-</details>
+
 

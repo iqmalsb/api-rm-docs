@@ -134,46 +134,42 @@ No request parameter is required for this endpoint.
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type     | Description                                                                                               | Example                      |
-| --------- | -------- | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `items`   | []Object | Voucher object array                                                                                      | (Refer to explanation below) |
-| `code`    | String   | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "items", type: "[]Object", description: "Voucher object array", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br/>
 
 <strong>Voucher object (items):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter         | Type             | Description                                                                                                                | Example                                                                  |
-| ----------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `id`              | String           | Voucher ID                                                                                                                 | “6544507929221794245"                                                    |
-| `key`             | String           | Vocher Key                                                                                                                 | "EhQKCE1lcmNoYW50EJXVzd3wraq<br/>TORIVCgdWb3VjaGVyGgp<br/>OQWtsRWZiVmRW" |
-| `label`           | String           | label of voucher for merchant remarks                                                                                      | "Free Breakfast”                                                         |
-| `type`            | String           | Define type of vouchers: **DISCOUNT**, **GIFT**, “CASH"                                                                    | “GIFT"                                                                   |
-| `amount`          | Uint             | Required if type = **CASH**, notation in cents, eg. RM 1.00 = 100                                                          | 10000                                                                    |
-| `discountRate`    | Uint             | Required if type = **DISCOUNT**, notation without decimals, eg. 1% = 100                                                   | 0                                                                        |
-|`minimumSpendAmount`| Uint            | Minimum spend amount                                                  | 0                                                                        |
-| `imageUrl`        | String           | Image URL of current voucher, optional                                                                                     | Image Url link (refer to below code)                                     |  |
-| `quantity`        | Uint             | Total quantity of voucher(s) in this batch                                                                                 | 1                                                                        |
-| `balanceQuantity` | Uint             | Total quantity of voucher(s) remaining in this batch                                                                       | 0                                                                        |
-| `usedQuantity`    | Uint             | Total quantity of voucher(s) used/assigned/redeemed in this batch                                                          | 1                                                                        |
-| `status`          | String           | Voucher's status                                                          | "COMPLETED"                                                                        |
-| `expiry`          | Object of Expiry | Expiry date time of current voucher                                                                                        | (Refer below)                                                            |
-| `origin`          | String           | **SYSTEM** (voucher code generated from RM server), **SELF** (voucher code uploaded from merchant csv file)                | “SYSTEM”                                                                 |
-| `isShipping`      | Boolean          | **True** if items/goods to be delivered physically to customers                                                            | false                                                                    |
-| `reason`          | String           | Will show if voucher batch is fail during creation. Optional.                                                              | ”"                                                                       |
-| `staticCode`      | String           | Voucher's code | "ABC123"                                                                       |
-| `isDeviceRedeem`  | Boolean          | **TRUE** means only can be redeemed through merchant app. **FALSE** means customer can do redemption from own loyalty app. | false                                                                    |
-| `createdAt`       | DateTime         | Date time of voucher being created (UTC)                                                                                   | "2018-06-21T11:08:00Z"                                                   |
-| `updatedAt`       | DateTime         | Date time of voucher being updated (UTC)                                                                                   | "2018-09-28T17:19:44.686549977Z"                                         |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Voucher ID", example: "“6544507929221794245\"" },
+    { name: "key", type: "String", description: "Vocher Key", example: "\"EhQKCE1lcmNoYW50EJXVzd3wraqTORIVCgdWb3VjaGVyGgpOQWtsRWZiVmRW\"" },
+    { name: "label", type: "String", description: "label of voucher for merchant remarks", example: "\"Free Breakfast”" },
+    { name: "type", type: "String", description: "Define type of vouchers: DISCOUNT, GIFT, “CASH\"", example: "“GIFT\"" },
+    { name: "amount", type: "Uint", description: "Required if type = CASH, notation in cents, eg. RM 1.00 = 100", example: "10000" },
+    { name: "discountRate", type: "Uint", description: "Required if type = DISCOUNT, notation without decimals, eg. 1% = 100", example: "0" },
+    { name: "minimumSpendAmount", type: "Uint", description: "Minimum spend amount", example: "0" },
+    { name: "imageUrl", type: "String", description: "Image URL of current voucher, optional", example: "Image Url link (refer to below code)" },
+    { name: "quantity", type: "Uint", description: "Total quantity of voucher(s) in this batch", example: "1" },
+    { name: "balanceQuantity", type: "Uint", description: "Total quantity of voucher(s) remaining in this batch", example: "0" },
+    { name: "usedQuantity", type: "Uint", description: "Total quantity of voucher(s) used/assigned/redeemed in this batch", example: "1" },
+    { name: "status", type: "String", description: "Voucher's status", example: "\"COMPLETED\"" },
+    { name: "expiry", type: "Object of Expiry", description: "Expiry date time of current voucher", example: "(Refer below)" },
+    { name: "origin", type: "String", description: "SYSTEM (voucher code generated from RM server), SELF (voucher code uploaded from merchant csv file)", example: "“SYSTEM”" },
+    { name: "isShipping", type: "Boolean", description: "True if items/goods to be delivered physically to customers", example: "false" },
+    { name: "reason", type: "String", description: "Will show if voucher batch is fail during creation. Optional.", example: "”\"" },
+    { name: "staticCode", type: "String", description: "Voucher's code", example: "\"ABC123\"" },
+    { name: "isDeviceRedeem", type: "Boolean", description: "TRUE means only can be redeemed through merchant app. FALSE means customer can do redemption from own loyalty app.", example: "false" },
+    { name: "createdAt", type: "DateTime", description: "Date time of voucher being created (UTC)", example: "\"2018-06-21T11:08:00Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Date time of voucher being updated (UTC)", example: "\"2018-09-28T17:19:44.686549977Z\"" }
+  ]}
+/>
 

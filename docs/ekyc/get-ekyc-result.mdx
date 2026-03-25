@@ -146,27 +146,23 @@ Prerequisite : Acquire requestID from mykad recognition response
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Description                 | Example                      |
-| ---------- | ------ | --------------------------- | ---------------------------- |
-| `service`  | String | EKYC service                | "ekyc"                       |
-| `version`  | String | Currently only support 'v1" | "v1"                         |
-| `function` | String | Selected function           | "get-ekyc-result"            |
-| `request`  | Object | Refer to explanation below  | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "service", type: "String", description: "EKYC service", example: "\"ekyc\"" },
+    { name: "version", type: "String", description: "Currently only support 'v1\"", example: "\"v1\"" },
+    { name: "function", type: "String", description: "Selected function", example: "\"get-ekyc-result\"" },
+    { name: "request", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type   | Description                                | Example                    |
-| --------- | ------ | ------------------------------------------ | -------------------------- |
-| `id`      | String | Request ID from mykad recognition response | "62201d48a694817dede84b35" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Request ID from mykad recognition response", example: "\"62201d48a694817dede84b35\"" }
+  ]}
+/>
 
 
 ### Response Parameters
@@ -191,44 +187,42 @@ Prerequisite : Acquire requestID from mykad recognition response
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter              | Type     | Description                           | Example                      |
-| ---------------------- | -------- | ------------------------------------- | ---------------------------- |
-| `id`                   | String   | EKYC ID                               | "62201d48a694817dede84b35"   |
-| `verdict`              | String   | Action Required                       | NONE_REQUIRED                |
-| `status`               | String   | EKYC result status                    | SUCCESS                      |
-| `faceAction`           | String   | Action Required for Face Compare      | NONE_REQUIRED                |
-| `faceCompareRequestId` | String   | Face Compare Request ID               | 62201d51239b18052126e288     |
-| `faceResult`           | Object   | Refer to the <b>Face Result</b>       | (Refer to explanation below) |
-| `mykadAction`          | String   | Action Required for Mykad Recognition | NONE_REQUIRED                |
-| `mykadRequestId`       | String   | Detected Landmark                     | 62201d48a694817dede84b35     |
-| `reasons`              | Array    | Meesage from EKYC engine              | []                           |
-| `results`              | Array    | Refer to the <b>EKYC Result</b>       | (Refer to explanation below) |
-| `updatedAt`            | DateTime | Last update date time                 | "2022-03-03T01:43:46.155Z"   |
-| `createdAt`            | DateTime | Create date time                      | "2022-03-03T01:43:36.963Z"   |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "EKYC ID", example: "\"62201d48a694817dede84b35\"" },
+    { name: "verdict", type: "String", description: "Action Required", example: "NONE_REQUIRED" },
+    { name: "status", type: "String", description: "EKYC result status", example: "SUCCESS" },
+    { name: "faceAction", type: "String", description: "Action Required for Face Compare", example: "NONE_REQUIRED" },
+    { name: "faceCompareRequestId", type: "String", description: "Face Compare Request ID", example: "62201d51239b18052126e288" },
+    { name: "faceResult", type: "Object", description: "Refer to the Face Result", example: "(Refer to explanation below)" },
+    { name: "mykadAction", type: "String", description: "Action Required for Mykad Recognition", example: "NONE_REQUIRED" },
+    { name: "mykadRequestId", type: "String", description: "Detected Landmark", example: "62201d48a694817dede84b35" },
+    { name: "reasons", type: "Array", description: "Meesage from EKYC engine", example: "[]" },
+    { name: "results", type: "Array", description: "Refer to the EKYC Result", example: "(Refer to explanation below)" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2022-03-03T01:43:46.155Z\"" },
+    { name: "createdAt", type: "DateTime", description: "Create date time", example: "\"2022-03-03T01:43:36.963Z\"" }
+  ]}
+/>
 
 
 ### Inside Face Result (parameter)
 
-<details>
-<summary><strong>Inside Face Result (parameter)</strong></summary>
+
+
 
 | Parameter      | Type    | Description                        | Example |
 | -------------- | ------- | ---------------------------------- | ------- |
 | `isSamePerson` | Boolean | Check result which is same person  | false   |
 | `similarity`   | Float   | Similarity of face image and mykad | 0       |
 
-</details>
+
 
 
 ### Inside Results (parameter)
 
-<details>
-<summary><strong>Inside Results (parameter)</strong></summary>
+
+
 
 | Parameter       | Type   | Description                               | Example                      |
 | --------------- | ------ | ----------------------------------------- | ---------------------------- |
@@ -238,13 +232,13 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `object`        | Object | Refer to the <b>Results Object</b>        | (Refer to explanation below) |
 | `scores`        | Object | Refer to the <b>Results Scores</b>        | (Refer to explanation below) |
 
-</details>
+
 
 
 ### Inside Results Data (parameter)
 
-<details>
-<summary><strong>Inside Results Data (parameter)</strong></summary>
+
+
 
 | Parameter  | Type    | Description                 | Example                      |
 | ---------- | ------- | --------------------------- | ---------------------------- |
@@ -254,13 +248,13 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `isMuslim` | Boolean | Is muslim                   | false                        |
 | `name`     | String  | Name in the mykad           | "ROWAN SEBASTIAN ATKINSON"   |
 
-</details>
+
 
 
 ### Inside Address (parameter)
 
-<details>
-<summary><strong>Inside Address (parameter)</strong></summary>
+
+
 
 | Parameter      | Type   | Description            | Example                |
 | -------------- | ------ | ---------------------- | ---------------------- |
@@ -271,40 +265,40 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `postcode`     | String | Postcode               | "80000"                |
 | `state`        | String | State name             | "SABAH"                |
 
-</details>
+
 
 
 
 ### Inside Results Faces (parameter)
 
-<details>
-<summary><strong>Inside Results Faces (parameter)</strong></summary>
+
+
 
 | Parameter    | Type  | Description                 | Example |
 | ------------ | ----- | --------------------------- | ------- |
 | `boxes`      | Array | Refer to the <b>boxes</b>   | []      |
 | `confidence` | Float | Confidence of detected face | 1       |
 
-</details>
+
 
 
 ### Inside Results Object (parameter)
 
-<details>
-<summary><strong>Inside Results Object (parameter)</strong></summary>
+
+
 
 | Parameter    | Type   | Description                  | Example      |
 | ------------ | ------ | ---------------------------- | ------------ |
 | `confidence` | Float  | Confidence of detected mykad | 0.9609       |
 | `prediction` | String | Type of mykad                | "ic_1_front" |
 
-</details>
+
 
 
 ### Inside Results Scores (parameter)
 
-<details>
-<summary><strong>Inside Results Scores (parameter)</strong></summary>
+
+
 
 | Parameter   | Type  | Description          | Example |
 | ----------- | ----- | -------------------- | ------- |
@@ -313,5 +307,5 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `searcher`  | Float | Mykad searcher score | 0.9     |
 | `total`     | Float | Total score          | 0.8295  |
 
-</details>
+
 

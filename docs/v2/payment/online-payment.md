@@ -103,46 +103,42 @@ Online payment is an online payment method and it's subscription will based on o
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter              | Type     | Validation                            | Required    | Description                                            |
-|------------------------|----------|---------------------------------------|-------------|--------------------------------------------------------|
-| `storeId`              | String   |                                       | Yes         | Store ID                                               |
-| `redirectUrl`          | String   | URL                                   | Yes         | Example of [Redirect URL Response](#redirect-response) |
-| `notifyUrl`            | String   | URL                                   | Yes         | Example of [Notify URL Response](#notify-response)     |
-| `layoutVersion`        | String   | ENUM("v3", "v4")                      | Yes         | Always use v4                                          |
-| `type`                 | String   | ENUM("WEB_PAYMENT", "MOBILE_PAYMENT") | Yes         | Checkout session type                                  |
-| `method`               | []String |                                       | No          | Payment methods                                        |
-| `order.id`             | String   | Length(24)                            | Yes         | Order ID                                               |
-| `order.title`          | String   | Length(32)                            | Yes         | Order Title                                            |
-| `order.currencyType`   | String   | ENUM("MYR")                           | Yes         | Order Currency Type ( currently supported MYR only)    |
-| `order.amount`         | Uint64   |                                       | Yes         | Order Amount                                           |
-| `order.detail`         | String   | Length(600)                           | No          | Order Detail                                           |
-| `order.additionalData` | String   | Length(128)                           | No          | Order Additional Data                                  |
-| `customer.userId`      | String   |                                       | Conditional | **Required** when the tokenization is enabled          |
-| `customer.email`       | String   |                                       | No          |                                                        |
-| `customer.countryCode` | String   |                                       | No          |                                                        |
-| `customer.phoneNumber` | String   |                                       | No          |                                                        |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "storeId", type: "String", required: true, description: "Store ID" },
+    { name: "redirectUrl", type: "String", required: true, description: "Example of Redirect URL Response" },
+    { name: "notifyUrl", type: "String", required: true, description: "Example of Notify URL Response" },
+    { name: "layoutVersion", type: "String", required: true, description: "Always use v4" },
+    { name: "type", type: "String", required: true, description: "Checkout session type" },
+    { name: "method", type: "[]String", description: "Payment methods" },
+    { name: "order.id", type: "String", required: true, description: "Order ID" },
+    { name: "order.title", type: "String", required: true, description: "Order Title" },
+    { name: "order.currencyType", type: "String", required: true, description: "Order Currency Type ( currently supported MYR only)" },
+    { name: "order.amount", type: "Uint64", required: true, description: "Order Amount" },
+    { name: "order.detail", type: "String", description: "Order Detail" },
+    { name: "order.additionalData", type: "String", description: "Order Additional Data" },
+    { name: "customer.userId", type: "String", description: "Required when the tokenization is enabled" },
+    { name: "customer.email", type: "String" },
+    { name: "customer.countryCode", type: "String" },
+    { name: "customer.phoneNumber", type: "String" }
+  ]}
+/>
 
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter         | Type   | Validation      | Description                    |
-|-------------------|--------|-----------------|--------------------------------|
-| `item.checkoutId` | String |                 | Checkout session id            |
-| `item.url`        | String |                 | Checkout session url           |
-| `code`            | String | ENUM("SUCCESS") | Determine request have success |
-| `error.code`      | String |                 | Error code                     |
-| `error.message`   | String |                 | Error message                  |
-| `error.debug`     | String |                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.checkoutId", type: "String", description: "Checkout session id" },
+    { name: "item.url", type: "String", description: "Checkout session url" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ### Advance: Individual Payment Checkout
@@ -161,16 +157,14 @@ url, server url ) as long as the browser itself can go and process.
 
 **Method :** <span style={{ color: "orange", fontWeight: "bold" }}>GET</span><br/>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type   | Validation                                        | Required | Description         |
-|-----------|--------|---------------------------------------------------|----------|---------------------|
-| `status`  | String | Enum("SUCCESS", "FAILED", "CANCELLED", "EXPIRED") | Yes      | Payment Status      |
-| `orderId` | String |                                                   | Yes      | Payment Order ID    |
-| `reason`  | String |                                                   | No       | Payment fail reason |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "status", type: "String", required: true, description: "Payment Status" },
+    { name: "orderId", type: "String", required: true, description: "Payment Order ID" },
+    { name: "reason", type: "String", description: "Payment fail reason" }
+  ]}
+/>
 
 
 ### Notify Response
@@ -187,37 +181,35 @@ Reference: [Query Transaction](./query-transaction.md)
 
 **Method :** <span style={{ color: "orange", fontWeight: "bold" }}>POST</span><br/>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                   | Type                       | Validation                                                            | Required | Description                                                |
-|-----------------------------|----------------------------|-----------------------------------------------------------------------|----------|------------------------------------------------------------|
-| `eventType`                 | ENUM("PAYMENT_WEB_ONLINE") |                                                                       | Yes      | Notify event type                                          |
-| `data.store`                | JSON                       | [Transaction Object: Store](./query-transaction.md#store)             | No       | Store details                                              |
-| `data.referenceId`          | String                     |                                                                       | No       | Reference ID                                               |
-| `data.transactionId`        | String                     |                                                                       | Yes      | Transaction ID                                             |
-| `data.terminalId`           | String                     |                                                                       | No       | Terminal ID                                                |
-| `data.currencyType`         | String                     | ENUM("MYR")                                                           | Yes      | Currency Type ( currently supported MYR only)              |
-| `data.balanceAmount`        | Uint64                     |                                                                       | Yes      | Remaining balance amount for initiate refund               |
-| `data.finalAmount`          | Uint64                     |                                                                       | Yes      | Amount after all deductions ( voucher, membership)         |
-| `data.platform`             | String                     | ENUM("TERMINAL", "MOBILE_APP", "OPEN_API", "WEB_LOYALTY")             | Yes      | Transaction platform                                       |
-| `data.type`                 | String                     | [Appendix: Type](./query-transaction.md#transaction-type)             | Yes      | Transaction type                                           |
-| `data.method`               | String                     | [Appendix: Method](./query-transaction.md#transaction-method--region) | Yes      | Transaction payment method                                 |
-| `data.region`               | String                     | [Appendix: Region](./query-transaction.md#transaction-method--region) | Yes      | Transaction pament region                                  |
-| `data.status`               | String                     | [Appendix: Status](./query-transaction.md#transaction-status)         | Yes      | Transaction payment status                                 |
-| `data.transactionAt`        | String                     | RFC3339                                                               | No       | Transaction payment date time ( exists only when SUCCESS ) |
-| `data.createdAt`            | String                     | RFC3339                                                               | Yes      | Transaction created date time                              |
-| `data.updatedAt`            | String                     | RFC3339                                                               | Yes      | Transaction last updated date time                         |
-| `data.payee.userId`         | String                     |                                                                       | No       | Payment provider user id                                   |
-| `data.payee.subUserId`      | String                     |                                                                       | No       | Payment provider sub user id                               |
-| `data.order.id`             | String                     |                                                                       | Yes      | Order ID                                                   |
-| `data.order.title`          | String                     | Length(32)                                                            | Yes      | Order Title                                                |
-| `data.order.currencyType`   | String                     | ENUM("MYR")                                                           | Yes      | Order Currency Type ( currently supported MYR only)        |
-| `data.order.amount`         | Uint64                     |                                                                       | Yes      | Order Amount                                               |
-| `data.order.detail`         | String                     | Length(600)                                                           | No       | Order Detail                                               |
-| `data.order.additionalData` | String                     | Length(128)                                                           | No       | Order Additional Data                                      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "eventType", type: "ENUM(\"PAYMENT_WEB_ONLINE\")", required: true, description: "Notify event type" },
+    { name: "data.store", type: "JSON", description: "Store details" },
+    { name: "data.referenceId", type: "String", description: "Reference ID" },
+    { name: "data.transactionId", type: "String", required: true, description: "Transaction ID" },
+    { name: "data.terminalId", type: "String", description: "Terminal ID" },
+    { name: "data.currencyType", type: "String", required: true, description: "Currency Type ( currently supported MYR only)" },
+    { name: "data.balanceAmount", type: "Uint64", required: true, description: "Remaining balance amount for initiate refund" },
+    { name: "data.finalAmount", type: "Uint64", required: true, description: "Amount after all deductions ( voucher, membership)" },
+    { name: "data.platform", type: "String", required: true, description: "Transaction platform" },
+    { name: "data.type", type: "String", required: true, description: "Transaction type" },
+    { name: "data.method", type: "String", required: true, description: "Transaction payment method" },
+    { name: "data.region", type: "String", required: true, description: "Transaction pament region" },
+    { name: "data.status", type: "String", required: true, description: "Transaction payment status" },
+    { name: "data.transactionAt", type: "String", description: "Transaction payment date time ( exists only when SUCCESS )" },
+    { name: "data.createdAt", type: "String", required: true, description: "Transaction created date time" },
+    { name: "data.updatedAt", type: "String", required: true, description: "Transaction last updated date time" },
+    { name: "data.payee.userId", type: "String", description: "Payment provider user id" },
+    { name: "data.payee.subUserId", type: "String", description: "Payment provider sub user id" },
+    { name: "data.order.id", type: "String", required: true, description: "Order ID" },
+    { name: "data.order.title", type: "String", required: true, description: "Order Title" },
+    { name: "data.order.currencyType", type: "String", required: true, description: "Order Currency Type ( currently supported MYR only)" },
+    { name: "data.order.amount", type: "Uint64", required: true, description: "Order Amount" },
+    { name: "data.order.detail", type: "String", description: "Order Detail" },
+    { name: "data.order.additionalData", type: "String", description: "Order Additional Data" }
+  ]}
+/>
 
 
 ## Query Payment Checkout
@@ -232,46 +224,42 @@ with the response of this API `transactionId`.
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type       | Validation | Description          |
-|--------------|------------|------------|----------------------|
-| `checkoutId` | QueryParam | Yes        | Payment checkout  id |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "checkoutId", type: "QueryParam", description: "Payment checkout  id" }
+  ]}
+/>
 
 
 **Response Paramters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                   | Type   | Validation                                                            | Description                                                                                         |
-|-----------------------------|--------|-----------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `code`                      | String | ENUM("SUCCESS")                                                       | Determine request have success                                                                      |
-| `error.code`                | String |                                                                       | Error code                                                                                          |
-| `error.message`             | String |                                                                       | Error message                                                                                       |
-| `error.debug`               | String |                                                                       | Debug message ( sandbox only )                                                                      |
-| `item.id`                   | String |                                                                       | Payment checkout id                                                                                 |
-| `item.type`                 | String | ENUM("WEB_PAYMENT", "WEB_MOBILE_PAYMENT", "MOBILE_PAYMENT")           | Payment checkout type                                                                               |
-| `item.transactionId`        | String |                                                                       | Payment transaction id, you can query transaction using [Query Transaction](./query-transaction.md) |
-| `item.order.id`             | String | Length(24)                                                            | Order ID                                                                                            |
-| `item.order.title`          | String | Length(32)                                                            | Order Title                                                                                         |
-| `item.order.currencyType`   | String | ENUM("MYR")                                                           | Order Currency Type ( currently supported MYR only)                                                 |
-| `item.order.amount`         | Uint64 |                                                                       | Order Amount                                                                                        |
-| `item.order.detail`         | String | Length(600)                                                           | Order Detail                                                                                        |
-| `item.order.additionalData` | String | Length(128)                                                           | Order Additional Data                                                                               |
-| `item.platform`             | String | ENUM("OPEN_API")                                                      | Payment checkout platform                                                                           |
-| `item.method`               | String | [Appendix: Method](./query-transaction.md#transaction-method--region) | Payment checkout available methods                                                                  |
-| `item.redirectUrl`          | String | URL                                                                   | Payment redirect url including cancel and fail                                                      |
-| `item.notifyUrl`            | String | URL                                                                   | Payment notify url                                                                                  |
-| `item.startAt`              | String | RFC3339                                                               | Payment checkout start date time                                                                    |
-| `item.status`               | String | ENUM("SUCCESS", "FAILED", "CANCELLED", "EXPIRED")                     | Payment checkout status                                                                             |
-| `item.createdAt`            | String | RFC3339                                                               | Payment checkout created date time                                                                  |
-| `item.updatedAt`            | String | RFC3339                                                               | Payment checkout last updated date time                                                             |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" },
+    { name: "item.id", type: "String", description: "Payment checkout id" },
+    { name: "item.type", type: "String", description: "Payment checkout type" },
+    { name: "item.transactionId", type: "String", description: "Payment transaction id, you can query transaction using Query Transaction" },
+    { name: "item.order.id", type: "String", description: "Order ID" },
+    { name: "item.order.title", type: "String", description: "Order Title" },
+    { name: "item.order.currencyType", type: "String", description: "Order Currency Type ( currently supported MYR only)" },
+    { name: "item.order.amount", type: "Uint64", description: "Order Amount" },
+    { name: "item.order.detail", type: "String", description: "Order Detail" },
+    { name: "item.order.additionalData", type: "String", description: "Order Additional Data" },
+    { name: "item.platform", type: "String", description: "Payment checkout platform" },
+    { name: "item.method", type: "String", description: "Payment checkout available methods" },
+    { name: "item.redirectUrl", type: "String", description: "Payment redirect url including cancel and fail" },
+    { name: "item.notifyUrl", type: "String", description: "Payment notify url" },
+    { name: "item.startAt", type: "String", description: "Payment checkout start date time" },
+    { name: "item.status", type: "String", description: "Payment checkout status" },
+    { name: "item.createdAt", type: "String", description: "Payment checkout created date time" },
+    { name: "item.updatedAt", type: "String", description: "Payment checkout last updated date time" }
+  ]}
+/>
 
 
 ## Direct Payment Checkout
@@ -295,16 +283,14 @@ seconds or even longer based on your use cases.
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Validation                                                            | Required | Description       |
-|--------------|--------|-----------------------------------------------------------------------|----------|-------------------|
-| `checkoutId` | String |                                                                       | Yes      | Checkout ID       |
-| `type`       | String | ENUM("URL")                                                           | Yes      | Checkout type url |
-| `method`     | String | [Appendix: Method](./query-transaction.md#transaction-method--region) | Yes      | Checkout method   |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "checkoutId", type: "String", required: true, description: "Checkout ID" },
+    { name: "type", type: "String", required: true, description: "Checkout type url" },
+    { name: "method", type: "String", required: true, description: "Checkout method" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -317,56 +303,48 @@ seconds or even longer based on your use cases.
 
 **Response Paramters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation      | Description                    |
-|-----------------|--------|-----------------|--------------------------------|
-| `item.type`     | String | ENUM("URL")     | Checkout session type          |
-| `item.url`      | String |                 | Checkout session url           |
-| `code`          | String | ENUM("SUCCESS") | Determine request have success |
-| `error.code`    | String |                 | Error code                     |
-| `error.message` | String |                 | Error message                  |
-| `error.debug`   | String |                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.type", type: "String", description: "Checkout session type" },
+    { name: "item.url", type: "String", description: "Checkout session url" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ### Mode: QRCode
 
-<details open>
-  <summary>
-    <b> Decode your Image using Base64</b>
-  </summary>
+
+  
   Using <b>qrCodeImageBase64</b> URL to generate a QR Code
   <Card width="100%">
     <Image src="/img/payment-image/individual-qr-code.png" />
   </Card>
-</details>
 
-<details open>
-  <summary>
-    <b>What user will receive</b>
-  </summary>
+
+
+  
   Once user scan the QR Code it will display 
   <Card width="100%">
     <Image src="/img/payment-image/check-out-payment.png" />
   </Card>
-</details>
+
 <br/>
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Validation                                                            | Required | Description          |
-|--------------|--------|-----------------------------------------------------------------------|----------|----------------------|
-| `checkoutId` | String |                                                                       | Yes      | Checkout ID          |
-| `type`       | String | ENUM("QRCODE")                                                        | Yes      | Checkout type qrcode |
-| `method`     | String | [Appendix: Method](./query-transaction.md#transaction-method--region) | Yes      | Checkout method      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "checkoutId", type: "String", required: true, description: "Checkout ID" },
+    { name: "type", type: "String", required: true, description: "Checkout type qrcode" },
+    { name: "method", type: "String", required: true, description: "Checkout method" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -379,36 +357,32 @@ seconds or even longer based on your use cases.
 
 **Response Paramters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                 | Type   | Validation      | Description                    |
-|---------------------------|--------|-----------------|--------------------------------|
-| `item.type`               | String | ENUM("QRCODE")  | Checkout session type          |
-| `item.qrcode.base64Image` | String |                 |                                |
-| `item.qrcode.data`        | String |                 |                                |
-| `code`                    | String | ENUM("SUCCESS") | Determine request have success |
-| `error.code`              | String |                 | Error code                     |
-| `error.message`           | String |                 | Error message                  |
-| `error.debug`             | String |                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.type", type: "String", description: "Checkout session type" },
+    { name: "item.qrcode.base64Image", type: "String" },
+    { name: "item.qrcode.data", type: "String" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ### Mode: DuitNow QR
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Validation             | Required | Description          |
-|--------------|--------|------------------------|----------|----------------------|
-| `checkoutId` | String |                        | Yes      | Checkout ID          |
-| `type`       | String | ENUM("DUITNOW_QRCODE") | Yes      | Checkout type qrcode |
-| `method`     | String | ENUM("")               | Yes      | Checkout method      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "checkoutId", type: "String", required: true, description: "Checkout ID" },
+    { name: "type", type: "String", required: true, description: "Checkout type qrcode" },
+    { name: "method", type: "String", required: true, description: "Checkout method" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -421,36 +395,32 @@ seconds or even longer based on your use cases.
 
 **Response Paramters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                 | Type   | Validation      | Description                    |
-|---------------------------|--------|-----------------|--------------------------------|
-| `item.type`               | String | ENUM("QRCODE")  | Checkout session type          |
-| `item.qrcode.base64Image` | String |                 |                                |
-| `item.qrcode.data`        | String |                 |                                |
-| `code`                    | String | ENUM("SUCCESS") | Determine request have success |
-| `error.code`              | String |                 | Error code                     |
-| `error.message`           | String |                 | Error message                  |
-| `error.debug`             | String |                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.type", type: "String", description: "Checkout session type" },
+    { name: "item.qrcode.base64Image", type: "String" },
+    { name: "item.qrcode.data", type: "String" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ### Mode: Alipay Mini Program
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Validation                                                            | Required | Description          |
-|--------------|--------|-----------------------------------------------------------------------|----------|----------------------|
-| `checkoutId` | String |                                                                       | Yes      | Checkout ID          |
-| `type`       | String | ENUM("MINI_PROGRAM")                                                  | Yes      | Checkout type qrcode |
-| `method`     | String | [Appendix: Method](./query-transaction.md#transaction-method--region) | Yes      | Checkout method      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "checkoutId", type: "String", required: true, description: "Checkout ID" },
+    { name: "type", type: "String", required: true, description: "Checkout type qrcode" },
+    { name: "method", type: "String", required: true, description: "Checkout method" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -463,19 +433,17 @@ seconds or even longer based on your use cases.
 
 **Response Paramters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation           | Description                                  |
-|-----------------|--------|----------------------|----------------------------------------------|
-| `item.type`     | String | ENUM("MINI_PROGRAM") | Checkout session type                        |
-| `item.data`     | String |                      | Base64 encoded data for pass to mini program |
-| `code`          | String | ENUM("SUCCESS")      | Determine request have success               |
-| `error.code`    | String |                      | Error code                                   |
-| `error.message` | String |                      | Error message                                |
-| `error.debug`   | String |                      | Debug message ( sandbox only )               |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.type", type: "String", description: "Checkout session type" },
+    { name: "item.data", type: "String", description: "Base64 encoded data for pass to mini program" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 **Alipay Mini Program Frontend**
@@ -511,17 +479,15 @@ Program App ID / 小程序 App ID" to your account once binded then we will info
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Validation                                                            | Required | Description          |
-|--------------|--------|-----------------------------------------------------------------------|----------|----------------------|
-| `checkoutId` | String |                                                                       | Yes      | Checkout ID          |
-| `type`       | String | ENUM("MINI_PROGRAM")                                                  | Yes      | Checkout type qrcode |
-| `method`     | String | [Appendix: Method](./query-transaction.md#transaction-method--region) | Yes      | Checkout method      |
-| `userId`     | String |                                                                       | Yes      | Wechat User Open ID  |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "checkoutId", type: "String", required: true, description: "Checkout ID" },
+    { name: "type", type: "String", required: true, description: "Checkout type qrcode" },
+    { name: "method", type: "String", required: true, description: "Checkout method" },
+    { name: "userId", type: "String", required: true, description: "Wechat User Open ID" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -535,19 +501,17 @@ Program App ID / 小程序 App ID" to your account once binded then we will info
 
 **Response Paramters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation           | Description                                  |
-|-----------------|--------|----------------------|----------------------------------------------|
-| `item.type`     | String | ENUM("MINI_PROGRAM") | Checkout session type                        |
-| `item.data`     | String |                      | Base64 encoded data for pass to mini program |
-| `code`          | String | ENUM("SUCCESS")      | Determine request have success               |
-| `error.code`    | String |                      | Error code                                   |
-| `error.message` | String |                      | Error message                                |
-| `error.debug`   | String |                      | Debug message ( sandbox only )               |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.type", type: "String", description: "Checkout session type" },
+    { name: "item.data", type: "String", description: "Base64 encoded data for pass to mini program" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 **WechatPay Mini Program Frontend**
@@ -575,10 +539,8 @@ wx.requestPayment({
 
 ### Mode: FPX
 
-<details>
-  <summary>
-    <b>FPX Bank Codes via API</b>
-  </summary>
+
+  
   <b>Method</b> : <span style={{ color: "orange", fontWeight: "bold" }}>GET</span><br />
   <b>URL</b> : https://open.revenuemonster.my/v3/payment/fpx-bank<br />
   <b>Sandbox URL</b> : https://sb-open.revenuemonster.my/v3/payment/fpx-bank<br /><br />
@@ -686,12 +648,10 @@ wx.requestPayment({
 }
   ```
 
-</details>
 
-<details>
-  <summary>
-    <b>FPX Bank Codes</b>
-  </summary>
+
+
+  
 
 
 | Code             | Name                        |
@@ -716,21 +676,19 @@ wx.requestPayment({
 | SCB0216:B2C      | Standard Chartered Bank     |
 | UOB0226:B2C      | United Oversea Bank         |
 
-</details>
+
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter      | Type   | Validation     | Required | Description          |
-|----------------|--------|----------------|----------|----------------------|
-| `checkoutId`   | String |                | Yes      | Checkout ID          |
-| `type`         | String | ENUM("URL")    | Yes      | Checkout type qrcode |
-| `method`       | String | ENUM("FPX_MY") | Yes      | Checkout method      |
-| `fpx.bankCode` | String |                | Yes      | FPX Bank code        |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "checkoutId", type: "String", required: true, description: "Checkout ID" },
+    { name: "type", type: "String", required: true, description: "Checkout type qrcode" },
+    { name: "method", type: "String", required: true, description: "Checkout method" },
+    { name: "fpx.bankCode", type: "String", required: true, description: "FPX Bank code" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -746,36 +704,32 @@ wx.requestPayment({
 
 **Response Paramters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation      | Description                    |
-|-----------------|--------|-----------------|--------------------------------|
-| `item.type`     | String | ENUM("QRCODE")  | Checkout session type          |
-| `item.url`      | String |                 | FPX Payment URL                |
-| `code`          | String | ENUM("SUCCESS") | Determine request have success |
-| `error.code`    | String |                 | Error code                     |
-| `error.message` | String |                 | Error message                  |
-| `error.debug`   | String |                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.type", type: "String", description: "Checkout session type" },
+    { name: "item.url", type: "String", description: "FPX Payment URL" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ### Mode: GoBiz / Paydee / Mastercard
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Validation                    | Required | Description          |
-|--------------|--------|-------------------------------|----------|----------------------|
-| `checkoutId` | String |                               | Yes      | Checkout ID          |
-| `type`       | String | ENUM("URL")                   | Yes      | Checkout type qrcode |
-| `method`     | String | ENUM("GOBIZ_MY", "PAYDEE_MY", "MASTERCARD_MY") | Yes      | Checkout method      |
-| `gobiz.type` | String | ENUM("UNIVERSAL_PAYMENT")     | No      | GoBiz Payment Type   |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "checkoutId", type: "String", required: true, description: "Checkout ID" },
+    { name: "type", type: "String", required: true, description: "Checkout type qrcode" },
+    { name: "method", type: "String", required: true, description: "Checkout method" },
+    { name: "gobiz.type", type: "String", description: "GoBiz Payment Type" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -788,17 +742,15 @@ wx.requestPayment({
 
 **Response Paramters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation      | Description                    |
-|-----------------|--------|-----------------|--------------------------------|
-| `item.type`     | String | ENUM("URL")     | Checkout session type          |
-| `item.url`      | String |                 | GoBiz Payment URL              |
-| `code`          | String | ENUM("SUCCESS") | Determine request have success |
-| `error.code`    | String |                 | Error code                     |
-| `error.message` | String |                 | Error message                  |
-| `error.debug`   | String |                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.type", type: "String", description: "Checkout session type" },
+    { name: "item.url", type: "String", description: "GoBiz Payment URL" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 

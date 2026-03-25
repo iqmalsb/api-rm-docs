@@ -62,27 +62,23 @@ Specify loyalty member id to get topup url for member.
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example                      |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object | Payment object                                                                                            | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", description: "Payment object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br />
 
 <strong>Payment object (item):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Description       | Example                                                            |
-| ------------ | ------ | ----------------- | ------------------------------------------------------------------ |
-| `paymentUrl` | String | Topup payment url | "http://localhost:5001/v3/checkout?checkoutId=1612416816182682217" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "paymentUrl", type: "String", description: "Topup payment url", example: "\"http://localhost:5001/v3/checkout?checkoutId=1612416816182682217\"" }
+  ]}
+/>
 

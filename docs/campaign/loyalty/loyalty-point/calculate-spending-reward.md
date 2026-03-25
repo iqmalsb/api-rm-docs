@@ -62,42 +62,36 @@ Use amount sales to Calculate Spending Reward points
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter      | Type   | Description          | Example |
-| -------------- | ------ | -------------------- | ------- |
-| `currencyType` | String | Currently `MYR` only | MYR     |
-| `amount`       | int    | Amount Sales         | 300     |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "currencyType", type: "String", description: "Currently MYR only", example: "MYR" },
+    { name: "amount", type: "int", description: "Amount Sales", example: "300" }
+  ]}
+/>
 
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                                                                                      | Example                      |
-| --------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object | Point object                                                                                                                                                     | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer [Appendix 1: Error Codes](https://doc.revenuemonster.my/#appendix-1-error-codes)) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", description: "Point object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br/>
 
 <strong>Point Object (item)</strong> <br/>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter     | Type | Description                       | Example |
-| ------------- | ---- | --------------------------------- | ------- |
-| `point`       | Int  | Loyalty point given to customers. | 3       |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "point", type: "Int", description: "Loyalty point given to customers.", example: "3" }
+  ]}
+/>
 
 
 Currency notation (currently only support MYR)

@@ -218,47 +218,41 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Description                       | Example                      |
-| ---------- | ------ | --------------------------------- | ---------------------------- |
-| `service`  | String | alacarte service                  | "alacarte"                   |
-| `version`  | String | Currently only support 'v1"       | "v1"                         |
-| `function` | String | Function that provide by alacarte | "get.store.items"            |
-| `request`  | Object | Refer to explanation below        | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "service", type: "String", description: "alacarte service", example: "\"alacarte\"" },
+    { name: "version", type: "String", description: "Currently only support 'v1\"", example: "\"v1\"" },
+    { name: "function", type: "String", description: "Function that provide by alacarte", example: "\"get.store.items\"" },
+    { name: "request", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type   | Description                         | Example               |
-| --------- | ------ | ----------------------------------- | --------------------- |
-| `storeId` | String | ID of the Store that Create from RM | "1601912947341252990" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "storeId", type: "String", description: "ID of the Store that Create from RM", example: "\"1601912947341252990\"" }
+  ]}
+/>
 
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                     | Example                      |
-| --------- | ------ | ------------------------------- | ---------------------------- |
-| `cursor`  | String | Optional, if pagination exists. | ""                           |
-| `count`   | Uint   | Current page record             | 7                            |
-| `items`   | Array  | Refer to explanation below      | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "cursor", type: "String", description: "Optional, if pagination exists.", example: "\"\"" },
+    { name: "count", type: "Uint", description: "Current page record", example: "7" },
+    { name: "items", type: "Array", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
 ### Inside Items (parameter)
 
-<details>
-<summary><strong>Inside Items (parameter)</strong></summary>
+
+
 
 | Parameter      | Type     | Description                               | Example                                                  |
 | -------------- | -------- | ----------------------------------------- | -------------------------------------------------------- |
@@ -279,13 +273,13 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 | `sku`          | String   | Item SKU                                  | "fkj31i"                                                 |
 | `updatedAt`    | DateTime | Last update date time                     | "2020-09-22T04:44:57.950398414Z"                         |
 
-</details>
+
 
 
 ### Inside Preferences (parameter)
 
-<details>
-<summary><strong>Inside Preferences (parameter)</strong></summary>
+
+
 
 | Parameter   | Type   | Description                | Example                      |
 | ----------- | ------ | -------------------------- | ---------------------------- |
@@ -295,26 +289,26 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 | `maxChoice` | Uint   | Set maximum choice         | 3                            |
 | `labels`    | Array  | Refer to explanation below | (Refer to explanation below) |
 
-</details>
+
 
 
 ### Inside Labels (parameter)
 
-<details>
-<summary><strong>Inside Labels (parameter)</strong></summary>
+
+
 
 | Parameter | Type   | Description | Example                    |
 | --------- | ------ | ----------- | -------------------------- |
 | `id`      | String | Label ID    | "5f698149585d7cc1ae35a38e" |
 | `name`    | String | Label name  | "Basic"                    |
 
-</details>
+
 
 
 ### Inside Sides (parameter)
 
-<details>
-<summary><strong>Inside Sides (parameter)</strong></summary>
+
+
 
 | Parameter     | Type   | Description                | Example                      |
 | ------------- | ------ | -------------------------- | ---------------------------- |
@@ -325,13 +319,13 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 | `maxChoice`   | Uint   | Set maximum choice         | 3                            |
 | `sideItems`   | Array  | Refer to explanation below | (Refer to explanation below) |
 
-</details>
+
 
 
 ### Inside Side Items (parameter)
 
-<details>
-<summary><strong>Inside Side Items (parameter)</strong></summary>
+
+
 
 | Parameter         | Type   | Description                         | Example                         |
 | ----------------- | ------ | ----------------------------------- | ------------------------------- |
@@ -341,18 +335,18 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 | `price`           | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
 | `isAvailable`     | Bool   | Side Item is available              | true                            |
 
-</details>
+
 
 
 ### Inside Price (parameter)
 
-<details>
-<summary><strong>Inside Price (parameter)</strong></summary>
+
+
 
 | Parameter      | Type   | Description                                      | Example |
 | -------------- | ------ | ------------------------------------------------ | ------- |
 | `amount`       | Uint   | Amount in cent (min RM 0.10 <b>10 = RM 0.10</b>) | 100     |
 | `currencyType` | String | Current only support Ringgit Malaysia            | "MYR"   |
 
-</details>
+
 

@@ -52,15 +52,13 @@ To deduct loyalty point(s) to customers using phone number or member ID.
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type    | Required | Description                            | Example               |
-| ---------- | ------- | -------- | -------------------------------------- | --------------------- |
-| `point`    | Integer | Yes      | Loyalty point given to customers.      | 100                   |
-| `memberId` | String  | No       | Member ID if type "ID" being provided. | "2777058682717858418" |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "point", type: "Integer", required: true, description: "Loyalty point given to customers.", example: "100" },
+    { name: "memberId", type: "String", description: "Member ID if type \"ID\" being provided.", example: "\"2777058682717858418\"" }
+  ]}
+/>
 
 
 > Example Request Phone Number
@@ -80,14 +78,12 @@ curl --location --request DELETE "https://sb-open.revenuemonster.my/v3/loyalty/r
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   |                                                                           Description                                                                            | Example   |
-| --------- | ------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | --------- |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer [Appendix 1: Error Codes](https://doc.revenuemonster.my/#appendix-1-error-codes)) | "SUCCESS" |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <hr/>

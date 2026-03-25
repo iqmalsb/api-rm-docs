@@ -287,27 +287,23 @@ Prerequisite : Acquire requestID from mykad recognition response
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Description                 | Example                      |
-| ---------- | ------ | --------------------------- | ---------------------------- |
-| `service`  | String | EKYC service                | "ekyc"                       |
-| `version`  | String | Currently only support 'v1" | "v1"                         |
-| `function` | String | Selected function           | "get-mykad-result"           |
-| `request`  | Object | Refer to explanation below  | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "service", type: "String", description: "EKYC service", example: "\"ekyc\"" },
+    { name: "version", type: "String", description: "Currently only support 'v1\"", example: "\"v1\"" },
+    { name: "function", type: "String", description: "Selected function", example: "\"get-mykad-result\"" },
+    { name: "request", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type   | Description                                | Example                    |
-| --------- | ------ | ------------------------------------------ | -------------------------- |
-| `id`      | String | Request ID from mykad recognition response | "62201d48a694817dede84b35" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Request ID from mykad recognition response", example: "\"62201d48a694817dede84b35\"" }
+  ]}
+/>
 
 
 ### Response Parameters
@@ -332,42 +328,40 @@ Prerequisite : Acquire requestID from mykad recognition response
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type     | Description               | Example                      |
-| ------------ | -------- | ------------------------- | ---------------------------- |
-| `id`         | String   | Table ID                  | "60f79b737b03abf23ad65206"   |
-| `action`     | String   | Action Required           | NONE_REQUIRED                |
-| `clientId`   | String   | Client ID                 | ""                           |
-| `merchantId` | String   | Merchant ID               | ""                           |
-| `status`     | String   | Recognition Status        | SUCCESS                      |
-| `duration`   | Float    | Recognition Duration      | 3.3465                       |
-| `objects`    | Object   | Detected Landmark         | (Refer to explanation below) |
-| `results`    | Array    | Mykad Recognition Results | (Refer to explanation below) |
-| `updatedAt`  | DateTime | Last update date time     | "2022-03-03T01:43:36.963Z"   |
-| `createdAt`  | DateTime | Create date time          | "2022-03-03T01:43:36.963Z"   |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Table ID", example: "\"60f79b737b03abf23ad65206\"" },
+    { name: "action", type: "String", description: "Action Required", example: "NONE_REQUIRED" },
+    { name: "clientId", type: "String", description: "Client ID", example: "\"\"" },
+    { name: "merchantId", type: "String", description: "Merchant ID", example: "\"\"" },
+    { name: "status", type: "String", description: "Recognition Status", example: "SUCCESS" },
+    { name: "duration", type: "Float", description: "Recognition Duration", example: "3.3465" },
+    { name: "objects", type: "Object", description: "Detected Landmark", example: "(Refer to explanation below)" },
+    { name: "results", type: "Array", description: "Mykad Recognition Results", example: "(Refer to explanation below)" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2022-03-03T01:43:36.963Z\"" },
+    { name: "createdAt", type: "DateTime", description: "Create date time", example: "\"2022-03-03T01:43:36.963Z\"" }
+  ]}
+/>
 
 
 ### Inside Objects (parameter)
 
-<details>
-<summary><strong>Inside Objects (parameter)</strong></summary>
+
+
 
 | Parameter  | Type  | Description                      | Example |
 | ---------- | ----- | -------------------------------- | ------- |
 | `data`     | Array | Refer to the <b>Objects Data</b> | []      |
 | `duration` | Float | Landmark Detection Duration      | 0.0165  |
 
-</details>
+
 
 
 ### Inside Objects Data (parameter)
 
-<details>
-<summary><strong>Inside Objects Data (parameter)</strong></summary>
+
+
 
 | Parameter    | Type   | Description                     | Example         |
 | ------------ | ------ | ------------------------------- | --------------- |
@@ -375,26 +369,26 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `confidence` | Float  | Confidence of detected landmark | 0.9609          |
 | `prediction` | String | Prediction of detected landmark | "hibiscus_logo" |
 
-</details>
+
 
 
 ### Inside Boxes (parameter)
 
-<details>
-<summary><strong>Inside Boxes (parameter)</strong></summary>
+
+
 
 | Parameter | Type | Description                         | Example |
 | --------- | ---- | ----------------------------------- | ------- |
 | `x`       | Int  | x-coordinate of object in the image | 196     |
 | `y`       | Int  | y-coordinate of object in the image | 200     |
 
-</details>
+
 
 
 ### Inside Results (parameter)
 
-<details>
-<summary><strong>Inside Results (parameter)</strong></summary>
+
+
 
 | Parameter       | Type   | Description                               | Example                      |
 | --------------- | ------ | ----------------------------------------- | ---------------------------- |
@@ -409,26 +403,26 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `scores`        | Object | Refer to the <b>Results Scores</b>        | (Refer to explanation below) |
 | `tamperCheck`   | Object | Refer to the <b>Results TamperCheck</b>   | (Refer to explanation below) |
 
-</details>
+
 
 
 ### Inside Results Colour (parameter)
 
-<details>
-<summary><strong>Inside Results Colour (parameter)</strong></summary>
+
+
 
 | Parameter    | Type   | Description                       | Example |
 | ------------ | ------ | --------------------------------- | ------- |
 | `detected`   | String | Colour detected                   | "BLUE"  |
 | `percentage` | Float  | Percentage of colour in the image | 0.6008  |
 
-</details>
+
 
 
 ### Inside Results Data (parameter)
 
-<details>
-<summary><strong>Inside Results Data (parameter)</strong></summary>
+
+
 
 | Parameter  | Type    | Description                 | Example                      |
 | ---------- | ------- | --------------------------- | ---------------------------- |
@@ -438,13 +432,13 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `isMuslim` | Boolean | Is muslim                   | false                        |
 | `name`     | String  | Name in the mykad           | "ROWAN SEBASTIAN ATKINSON"   |
 
-</details>
+
 
 
 ### Inside Address (parameter)
 
-<details>
-<summary><strong>Inside Address (parameter)</strong></summary>
+
+
 
 | Parameter      | Type   | Description            | Example                |
 | -------------- | ------ | ---------------------- | ---------------------- |
@@ -455,64 +449,64 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `postcode`     | String | Postcode               | "80000"                |
 | `state`        | String | State name             | "SABAH"                |
 
-</details>
+
 
 
 ### Inside Results Faces (parameter)
 
-<details>
-<summary><strong>Inside Results Faces (parameter)</strong></summary>
+
+
 
 | Parameter    | Type  | Description                 | Example |
 | ------------ | ----- | --------------------------- | ------- |
 | `boxes`      | Array | Refer to the <b>boxes</b>   | []      |
 | `confidence` | Float | Confidence of detected face | 1       |
 
-</details>
+
 
 
 ### Inside Results Glare (parameter)
 
-<details>
-<summary><strong>Inside Results Glare (parameter)</strong></summary>
+
+
 
 | Parameter | Type    | Description                   | Example |
 | --------- | ------- | ----------------------------- | ------- |
 | `details` | Array   | Detailed information of glare | []      |
 | `present` | Boolean | Present of glare              | false   |
 
-</details>
+
 
 
 ### Inside Results Meta (parameter)
 
-<details>
-<summary><strong>Inside Results Meta (parameter)</strong></summary>
+
+
 
 | Parameter     | Type  | Description                        | Example |
 | ------------- | ----- | ---------------------------------- | ------- |
 | `resizeScale` | Float | Resize scale of mykad in the image | 0       |
 
-</details>
+
 
 
 ### Inside Results Object (parameter)
 
-<details>
-<summary><strong>Inside Results Object (parameter)</strong></summary>
+
+
 
 | Parameter    | Type   | Description                  | Example      |
 | ------------ | ------ | ---------------------------- | ------------ |
 | `confidence` | Float  | Confidence of detected mykad | 0.9609       |
 | `prediction` | String | Type of mykad                | "ic_1_front" |
 
-</details>
+
 
 
 ### Inside Results ocrRequestIds (parameter)
 
-<details>
-<summary><strong>Inside Results ocrRequestIds (parameter)</strong></summary>
+
+
 
 | Parameter | Type | Description | Example |
 | --------- | ---- | ----------- | ------- |
@@ -520,13 +514,13 @@ Prerequisite : Acquire requestID from mykad recognition response
 | region2 | String | ID of region 2 | "62201d4b4fddc13446bd6d0f" |
 | region3 | String | ID of region 3 | "62201d4b4fddc13446bd6d10" |
 
-</details>
+
 
 
 ### Inside Results Scores (parameter)
 
-<details>
-<summary><strong>Inside Results Scores (parameter)</strong></summary>
+
+
 
 | Parameter   | Type  | Description          | Example |
 | ----------- | ----- | -------------------- | ------- |
@@ -535,13 +529,13 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `searcher`  | Float | Mykad searcher score | 0.9     |
 | `total`     | Float | Total score          | 0.8295  |
 
-</details>
+
 
 
 ### Inside TamperCheck (parameter)
 
-<details>
-<summary><strong>Inside TamperCheck (parameter)</strong></summary>
+
+
 
 | Parameter          | Type   | Description                              | Example                      |
 | ------------------ | ------ | ---------------------------------------- | ---------------------------- |
@@ -553,13 +547,13 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `region2`          | Object | Refer to the <b>TamperCheck Result</b>   | (Refer to explanation below) |
 | `region3`          | Object | Refer to the <b>TamperCheck Result</b>   | (Refer to explanation below) |
 
-</details>
+
 
 
 ### Inside TamperCheck Face Verification Response (parameter)
 
-<details>
-<summary><strong>Inside TamperCheck Face Verification Response (parameter)</strong></summary>
+
+
 
 | Parameter | Type    | Description                                               | Example                      |
 | --------- | ------- | --------------------------------------------------------- | ---------------------------- |
@@ -567,26 +561,26 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `result`  | Object  | Refer to the <b>Tamper Check Face Verification Result</b> | (Refer to explanation below) |
 | `success` | Boolean | Success status of tamper check                            | false                        |
 
-</details>
+
 
 
 ### Inside TamperCheck Face Verification Result (parameter)
 
-<details>
-<summary><strong>Inside TamperCheck Face Verification Result (parameter)</strong></summary>
+
+
 
 | Parameter      | Type    | Description                       | Example |
 | -------------- | ------- | --------------------------------- | ------- |
 | `isSamePerson` | Boolean | Check result which is same person | false   |
 | `similarity`   | Float   | Similarity of two faces           | 0       |
 
-</details>
+
 
 
 ### Inside TamperCheck Response (parameter)
 
-<details>
-<summary><strong>Inside TamperCheck Response (parameter)</strong></summary>
+
+
 
 | Parameter | Type    | Description                             | Example                      |
 | --------- | ------- | --------------------------------------- | ---------------------------- |
@@ -594,13 +588,13 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `result`  | Object  | Refer to the <b>Tamper Check Result</b> | (Refer to explanation below) |
 | `success` | Boolean | Success status of tamper check          | false                        |
 
-</details>
+
 
 
 ### Inside TamperCheck Result (parameter)
 
-<details>
-<summary><strong>Inside TamperCheck Result (parameter)</strong></summary>
+
+
 
 | Parameter    | Type    | Description                            | Example    |
 | ------------ | ------- | -------------------------------------- | ---------- |
@@ -608,13 +602,13 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `confidence` | Float   | Confidence score of tamperCheck result | 0.9999     |
 | `prediction` | String  | Prediction of tamper check             | "ORIGINAL" |
 
-</details>
+
 
 
 ### Inside TamperCheck Physical (parameter)
 
-<details>
-<summary><strong>Inside TamperCheck Physical (parameter)</strong></summary>
+
+
 
 | Parameter    | Type    | Description                              | Example    |
 | ------------ | ------- | ---------------------------------------- | ---------- |
@@ -622,5 +616,5 @@ Prerequisite : Acquire requestID from mykad recognition response
 | `prediction` | String  | Prediction of tamper check               | "ORIGINAL" |
 | `success`    | Boolean | Success status of tamper check physical  | false      |
 
-</details>
+
 

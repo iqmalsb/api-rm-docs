@@ -84,28 +84,24 @@ Get Member Authorized URL
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter     | Type   | Description         | Example     |
-| ------------- | ------ | ------------------- | ----------- |
-| `countryCode` | String | Country Code        | "60"        |
-| `phoneNumber` | String | Member phone number | "187824153" |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "countryCode", type: "String", description: "Country Code", example: "\"60\"" },
+    { name: "phoneNumber", type: "String", description: "Member phone number", example: "\"187824153\"" }
+  ]}
+/>
 
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description              | Example       |
-| --------- | ------ | ------------------------ | ------------- |
-| `profile` | Object | Member Profile           | Show as Below |
-| `url`     | String | Loyalty App Redirect URL | Show as Below |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "profile", type: "Object", description: "Member Profile", example: "Show as Below" },
+    { name: "url", type: "String", description: "Loyalty App Redirect URL", example: "Show as Below" }
+  ]}
+/>
 
 
 <br />

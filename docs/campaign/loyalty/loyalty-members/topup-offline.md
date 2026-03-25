@@ -114,17 +114,15 @@ Specify loyalty member id to topup using quickpay
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Required | Description                                            | Example                      |
-| ---------- | ------ | -------- | ------------------------------------------------------ | ---------------------------- |
-| `authCode` | String | Yes      | Auth code of QR code/barcode being scanned. Length: 18 | "134850717797247290"         |
-| `order`    | Object | Yes      | Object of order                                        | (Refer to explanation below) |
-| `storeId`  | String | Yes      | ID of the store                                        | "6170506694335521334"        |
-| `memberId` | String | Yes      | Member id                                              | "1626838502220135674"        |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "authCode", type: "String", required: true, description: "Auth code of QR code/barcode being scanned. Length: 18", example: "\"134850717797247290\"" },
+    { name: "order", type: "Object", required: true, description: "Object of order", example: "(Refer to explanation below)" },
+    { name: "storeId", type: "String", required: true, description: "ID of the store", example: "\"6170506694335521334\"" },
+    { name: "memberId", type: "String", required: true, description: "Member id", example: "\"1626838502220135674\"" }
+  ]}
+/>
 
 
 
@@ -133,98 +131,88 @@ Specify loyalty member id to topup using quickpay
 
 <strong>Order object (order):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter      | Type   | Required | Description                                         | Example              |
-| -------------- | ------ | -------- | --------------------------------------------------- | -------------------- |
-| `id`           | String | Yes      | Order ID (from Merchant), max: 24                   | "134850717797247290" |
-| `currencyType` | String | Yes      | Currency notation (currently only support MYR)      | "MYR"                |
-| `amount`       | Uint   | Yes      | Amount of order in cent (min RM 0.10 or amount: 10) | 100                  |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", required: true, description: "Order ID (from Merchant), max: 24", example: "\"134850717797247290\"" },
+    { name: "currencyType", type: "String", required: true, description: "Currency notation (currently only support MYR)", example: "\"MYR\"" },
+    { name: "amount", type: "Uint", required: true, description: "Amount of order in cent (min RM 0.10 or amount: 10)", example: "100" }
+  ]}
+/>
 
 
 
 ### Response Parameters
 
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example                      |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object | Transaction object                                                                                        | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", description: "Transaction object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br />
 
 <strong>Transaction object (item):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type     | Description                                                          | Example                                    |
-| --------------- | -------- | -------------------------------------------------------------------- | ------------------------------------------ |
-| `store`         | Object   | Store object                                                         | (Refer to explanation below)               |
-| `referenceId`   | String   | Reference ID (from WeChat server)                                    | ""                                         |
-| `transactionId` | String   | Transaction ID (from RM server)                                      | "152161448229438994"                       |
-| `order`         | Object   | Order object                                                         | (Refer to explanation below)               |
-| `payee`         | Object   | Object of userID made payment (payment sender)                       | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
-| `currencyType`  | String   | Currency notation (currently only support `MYR`)                     | "MYR"                                      |
-| `platform`      | String   | Currently only support "OPEN_API"                                    | "OPEN_API"                                 |
-| `method`        | String   | [RM currently supported method](../../../../docs/payment-method.mdx) | ALL                                        |
-| `type`          | String   | Currently only support "QUICKPAY"                                    | "QUICKPAY"                                 |
-| `status`        | String   | Status returned from WeChat server                                   | "SUCCESS"                                  |
-| `region`        | String   | Region of wallet, "MALAYSIA" or "CHINA"                              | "MALAYSIA"                                 |
-| `error`         | String   | (Refer `Appendix: Error Codes`)                                      | {}                                         |
-| `createdAt`     | DateTime | Creation date time of transaction                                    | "2018-03-21T06:41:22Z"                     |
-| `updatedAt`     | DateTime | Last update date time of transaction                                 | "2018-03-21T06:41:22Z"                     |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "store", type: "Object", description: "Store object", example: "(Refer to explanation below)" },
+    { name: "referenceId", type: "String", description: "Reference ID (from WeChat server)", example: "\"\"" },
+    { name: "transactionId", type: "String", description: "Transaction ID (from RM server)", example: "\"152161448229438994\"" },
+    { name: "order", type: "Object", description: "Order object", example: "(Refer to explanation below)" },
+    { name: "payee", type: "Object", description: "Object of userID made payment (payment sender)", example: "{\"userId\": \"o74f0wjjzv9eKRu1fccrZswVFnOQ\"}" },
+    { name: "currencyType", type: "String", description: "Currency notation (currently only support MYR)", example: "\"MYR\"" },
+    { name: "platform", type: "String", description: "Currently only support \"OPEN_API\"", example: "\"OPEN_API\"" },
+    { name: "method", type: "String", description: "RM currently supported method", example: "ALL" },
+    { name: "type", type: "String", description: "Currently only support \"QUICKPAY\"", example: "\"QUICKPAY\"" },
+    { name: "status", type: "String", description: "Status returned from WeChat server", example: "\"SUCCESS\"" },
+    { name: "region", type: "String", description: "Region of wallet, \"MALAYSIA\" or \"CHINA\"", example: "\"MALAYSIA\"" },
+    { name: "error", type: "String", description: "(Refer Appendix: Error Codes)", example: "{}" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time of transaction", example: "\"2018-03-21T06:41:22Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time of transaction", example: "\"2018-03-21T06:41:22Z\"" }
+  ]}
+/>
 
 
 <br />
 <strong>Store object (store):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter      | Type              | Description                                     | Example                                             |
-| -------------- | ----------------- | ----------------------------------------------- | --------------------------------------------------- |
-| `id`           | String            | Store ID                                        | "6170506694335521334"                               |
-| `name`         | String            | Store Name                                      | "REVENUE MONSTER"                                   |
-| `addressLine1` | String            | Store Address 1                                 | "B-5-30, 5th Floor, Block Bougainvillea,"           |
-| `addressLine2` | String            | Store Address 2                                 | "PJU 6A, Lebuhraya SPRINT, 10 Boulevard,"           |
-| `postCode`     | String            | Postcode of store                               | "47400"                                             |
-| `city`         | String            | City of store                                   | "Petaling Jaya"                                     |
-| `state`        | String            | State of store                                  | "Selangor"                                          |
-| `country`      | String            | Country of store                                | "Malaysia"                                          |
-| `countryCode`  | String            | Country code of store contact number            | "60"                                                |
-| `phoneNumber`  | String            | Phone number of store                           | "377334080"                                         |
-| `geoLocation`  | Object of [Float] | Geo Location (latitude and longtitude) of store | {"latitude": 3.1349857, "longtitude": 101.6136659 } |
-| `status`       | String            | Current status of store                         | "ACTIVE"                                            |
-| `createdAt`    | DateTime          | Creation date time of store                     | "2018-02-12T08:53:13Z"                              |
-| `updatedAt`    | DateTime          | Last update date time of store                  | "2018-02-12T08:53:13Z"                              |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Store ID", example: "\"6170506694335521334\"" },
+    { name: "name", type: "String", description: "Store Name", example: "\"REVENUE MONSTER\"" },
+    { name: "addressLine1", type: "String", description: "Store Address 1", example: "\"B-5-30, 5th Floor, Block Bougainvillea,\"" },
+    { name: "addressLine2", type: "String", description: "Store Address 2", example: "\"PJU 6A, Lebuhraya SPRINT, 10 Boulevard,\"" },
+    { name: "postCode", type: "String", description: "Postcode of store", example: "\"47400\"" },
+    { name: "city", type: "String", description: "City of store", example: "\"Petaling Jaya\"" },
+    { name: "state", type: "String", description: "State of store", example: "\"Selangor\"" },
+    { name: "country", type: "String", description: "Country of store", example: "\"Malaysia\"" },
+    { name: "countryCode", type: "String", description: "Country code of store contact number", example: "\"60\"" },
+    { name: "phoneNumber", type: "String", description: "Phone number of store", example: "\"377334080\"" },
+    { name: "geoLocation", type: "Object of [Float]", description: "Geo Location (latitude and longtitude) of store", example: "{\"latitude\": 3.1349857, \"longtitude\": 101.6136659 }" },
+    { name: "status", type: "String", description: "Current status of store", example: "\"ACTIVE\"" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time of store", example: "\"2018-02-12T08:53:13Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time of store", example: "\"2018-02-12T08:53:13Z\"" }
+  ]}
+/>
 
 
 <br />
 <strong>Order object (order):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type   | Description                                         | Example                        |
-| --------- | ------ | --------------------------------------------------- | ------------------------------ |
-| `id`      | String | Order ID (from Merchant), max: 24                   | "134850717797247290"           |
-| `title`   | String | Order title, max: 32                                | "Sales"                        |
-| `details` | String | Order details, max: 600                             | "1 x iPhone X; 2 x SAMSUNG S8" |
-| `amount`  | Uint   | Amount of order in cent (min RM 0.10 or amount: 10) | 100                            |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Order ID (from Merchant), max: 24", example: "\"134850717797247290\"" },
+    { name: "title", type: "String", description: "Order title, max: 32", example: "\"Sales\"" },
+    { name: "details", type: "String", description: "Order details, max: 600", example: "\"1 x iPhone X; 2 x SAMSUNG S8\"" },
+    { name: "amount", type: "Uint", description: "Amount of order in cent (min RM 0.10 or amount: 10)", example: "100" }
+  ]}
+/>
 

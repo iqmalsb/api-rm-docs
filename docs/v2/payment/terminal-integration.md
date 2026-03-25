@@ -76,23 +76,21 @@ performance.
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter              | Type   | Validation            | Required | Description                                                                                                                |
-| ---------------------- | ------ | --------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `terminalId`           | String |                       | Yes      | Terminal ID                                                                                                                |
-| `type`                 | String | ENUM("E-WALLET")      | Yes      | Payment type                                                                                                               |
-| `receiptType`          | Uint   | ENUM(1,2,3)           | Yes      | 1 : Print Merchant Copy and Customer copy<br />2 : Print Customer copy<br />3 : Do not print Merchant Copy & Customer Copy |
-| `cameraType`           | String | ENUM("FRONT", "BACK") | Yes      | For "E-WALLET" only, use back or front camera to scan QR                                                                   |
-| `order.id`             | String | Length(24)            | Yes      | Order ID                                                                                                                   |
-| `order.title`          | String | Length(32)            | Yes      | Order Title                                                                                                                |
-| `order.currencyType`   | String | ENUM("MYR")           | Yes      | Order Currency Type ( currently supported MYR only)                                                                        |
-| `order.amount`         | Uint64 |                       | Yes      | Order Amount                                                                                                               |
-| `order.detail`         | String | Length(600)           | No       | Order Detail                                                                                                               |
-| `order.additionalData` | String | Length(128)           | No       | Order Additional Data                                                                                                      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "terminalId", type: "String", required: true, description: "Terminal ID" },
+    { name: "type", type: "String", required: true, description: "Payment type" },
+    { name: "receiptType", type: "Uint", required: true, description: "1 : Print Merchant Copy and Customer copy2 : Print Customer copy3 : Do not print Merchant Copy & Customer Copy" },
+    { name: "cameraType", type: "String", required: true, description: "For \"E-WALLET\" only, use back or front camera to scan QR" },
+    { name: "order.id", type: "String", required: true, description: "Order ID" },
+    { name: "order.title", type: "String", required: true, description: "Order Title" },
+    { name: "order.currencyType", type: "String", required: true, description: "Order Currency Type ( currently supported MYR only)" },
+    { name: "order.amount", type: "Uint64", required: true, description: "Order Amount" },
+    { name: "order.detail", type: "String", description: "Order Detail" },
+    { name: "order.additionalData", type: "String", description: "Order Additional Data" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -114,18 +112,16 @@ performance.
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                                      | Description                    |
-| --------------- | ------ | --------------------------------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](./query-transaction.md#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                                                 | Determine request have success |
-| `error.code`    | String |                                                                 | Error code                     |
-| `error.message` | String |                                                                 | Error message                  |
-| `error.debug`   | String |                                                                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ---
@@ -174,23 +170,21 @@ api:
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter              | Type   | Validation            | Required | Description                                                                                                                |
-| ---------------------- | ------ | --------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `terminalId`           | String |                       | Yes      | Terminal ID                                                                                                                |
-| `type`                 | String | ENUM("CARD")          | Yes      | Payment type                                                                                                               |
-| `receiptType`          | Uint   | ENUM(1,2,3)           | Yes      | 1 : Print Merchant Copy and Customer copy<br />2 : Print Customer copy<br />3 : Do not print Merchant Copy & Customer Copy |
-| `cameraType`           | String | ENUM("FRONT", "BACK") | Yes      | For "E-WALLET" only, use back or front camera to scan QR                                                                   |
-| `order.id`             | String | Length(24)            | Yes      | Order ID                                                                                                                   |
-| `order.title`          | String | Length(32)            | Yes      | Order Title                                                                                                                |
-| `order.currencyType`   | String | ENUM("MYR")           | Yes      | Order Currency Type ( currently supported MYR only)                                                                        |
-| `order.amount`         | Uint64 |                       | Yes      | Order Amount                                                                                                               |
-| `order.detail`         | String | Length(600)           | No       | Order Detail                                                                                                               |
-| `order.additionalData` | String | Length(128)           | No       | Order Additional Data                                                                                                      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "terminalId", type: "String", required: true, description: "Terminal ID" },
+    { name: "type", type: "String", required: true, description: "Payment type" },
+    { name: "receiptType", type: "Uint", required: true, description: "1 : Print Merchant Copy and Customer copy2 : Print Customer copy3 : Do not print Merchant Copy & Customer Copy" },
+    { name: "cameraType", type: "String", required: true, description: "For \"E-WALLET\" only, use back or front camera to scan QR" },
+    { name: "order.id", type: "String", required: true, description: "Order ID" },
+    { name: "order.title", type: "String", required: true, description: "Order Title" },
+    { name: "order.currencyType", type: "String", required: true, description: "Order Currency Type ( currently supported MYR only)" },
+    { name: "order.amount", type: "Uint64", required: true, description: "Order Amount" },
+    { name: "order.detail", type: "String", description: "Order Detail" },
+    { name: "order.additionalData", type: "String", description: "Order Additional Data" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -212,18 +206,16 @@ api:
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                                      | Description                    |
-| --------------- | ------ | --------------------------------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](./query-transaction.md#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                                                 | Determine request have success |
-| `error.code`    | String |                                                                 | Error code                     |
-| `error.message` | String |                                                                 | Error message                  |
-| `error.debug`   | String |                                                                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ## Event: Card Refund
@@ -231,20 +223,18 @@ api:
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter            | Type   | Validation     | Required | Description                                                                                                                |
-| -------------------- | ------ | -------------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `terminalId`         | String |                | Yes      | Terminal ID                                                                                                                |
-| `type`               | String | ENUM("REFUND") | Yes      | Event Type                                                                                                                 |
-| `data.transactionId` | String | String         | Yes      | Transaction ID                                                                                                             |
-| `data.receiptType`   | Uint   | ENUM(1,2,3)    |          | 1 : Print Merchant Copy and Customer copy<br />2 : Print Customer copy<br />3 : Do not print Merchant Copy & Customer Copy |
-| `data.reason`        | String |                |          |                                                                                                                            |
-| `data.email`         | String |                | Yes      | Email match with the refund pin                                                                                            |
-| `data.pin`           | String | LENGTH(6)      | Yes      | Refund Pin                                                                                                                 |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "terminalId", type: "String", required: true, description: "Terminal ID" },
+    { name: "type", type: "String", required: true, description: "Event Type" },
+    { name: "data.transactionId", type: "String", required: true, description: "Transaction ID" },
+    { name: "data.receiptType", type: "Uint", description: "1 : Print Merchant Copy and Customer copy2 : Print Customer copy3 : Do not print Merchant Copy & Customer Copy" },
+    { name: "data.reason", type: "String" },
+    { name: "data.email", type: "String", required: true, description: "Email match with the refund pin" },
+    { name: "data.pin", type: "String", required: true, description: "Refund Pin" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -263,18 +253,16 @@ api:
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                                      | Description                    |
-| --------------- | ------ | --------------------------------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](./query-transaction.md#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                                                 | Determine request have success |
-| `error.code`    | String |                                                                 | Error code                     |
-| `error.message` | String |                                                                 | Error message                  |
-| `error.debug`   | String |                                                                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ## Event: Card Settlement
@@ -282,16 +270,14 @@ api:
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter          | Type   | Validation         | Required | Description                                                                                                                |
-| ------------------ | ------ | ------------------ | -------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `terminalId`       | String |                    | Yes      | Terminal ID                                                                                                                |
-| `type`             | String | ENUM("SETTLEMENT") | Yes      | Event Type                                                                                                                 |
-| `data.receiptType` | Uint   | ENUM(1,2,3)        |          | 1 : Print Merchant Copy and Customer copy<br />2 : Print Customer copy<br />3 : Do not print Merchant Copy & Customer Copy |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "terminalId", type: "String", required: true, description: "Terminal ID" },
+    { name: "type", type: "String", required: true, description: "Event Type" },
+    { name: "data.receiptType", type: "Uint", description: "1 : Print Merchant Copy and Customer copy2 : Print Customer copy3 : Do not print Merchant Copy & Customer Copy" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -306,27 +292,25 @@ api:
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                       | Type   | Validation          | Description                                               |
-| ------------------------------- | ------ | ------------------- | --------------------------------------------------------- |
-| `code`                          | String | ENUM("SUCCESS")     | Determine request have success                            |
-| `error.code`                    | String |                     | Error code                                                |
-| `error.message`                 | String |                     | Error message                                             |
-| `error.debug`                   | String |                     | Debug message ( sandbox only )                            |
-| `summary.batchNo`               | String |                     | Sequence no. of the terminal settlement                   |
-| `summary.currencyType`          | String | ENUM("MYR")         | Settlement Currency Type ( currently supported MYR only)  |
-| `summary.noOfTransactions`      | Uint64 |                     | Count of settled transactions                             |
-| `summary.settlementAt`          | String | RFC3339             | Date and time of the settlement                           |
-| `summary.totalSalesAmount`      | Uint64 |                     | Total sales amount in cents                               |
-| `transactions[*].amount`        | Uint64 |                     | Transactions amount in cents                              |
-| `transactions[*].currencyType`  | Uint64 | ENUM("MYR")         | Transaction Currency Type ( currently supported MYR only) |
-| `transactions[*].transactionAt` | String | RFC3339             | Date and time of the transaction                          |
-| `transactions[*].transactionId` | String |                     | Transaction ID                                            |
-| `transactions[*].type`          | String | ENUM("SALE","VOID") | Transaction type                                          |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" },
+    { name: "summary.batchNo", type: "String", description: "Sequence no. of the terminal settlement" },
+    { name: "summary.currencyType", type: "String", description: "Settlement Currency Type ( currently supported MYR only)" },
+    { name: "summary.noOfTransactions", type: "Uint64", description: "Count of settled transactions" },
+    { name: "summary.settlementAt", type: "String", description: "Date and time of the settlement" },
+    { name: "summary.totalSalesAmount", type: "Uint64", description: "Total sales amount in cents" },
+    { name: "transactions[*].amount", type: "Uint64", description: "Transactions amount in cents" },
+    { name: "transactions[*].currencyType", type: "Uint64", description: "Transaction Currency Type ( currently supported MYR only)" },
+    { name: "transactions[*].transactionAt", type: "String", description: "Date and time of the transaction" },
+    { name: "transactions[*].transactionId", type: "String", description: "Transaction ID" },
+    { name: "transactions[*].type", type: "String", description: "Transaction type" }
+  ]}
+/>
 
 
 ## Event: Cancel Event
@@ -334,15 +318,13 @@ api:
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Validation     | Required | Description |
-| ------------ | ------ | -------------- | -------- | ----------- |
-| `terminalId` | String |                | Yes      | Terminal ID |
-| `type`       | String | ENUM("CANCEL") | Yes      | Event Type  |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "terminalId", type: "String", required: true, description: "Terminal ID" },
+    { name: "type", type: "String", required: true, description: "Event Type" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -354,17 +336,15 @@ api:
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation      | Description                    |
-| --------------- | ------ | --------------- | ------------------------------ |
-| `code`          | String | ENUM("SUCCESS") | Determine request have success |
-| `error.code`    | String |                 | Error code                     |
-| `error.message` | String |                 | Error message                  |
-| `error.debug`   | String |                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ## Server: Payment Refund

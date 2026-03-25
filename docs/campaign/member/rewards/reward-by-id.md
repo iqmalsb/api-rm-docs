@@ -85,74 +85,66 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example                      |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object | Reward object                                                                                             | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", description: "Reward object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br />
 
 <strong>Reward object (item):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter         | Type     | Description                                                         | Example                                        |
-| ----------------- | -------- | ------------------------------------------------------------------- | ---------------------------------------------- |
-| `id`              | String   | Reward ID                                                           | "1575971661443933008"                          |
-| `label`           | String   | Reward Label                                                        | "Prudential RM 5 Cash Vouchers ( BoostPulse )" |
-| `imageUrl`        | String   | Reward Image                                                        | ""                                             |
-| `point`           | Uint     | Reward Point                                                        | 1                                              |
-| `payload`         | Object   | Refer to explanation below                                          | (Refer to explanation below)                   |
-| `isShipping`      | Bool     | Credit Balance                                                      | false                                          |
-| `quantity`        | Uint     | Reward Quantity                                                     | 49998                                          |
-| `balanceQuantity` | Uint     | Reward Balance Quantity                                             | 49991                                          |
-| `usedQuantity`    | Uint     | Reward Used Quantity                                                | 2                                              |
-| `redeemQuantity`  | String   | Reward Redeem Quantity                                              | 7                                              |
-| `isEnabled`       | Bool     | Enable Reward                                                       | true                                           |
-| `limitPerUser`    | Uint     | Set Limit per User use                                              | 1                                              |
-| `status`          | String   | Reward status have ("COMPLETED", "INPROGRESS", "FAILED", "EXPIRED") | "COMPLETED"                                    |
-| `isCombo`         | Bool     | Reward is Combo                                                     | false                                          |
-| `type`            | String   | Reward type have **Combo** or **Batch**                             | ""                                             |
-| `createdAt`       | DateTime | Create date time                                                    | "2020-11-18T06:43:19Z"                         |
-| `updatedAt`       | DateTime | Last update date time                                               | "2020-11-25T05:58:56Z"                         |
-| `expiredAt`       | DateTime | Expired date time                                                   | "2018-10-19T03:39:47Z"                         |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Reward ID", example: "\"1575971661443933008\"" },
+    { name: "label", type: "String", description: "Reward Label", example: "\"Prudential RM 5 Cash Vouchers ( BoostPulse )\"" },
+    { name: "imageUrl", type: "String", description: "Reward Image", example: "\"\"" },
+    { name: "point", type: "Uint", description: "Reward Point", example: "1" },
+    { name: "payload", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "isShipping", type: "Bool", description: "Credit Balance", example: "false" },
+    { name: "quantity", type: "Uint", description: "Reward Quantity", example: "49998" },
+    { name: "balanceQuantity", type: "Uint", description: "Reward Balance Quantity", example: "49991" },
+    { name: "usedQuantity", type: "Uint", description: "Reward Used Quantity", example: "2" },
+    { name: "redeemQuantity", type: "String", description: "Reward Redeem Quantity", example: "7" },
+    { name: "isEnabled", type: "Bool", description: "Enable Reward", example: "true" },
+    { name: "limitPerUser", type: "Uint", description: "Set Limit per User use", example: "1" },
+    { name: "status", type: "String", description: "Reward status have (\"COMPLETED\", \"INPROGRESS\", \"FAILED\", \"EXPIRED\")", example: "\"COMPLETED\"" },
+    { name: "isCombo", type: "Bool", description: "Reward is Combo", example: "false" },
+    { name: "type", type: "String", description: "Reward type have Combo or Batch", example: "\"\"" },
+    { name: "createdAt", type: "DateTime", description: "Create date time", example: "\"2020-11-18T06:43:19Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2020-11-25T05:58:56Z\"" },
+    { name: "expiredAt", type: "DateTime", description: "Expired date time", example: "\"2018-10-19T03:39:47Z\"" }
+  ]}
+/>
 
 
 <br />
 <strong>Payload object:</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter     | Type   | Description  | Example                      |
-| ------------- | ------ | ------------ | ---------------------------- |
-| `tnc`         | Array  |              | ["T&C"]                      |
-| `contactInfo` | Object | Contact Info | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "tnc", type: "Array", example: "[\"T&C\"]" },
+    { name: "contactInfo", type: "Object", description: "Contact Info", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
 <br />
 <strong>Contact Info object:</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter     | Type   | Description  | Example |
-| ------------- | ------ | ------------ | ------- |
-| `email`       | String | Email        | ""      |
-| `phoneNumber` | String | Phone Number | ""      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "email", type: "String", description: "Email", example: "\"\"" },
+    { name: "phoneNumber", type: "String", description: "Phone Number", example: "\"\"" }
+  ]}
+/>
 
 
 <br />

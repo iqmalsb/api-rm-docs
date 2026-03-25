@@ -86,49 +86,43 @@ Collect information using member card ID
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter      | Type   | Description                 | Example               |
-| -------------- | ------ | --------------------------- | --------------------- |
-| `memberCardId` | String | From Ali Pay member card id | 28158443195878043074  |
-| `storeId`      | String | Store ID                    | "4949529109748431621" |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "memberCardId", type: "String", description: "From Ali Pay member card id", example: "28158443195878043074" },
+    { name: "storeId", type: "String", description: "Store ID", example: "\"4949529109748431621\"" }
+  ]}
+/>
 
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example                      |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object | Transaction object                                                                                        | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", description: "Transaction object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br/>
 
 <strong>Item object (item):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type     | Description           | Example                |
-| --------------- | -------- | --------------------- | ---------------------- |
-| `id`            | String   | Gourmet Card ID       | "28158443195878043074" |
-| `transactionId` | String   | Transaction ID        | "1584431832399399267"  |
-| `cardId`        | String   | Card ID               | "1576632501406219093"  |
-| `memberId`      | String   | Member ID             | "1584431797984173748"  |
-| `expiredAt`     | DateTime | Expired date time     | "2020-05-16T07:59:18Z" |
-| `createdAt`     | DateTime | Creation date time    | "2020-03-17T07:59:18Z" |
-| `updateAt`      | DateTime | Last update date time | "2020-03-05T09:40:21Z" |
-| `card`          | Object   | Refer to explanation below | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Gourmet Card ID", example: "\"28158443195878043074\"" },
+    { name: "transactionId", type: "String", description: "Transaction ID", example: "\"1584431832399399267\"" },
+    { name: "cardId", type: "String", description: "Card ID", example: "\"1576632501406219093\"" },
+    { name: "memberId", type: "String", description: "Member ID", example: "\"1584431797984173748\"" },
+    { name: "expiredAt", type: "DateTime", description: "Expired date time", example: "\"2020-05-16T07:59:18Z\"" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time", example: "\"2020-03-17T07:59:18Z\"" },
+    { name: "updateAt", type: "DateTime", description: "Last update date time", example: "\"2020-03-05T09:40:21Z\"" },
+    { name: "card", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
 
@@ -136,27 +130,25 @@ Collect information using member card ID
 
 <strong> Card object (card):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter            | Type     | Description          | Example                                                                                                                      |
-| -------------------- | -------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `id`                 | String   | Card ID              | "1576632501406219093"                                                                                                        |
-| `name`               | String   | Card Name            | "九折美食卡"                                                                                                                 |
-| `lifetime`           | Uint     | Life Time            | 60                                                                                                                           |
-| `lifetimeType`       | String   | Life Time Type       | "DAY"                                                                                                                        |
-| `amount`             | Uint     | Amount               | 10                                                                                                                           |
-| `currency`           | String   | Currency type        | "RMB"                                                                                                                        |
-| `discountType`       | String   | Discount type        | "DISCOUNT"                                                                                                                   |
-| `discountValue`      | String   | Discount Value       | "1000"                                                                                                                       |
-| `minimumSpentAmount` | Uint     | Minimum Spent Amount | 10                                                                                                                           |
-| `wallet`             | String   | Wallet : Alipay      | "ALIPAY"                                                                                                                     |
-| `templateId`         | String   | Template ID          | "20191218000000002154347000300178"                                                                                           |
-| `status`             | String   | Status               | "ACTIVE"                                                                                                                     |
-| `image`              | String   | Image                | "https://rm-sandbox-membership-public.oss-ap-southeast-3.aliyuncs.com/gourmet/card/image-1579510518825819467-1579510518.png" |
-| `icon`               | String   | Icon                 | "https://rm-sandbox-membership-public.oss-ap-southeast-3.aliyuncs.com/gourmet/card/icon-1579505367845553007-1579505367.png"  |
-| `createAt`           | DateTime | Create date time     | "2019-12-18T01:28:24Z"                                                                                                       |
-| `updateAt`           | DateTime | Update date time     | "2019-12-18T01:28:24Z"                                                                                                       |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Card ID", example: "\"1576632501406219093\"" },
+    { name: "name", type: "String", description: "Card Name", example: "\"九折美食卡\"" },
+    { name: "lifetime", type: "Uint", description: "Life Time", example: "60" },
+    { name: "lifetimeType", type: "String", description: "Life Time Type", example: "\"DAY\"" },
+    { name: "amount", type: "Uint", description: "Amount", example: "10" },
+    { name: "currency", type: "String", description: "Currency type", example: "\"RMB\"" },
+    { name: "discountType", type: "String", description: "Discount type", example: "\"DISCOUNT\"" },
+    { name: "discountValue", type: "String", description: "Discount Value", example: "\"1000\"" },
+    { name: "minimumSpentAmount", type: "Uint", description: "Minimum Spent Amount", example: "10" },
+    { name: "wallet", type: "String", description: "Wallet : Alipay", example: "\"ALIPAY\"" },
+    { name: "templateId", type: "String", description: "Template ID", example: "\"20191218000000002154347000300178\"" },
+    { name: "status", type: "String", description: "Status", example: "\"ACTIVE\"" },
+    { name: "image", type: "String", description: "Image", example: "\"https://rm-sandbox-membership-public.oss-ap-southeast-3.aliyuncs.com/gourmet/card/image-1579510518825819467-1579510518.png\"" },
+    { name: "icon", type: "String", description: "Icon", example: "\"https://rm-sandbox-membership-public.oss-ap-southeast-3.aliyuncs.com/gourmet/card/icon-1579505367845553007-1579505367.png\"" },
+    { name: "createAt", type: "DateTime", description: "Create date time", example: "\"2019-12-18T01:28:24Z\"" },
+    { name: "updateAt", type: "DateTime", description: "Update date time", example: "\"2019-12-18T01:28:24Z\"" }
+  ]}
+/>
 

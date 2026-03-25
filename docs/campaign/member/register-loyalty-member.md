@@ -116,22 +116,20 @@ Using Query String to **Get User Profile** by input the **country code** and **p
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter       | Type   | Required | Description                                    | Example                      |
-| --------------- | ------ | -------- | ---------------------------------------------- | ---------------------------- |
-| `name`          | String | Yes      | Member name                                    | "Oska"                       |
-| `countryCode`   | String | Yes      | Country code of member contact number          | "60"                         |
-| `phoneNumber`   | String | Yes      | Phone number of member                         | "1878241234"                 |
-| `email`         | String | Yes      | Email address of member                        | "developer.oskang@gmail.com" |
-| `nric`          | String | Yes      | IC Number                                      | "950711011234"               |
-| `birthDate`     | String | Yes      | Member Birth Date                              | "1995-07-11T00:00:00Z"       |
-| `gender`        | String | Yes      | Gender                                         | "MALE"                       |
-| `point`         | Uint   | Yes      | Loyalty Point                                  | 0                            |
-| `address`       | Object | Yes      | Refer to explanation below                     | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "name", type: "String", required: true, description: "Member name", example: "\"Oska\"" },
+    { name: "countryCode", type: "String", required: true, description: "Country code of member contact number", example: "\"60\"" },
+    { name: "phoneNumber", type: "String", required: true, description: "Phone number of member", example: "\"1878241234\"" },
+    { name: "email", type: "String", required: true, description: "Email address of member", example: "\"developer.oskang@gmail.com\"" },
+    { name: "nric", type: "String", required: true, description: "IC Number", example: "\"950711011234\"" },
+    { name: "birthDate", type: "String", required: true, description: "Member Birth Date", example: "\"1995-07-11T00:00:00Z\"" },
+    { name: "gender", type: "String", required: true, description: "Gender", example: "\"MALE\"" },
+    { name: "point", type: "Uint", required: true, description: "Loyalty Point", example: "0" },
+    { name: "address", type: "Object", required: true, description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
 <br />
@@ -140,45 +138,41 @@ Using Query String to **Get User Profile** by input the **country code** and **p
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example                      |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object | Profile object                                                                                            | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", description: "Profile object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br />
 
 <strong>Profile object (item):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter             | Type     | Description                  | Example                                                           |
-| --------------------- | -------- | ---------------------------- | ----------------------------------------------------------------- |
-| `id`                  | String   | Profile ID                   | ""                                                                |
-| `key`                 | String   | Profile Key (Internal Usage) | "EhIKBk1lbWJlchDOuOKz24XWkg4SGQoNTWVtYmVyUHJvZmlsZRDl-MTxiPOPjzY" |
-| `name`                | String   | Profile name                 | "Oska"                                                            |
-| `email`               | String   | Profile email                | "developer.oskang@gmail.com"                                      |
-| `nric`                | String   | IC Number                    | "950711011234"                                                    |
-| `birthDate`           | String   | User Birth Date (YYYY:MM:DD) | "1995-07-11"                                                      |
-| `gender`              | String   | Gender                       | "MALE"                                                            |
-| `address`             | Object   | Refer to explanation below   | (Refer to explanation below)                                      |
-| `memberTier`          | String   | Member Tier Point            | null                                                              |
-| `totalLoyaltyPoint`   | Uint     | Total Loyalty Point          | 0                                                                 |
-| `hasPinCode`          | Bool     | User Pin                     | false                                                             |
-| `loyaltyPointBalance` | Uint     | Total Point Balance left     | 0                                                                 |
-| `spendingPoint`       | Uint     | Point Spend                  | 0                                                                 |
-| `creditBalance`       | Uint     | Credit Balance               | 0                                                                 |
-| `status`              | String   | Profile Status               | "ACTIVE"                                                          |
-| `createdAt`           | DateTime | Creation date time           | "2018-10-19T03:39:47Z"                                            |
-| `updatedAt`           | DateTime | Last update date time        | "2020-06-29T10:14:33Z"                                            |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Profile ID", example: "\"\"" },
+    { name: "key", type: "String", description: "Profile Key (Internal Usage)", example: "\"EhIKBk1lbWJlchDOuOKz24XWkg4SGQoNTWVtYmVyUHJvZmlsZRDl-MTxiPOPjzY\"" },
+    { name: "name", type: "String", description: "Profile name", example: "\"Oska\"" },
+    { name: "email", type: "String", description: "Profile email", example: "\"developer.oskang@gmail.com\"" },
+    { name: "nric", type: "String", description: "IC Number", example: "\"950711011234\"" },
+    { name: "birthDate", type: "String", description: "User Birth Date (YYYY:MM:DD)", example: "\"1995-07-11\"" },
+    { name: "gender", type: "String", description: "Gender", example: "\"MALE\"" },
+    { name: "address", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "memberTier", type: "String", description: "Member Tier Point", example: "null" },
+    { name: "totalLoyaltyPoint", type: "Uint", description: "Total Loyalty Point", example: "0" },
+    { name: "hasPinCode", type: "Bool", description: "User Pin", example: "false" },
+    { name: "loyaltyPointBalance", type: "Uint", description: "Total Point Balance left", example: "0" },
+    { name: "spendingPoint", type: "Uint", description: "Point Spend", example: "0" },
+    { name: "creditBalance", type: "Uint", description: "Credit Balance", example: "0" },
+    { name: "status", type: "String", description: "Profile Status", example: "\"ACTIVE\"" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time", example: "\"2018-10-19T03:39:47Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2020-06-29T10:14:33Z\"" }
+  ]}
+/>
 
 
 <br />
@@ -186,17 +180,15 @@ Using Query String to **Get User Profile** by input the **country code** and **p
 
 <strong>Address object:</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter      | Type   | Description | Example |
-| -------------- | ------ | ----------- | ------- |
-| `addressLine1` | String | Address 1   | ""      |
-| `addressLine2` | String | Address 2   | ""      |
-| `postcode`     | String | Postcode    | ""      |
-| `city`         | String | City        | ""      |
-| `state`        | String | State       | ""      |
-| `country`      | String | Country     | ""      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "addressLine1", type: "String", description: "Address 1", example: "\"\"" },
+    { name: "addressLine2", type: "String", description: "Address 2", example: "\"\"" },
+    { name: "postcode", type: "String", description: "Postcode", example: "\"\"" },
+    { name: "city", type: "String", description: "City", example: "\"\"" },
+    { name: "state", type: "String", description: "State", example: "\"\"" },
+    { name: "country", type: "String", description: "Country", example: "\"\"" }
+  ]}
+/>
 

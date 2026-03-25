@@ -149,28 +149,24 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Description                       | Example                      |
-| ---------- | ------ | --------------------------------- | ---------------------------- |
-| `service`  | String | alacarte service                  | "alacarte"                   |
-| `version`  | String | Currently only support 'v1"       | "v1"                         |
-| `function` | String | Function that provide by alacarte | "get.store.order"            |
-| `request`  | Object | Refer to explanation below        | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "service", type: "String", description: "alacarte service", example: "\"alacarte\"" },
+    { name: "version", type: "String", description: "Currently only support 'v1\"", example: "\"v1\"" },
+    { name: "function", type: "String", description: "Function that provide by alacarte", example: "\"get.store.order\"" },
+    { name: "request", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter | Type   | Description                         | Example                     |
-| --------- | ------ | ----------------------------------- | --------------------------- |
-| `storeId` | String | ID of the Store that Create from RM | "2808912573238362402"       |
-| `orderId` | String | Order Id                            | "25f6984d6585d7cc1ae35a39c" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "storeId", type: "String", description: "ID of the Store that Create from RM", example: "\"2808912573238362402\"" },
+    { name: "orderId", type: "String", description: "Order Id", example: "\"25f6984d6585d7cc1ae35a39c\"" }
+  ]}
+/>
 
 
 ### Response Parameters
@@ -201,35 +197,33 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type     | Description                          | Example                          |
-| ------------ | -------- | ------------------------------------ | -------------------------------- |
-| `createdAt`  | DateTime | Creation date time of store          | "2020-09-22T04:44:57.950398414Z" |
-| `customer`   | Object   | Refer to explanation below           | (Refer to explanation below)     |
-| `delivery`   | Object   | Refer to explanation below           | (Refer to explanation below)     |
-| `deliveryAt` | String   | When and what time the order deliver | "2020-10-01T08:35:22.525Z"       |
-| `driveThru`  | Object   | Refer to explanation below           | (Refer to explanation below)     |
-| `items`      | Array    | Refer to explanation below           | (Refer to explanation below)     |
-| `orderId`    | String   | Order ID                             | "5f7596e066ef1c1a4f9807f4"       |
-| `payment`    | Object   | Refer to explanation below           | (Refer to explanation below)     |
-| `quantity`   | Uint     | Quantity of the item                 | 1                                |
-| `queueNo`    | Uint     | Queue number of the item             | 0                                |
-| `state`      | String   | State of the item                    | "ACCEPTED"                       |
-| `status`     | String   | Status of the item                   | "EMPTY"                          |
-| `storeId`    | String   | ID of the Store that Create from RM  | "10946114768247530"              |
-| `table`      | Object   | Refer to explanation below           | (Refer to explanation below)     |
-| `type`       | String   | Type of the item                     | "PICKUP"                         |
-| `updatedAt`  | DateTime | Last update date time                | "2020-10-01T08:44:16.863Z"       |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "createdAt", type: "DateTime", description: "Creation date time of store", example: "\"2020-09-22T04:44:57.950398414Z\"" },
+    { name: "customer", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "delivery", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "deliveryAt", type: "String", description: "When and what time the order deliver", example: "\"2020-10-01T08:35:22.525Z\"" },
+    { name: "driveThru", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "items", type: "Array", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "orderId", type: "String", description: "Order ID", example: "\"5f7596e066ef1c1a4f9807f4\"" },
+    { name: "payment", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "quantity", type: "Uint", description: "Quantity of the item", example: "1" },
+    { name: "queueNo", type: "Uint", description: "Queue number of the item", example: "0" },
+    { name: "state", type: "String", description: "State of the item", example: "\"ACCEPTED\"" },
+    { name: "status", type: "String", description: "Status of the item", example: "\"EMPTY\"" },
+    { name: "storeId", type: "String", description: "ID of the Store that Create from RM", example: "\"10946114768247530\"" },
+    { name: "table", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "type", type: "String", description: "Type of the item", example: "\"PICKUP\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2020-10-01T08:44:16.863Z\"" }
+  ]}
+/>
 
 
 ### Inside Customer (parameter)
 
-<details>
-<summary><strong>Inside Customer (parameter)</strong></summary>
+
+
 
 | Parameter     | Type   | Description             | Example                    |
 | ------------- | ------ | ----------------------- | -------------------------- |
@@ -239,13 +233,13 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 | `phoneNumber` | String | Customer contact number | "1123621544"               |
 | `id`          | String | Customer ID             | "5f63082ae9c755d6ba3122ac" |
 
-</details>
+
 
 
 ### Inside Delivery (parameter)
 
-<details>
-<summary><strong>Inside Delivery (parameter)</strong></summary>
+
+
 
 | Parameter         | Type   | Description                  | Example                      |
 | ----------------- | ------ | ---------------------------- | ---------------------------- |
@@ -256,13 +250,13 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 | `method`          | String | Customer ID                  | "OWN"                        |
 | `vendorId`        | String | Customer ID                  | "5f815e2c3c6920f1233a540f"   |
 
-</details>
+
 
 
 ### Inside Address (parameter)
 
-<details>
-<summary><strong>Inside Address (parameter)</strong></summary>
+
+
 
 | Parameter      | Type   | Description                  | Example |
 | -------------- | ------ | ---------------------------- | ------- |
@@ -278,7 +272,7 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 | `state`        | String | Address State                | ""      |
 | `unit`         | String | Address Unit                 | ""      |
 
-</details>
+
 
 
 ### Inside Courier (parameter)
@@ -289,20 +283,18 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter   | Type   | Description                  | Example      |
-| ----------- | ------ | ---------------------------- | ------------ |
-| `id`        | String | Courier ID                   | ""           |
-| `latitude`  | Float  | Address latitude (In Meter)  | 0            |
-| `longitude` | Float  | Address longitude (In Meter) | 0            |
-| `name`      | String | Courier Name                 | "Testing123" |
-| `phone`     | String | Courier Contact Number       | "163698122"  |
-| `photoURL`  | String | Courier Image                | ""           |
-| `surname`   | String | Courier Surname              | ""           |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Courier ID", example: "\"\"" },
+    { name: "latitude", type: "Float", description: "Address latitude (In Meter)", example: "0" },
+    { name: "longitude", type: "Float", description: "Address longitude (In Meter)", example: "0" },
+    { name: "name", type: "String", description: "Courier Name", example: "\"Testing123\"" },
+    { name: "phone", type: "String", description: "Courier Contact Number", example: "\"163698122\"" },
+    { name: "photoURL", type: "String", description: "Courier Image", example: "\"\"" },
+    { name: "surname", type: "String", description: "Courier Surname", example: "\"\"" }
+  ]}
+/>
 
 
 ### Inside Drive Thru (parameter)
@@ -313,21 +305,19 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter            | Type   | Description         | Example   |
-| -------------------- | ------ | ------------------- | --------- |
-| `vehicleDescription` | String | Vehicle description | ""        |
-| `vehicleNo`          | String | Vehicle Number      | "TLA3202" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "vehicleDescription", type: "String", description: "Vehicle description", example: "\"\"" },
+    { name: "vehicleNo", type: "String", description: "Vehicle Number", example: "\"TLA3202\"" }
+  ]}
+/>
 
 
 ### Inside Items (parameter)
 
-<details>
-<summary><strong>Inside Items (parameter)</strong></summary>
+
+
 
 | Parameter     | Type   | Description                         | Example                         |
 | ------------- | ------ | ----------------------------------- | ------------------------------- |
@@ -341,7 +331,7 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 | `remark`      | String | Customer Remark                     | ""                              |
 | `sides`       | Array  | Refer to the <b>Sides parameter</b> | ( Refer to the Sides parameter) |
 
-</details>
+
 
 
 ### Inside Preferences (parameter)
@@ -352,17 +342,15 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter   | Type   | Description                | Example                      |
-| ----------- | ------ | -------------------------- | ---------------------------- |
-| `name`      | String | Preferences name           | "Sweetness"                  |
-| `minChoice` | Uint   | Set minimum choice         | 1                            |
-| `maxChoice` | Uint   | Set maximum choice         | 3                            |
-| `labels`    | Array  | Refer to explanation below | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "name", type: "String", description: "Preferences name", example: "\"Sweetness\"" },
+    { name: "minChoice", type: "Uint", description: "Set minimum choice", example: "1" },
+    { name: "maxChoice", type: "Uint", description: "Set maximum choice", example: "3" },
+    { name: "labels", type: "Array", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
 ### Inside Sides (parameter)
@@ -373,22 +361,20 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter   | Type   | Description                             | Example                                 |
-| ----------- | ------ | --------------------------------------- | --------------------------------------- |
-| `id`        | String | Side ID                                 | ""                                      |
-| `name`      | String | Side Name                               | "test"                                  |
-| `sideItems` | Array  | Refer to the <b>SideItems parameter</b> | Refer to the <b>SideItems parameter</b> |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Side ID", example: "\"\"" },
+    { name: "name", type: "String", description: "Side Name", example: "\"test\"" },
+    { name: "sideItems", type: "Array", description: "Refer to the SideItems parameter", example: "Refer to the SideItems parameter" }
+  ]}
+/>
 
 
 ### Inside SideItems (parameter)
 
-<details>
-<summary><strong>Inside SideItems (parameter)</strong></summary>
+
+
 
 | Parameter | Type   | Description                         | Example                             |
 | --------- | ------ | ----------------------------------- | ----------------------------------- |
@@ -396,7 +382,7 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 | `name`    | String | Side Name                           | "Hainan Chicken Rice"               |
 | `price`   | Object | Refer to the <b>Price parameter</b> | Refer to the <b>Price parameter</b> |
 
-</details>
+
 
 
 ### Inside Payment (parameter)
@@ -409,21 +395,19 @@ Current type in <b>Payment</b> will be :-
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter             | Type   | Description                         | Example                         |
-| --------------------- | ------ | ----------------------------------- | ------------------------------- |
-| `deliveryFee`         | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `rounding`            | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `serviceFee`          | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `serviceTax`          | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `status`              | String | Payment Status                      | "NOTPAID"                       |
-| `subTotal`            | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `totalAfterRounding`  | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-| `totalBeforeRounding` | Object | Refer to the <b>Price parameter</b> | ( Refer to the Price parameter) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "deliveryFee", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "rounding", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "serviceFee", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "serviceTax", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "status", type: "String", description: "Payment Status", example: "\"NOTPAID\"" },
+    { name: "subTotal", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "totalAfterRounding", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" },
+    { name: "totalBeforeRounding", type: "Object", description: "Refer to the Price parameter", example: "( Refer to the Price parameter)" }
+  ]}
+/>
 
 
 ### Inside Price (parameter)
@@ -434,22 +418,20 @@ Only `serviceFee` and `serviceTax` have <b>percentage</b>
 
 :::
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter      | Type   | Description                                      | Example |
-| -------------- | ------ | ------------------------------------------------ | ------- |
-| `amount`       | Uint   | Amount in cent (min RM 0.10 <b>10 = RM 0.10</b>) | 100     |
-| `currencyType` | String | Current only support Ringgit Malaysia            | "MYR"   |
-| `percentage`   | Uint   | precentage will be divide 100 eg: 1300/100       | 1300    |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "amount", type: "Uint", description: "Amount in cent (min RM 0.10 10 = RM 0.10)", example: "100" },
+    { name: "currencyType", type: "String", description: "Current only support Ringgit Malaysia", example: "\"MYR\"" },
+    { name: "percentage", type: "Uint", description: "precentage will be divide 100 eg: 1300/100", example: "1300" }
+  ]}
+/>
 
 
 ### Inside Table (parameter)
 
-<details>
-<summary><strong>Inside Table (parameter)</strong></summary>
+
+
 
 | Parameter     | Type   | Description    | Example                    |
 | ------------- | ------ | -------------- | -------------------------- |
@@ -458,5 +440,5 @@ Only `serviceFee` and `serviceTax` have <b>percentage</b>
 | `isDefault`   | Bool   | Vehicle Number | true                       |
 | `name`        | String | Table Name     | "Default Table"            |
 
-</details>
+
 

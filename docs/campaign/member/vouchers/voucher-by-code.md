@@ -93,102 +93,92 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example                      |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object | Voucher object                                                                                            | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", description: "Voucher object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br />
 
 <strong>Voucher object (item):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter            | Type     | Description                                                                      | Example                                                            |
-| -------------------- | -------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `key`                | String   | Voucher Key (Internal Usage)                                                     | "EhIKBk1lbWJlchDOuOKz24XWkg4SGQoNTWVtYmVyUHJvZmlsZRDl-MTxiPOPjzY"  |
-| `label`              | String   | Voucher Label                                                                    | "asdasd"                                                           |
-| `voucherBatchKey`    | String   | Voucher Batch Key                                                                | "EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQs4n7iuzioaQW" |
-| `type`               | String   | Voucher Type ("CASH", "DISCOUNT", "GIFT")                                        | "CASH"                                                             |
-| `amount`             | Uint     | Amount of the voucher                                                            | 100                                                                |
-| `discountRate`       | Uint     | Voucher Discount Rate                                                            | 0                                                                  |
-| `minimumSpendAmount` | Uint     | Set a Minimum Spend Amount                                                       | 0                                                                  |
-| `origin`             | String   | Origin is for determine voucher source ("SYSTEM", "SELF", "MARKETPLACE" )        | "SYSTEM"                                                           |
-| `imageUrl`           | String   | Voucher Image                                                                    | ""                                                                 |
-| `memberProfile`      | Object   | Member Profile (refer to profile page)                                           | null                                                               |
-| `assignedAt`         | DateTime | Voucher Assign                                                                   | "0001-01-01T00:00:00Z"                                             |
-| `payload`            | Object   | Refer to explanation below                                                       | (Refer to explanation below)                                       |
-| `qrUrl`              | String   | Voucher QRcode URL                                                               | ""                                                                 |
-| `code`               | String   | Voucher Code                                                                     | "xR43u4bRhUU"                                                      |
-| `isShipping`         | Bool     | Voucher Shipping                                                                 | false                                                              |
-| `address`            | Object   | Refer to explanation below                                                       | (Refer to explanation below)                                       |
-| `expiry`             | Object   | Expiry date time                                                                 | (Refer to explanation below)                                       |
-| `usedAt`             | DateTime | Voucher Use                                                                      | "2020-11-25T13:58:55+08:00"                                        |
-| `redeemedAt`         | DateTime | Voucher Redeem                                                                   | "2020-11-25T04:33:04Z"                                             |
-| `isDeviceRedeem`     | Bool     | Voucher Redeem Device                                                            | true                                                               |
-| `status`             | String   | Voucher Status ("VALID", "ISSUE", "REDEEMED", "VOID", "EXPIRED", "MARKET_PLACE") | "VOID"                                                             |
-| `voucherComboKey`    | String   | Voucher Combo Key                                                                | null                                                               |
-| `isMarketPlace`      | Bool     | Last update date time                                                            | false                                                              |
-| `createdAt`          | DateTime | Create date time                                                                 | "2020-11-18T06:43:19Z"                                             |
-| `updatedAt`          | DateTime | Last update date time                                                            | "2020-11-25T05:58:56Z"                                             |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "key", type: "String", description: "Voucher Key (Internal Usage)", example: "\"EhIKBk1lbWJlchDOuOKz24XWkg4SGQoNTWVtYmVyUHJvZmlsZRDl-MTxiPOPjzY\"" },
+    { name: "label", type: "String", description: "Voucher Label", example: "\"asdasd\"" },
+    { name: "voucherBatchKey", type: "String", description: "Voucher Batch Key", example: "\"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQs4n7iuzioaQW\"" },
+    { name: "type", type: "String", description: "Voucher Type (\"CASH\", \"DISCOUNT\", \"GIFT\")", example: "\"CASH\"" },
+    { name: "amount", type: "Uint", description: "Amount of the voucher", example: "100" },
+    { name: "discountRate", type: "Uint", description: "Voucher Discount Rate", example: "0" },
+    { name: "minimumSpendAmount", type: "Uint", description: "Set a Minimum Spend Amount", example: "0" },
+    { name: "origin", type: "String", description: "Origin is for determine voucher source (\"SYSTEM\", \"SELF\", \"MARKETPLACE\" )", example: "\"SYSTEM\"" },
+    { name: "imageUrl", type: "String", description: "Voucher Image", example: "\"\"" },
+    { name: "memberProfile", type: "Object", description: "Member Profile (refer to profile page)", example: "null" },
+    { name: "assignedAt", type: "DateTime", description: "Voucher Assign", example: "\"0001-01-01T00:00:00Z\"" },
+    { name: "payload", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "qrUrl", type: "String", description: "Voucher QRcode URL", example: "\"\"" },
+    { name: "code", type: "String", description: "Voucher Code", example: "\"xR43u4bRhUU\"" },
+    { name: "isShipping", type: "Bool", description: "Voucher Shipping", example: "false" },
+    { name: "address", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" },
+    { name: "expiry", type: "Object", description: "Expiry date time", example: "(Refer to explanation below)" },
+    { name: "usedAt", type: "DateTime", description: "Voucher Use", example: "\"2020-11-25T13:58:55+08:00\"" },
+    { name: "redeemedAt", type: "DateTime", description: "Voucher Redeem", example: "\"2020-11-25T04:33:04Z\"" },
+    { name: "isDeviceRedeem", type: "Bool", description: "Voucher Redeem Device", example: "true" },
+    { name: "status", type: "String", description: "Voucher Status (\"VALID\", \"ISSUE\", \"REDEEMED\", \"VOID\", \"EXPIRED\", \"MARKET_PLACE\")", example: "\"VOID\"" },
+    { name: "voucherComboKey", type: "String", description: "Voucher Combo Key", example: "null" },
+    { name: "isMarketPlace", type: "Bool", description: "Last update date time", example: "false" },
+    { name: "createdAt", type: "DateTime", description: "Create date time", example: "\"2020-11-18T06:43:19Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2020-11-25T05:58:56Z\"" }
+  ]}
+/>
 
 
 <br />
 
 <strong>Payload object:</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter     | Type   | Description                | Example                      |
-| ------------- | ------ | -------------------------- | ---------------------------- |
-| `tnc`         | Array  |                            | ["T&C"]                      |
-| `contactInfo` | Object | Refer to explanation below | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "tnc", type: "Array", example: "[\"T&C\"]" },
+    { name: "contactInfo", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
 <br />
 
 <strong>Expiry object:</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter   | Type     | Description                         | Example                |
-| ----------- | -------- | ----------------------------------- | ---------------------- |
-| `type`      | String   | Voucher Type ("DYNAMIC" , "STATIC") | "DYNAMIC"              |
-| `day`       | Uint     | Expired Day                         | 1                      |
-| `expiredAt` | DateTime | Voucher Expired                     | "2020-11-26T04:33:04Z" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "type", type: "String", description: "Voucher Type (\"DYNAMIC\" , \"STATIC\")", example: "\"DYNAMIC\"" },
+    { name: "day", type: "Uint", description: "Expired Day", example: "1" },
+    { name: "expiredAt", type: "DateTime", description: "Voucher Expired", example: "\"2020-11-26T04:33:04Z\"" }
+  ]}
+/>
 
 
 <br />
 <strong>Address object:</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter      | Type   | Description | Example |
-| -------------- | ------ | ----------- | ------- |
-| `addressLine1` | String | Address 1   | ""      |
-| `addressLine2` | String | Address 2   | ""      |
-| `postcode`     | String | Postcode    | ""      |
-| `city`         | String | City        | ""      |
-| `state`        | String | State       | ""      |
-| `country`      | String | Country     | ""      |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "addressLine1", type: "String", description: "Address 1", example: "\"\"" },
+    { name: "addressLine2", type: "String", description: "Address 2", example: "\"\"" },
+    { name: "postcode", type: "String", description: "Postcode", example: "\"\"" },
+    { name: "city", type: "String", description: "City", example: "\"\"" },
+    { name: "state", type: "String", description: "State", example: "\"\"" },
+    { name: "country", type: "String", description: "Country", example: "\"\"" }
+  ]}
+/>
 
 
 <br />

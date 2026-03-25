@@ -72,43 +72,37 @@ Upload Merchant File
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Example   |
-| ---------- | ------ | --------- |
-| `file`     | File   |           |
-| `fileName` | String | "Testing" |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "file", type: "File" },
+    { name: "fileName", type: "String", example: "\"Testing\"" }
+  ]}
+/>
 
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example                      |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object |                                                                                                           | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br/>
 
 <strong>Item Object :</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter  | Type   | Description | Example                                                                                                       |
-| ---------- | ------ | ----------- | ------------------------------------------------------------------------------------------------------------- |
-| `fileName` | String |             | "testing"                                                                                                     |
-| `fileUrl`  | String |             | "https://rm-sandbox-document.oss-ap-southeast-3.aliyuncs.com/1629257189967895215/dGVzdGluZw==-1629297786.pdf" |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "fileName", type: "String", example: "\"testing\"" },
+    { name: "fileUrl", type: "String", example: "\"https://rm-sandbox-document.oss-ap-southeast-3.aliyuncs.com/1629257189967895215/dGVzdGluZw==-1629297786.pdf\"" }
+  ]}
+/>
 
 
 <br/>

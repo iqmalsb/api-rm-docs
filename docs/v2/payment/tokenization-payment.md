@@ -69,33 +69,31 @@ Recurring payment is for your customer to bind their card and our system able to
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter             | Type   | Validation                         | Required | Description                                                         |
-| --------------------- | ------ | ---------------------------------- | -------- | ------------------------------------------------------------------- |
-| `storeId`             | String |                                    | Yes      | Store ID                                                            |
-| `email`               | String |                                    | Yes      | Customer email                                                      |
-| `name`                | String |                                    | Yes      | Customer name                                                       |
-| `countryCode`         | String |                                    | Yes      | Customer country code                                               |
-| `phoneNumber`         | String |                                    | Yes      | Customer phone number                                               |
-| `productName`         | String |                                    | Yes      | Recurring product name                                              |
-| `productDescription`  | String |                                    | Yes      | Recurring product description                                       |
-| `currency`            | String | ENUM("MYR")                        | Yes      | Recurring payment currency                                          |
-| `amount`              | Uint64 |                                    | Yes      | Recurring payment amount                                            |
-| `redirectUrl`         | String |                                    | Yes      | Redirect URL after customer bind card                               |
-| `notifyUrl`           | String |                                    | Yes      | Notify URL when payment has made                                    |
-| `recurringInterval`   | String | ENUM("MONTHLY", "WEEKLY", "DAILY") | Yes      |                                                                     |
-| `recurringTarget`     | String |                                    | Yes      | Recurring target rules can be different values based on interval    |
-| `recurringRepetition` | Uint64 |                                    | Yes      | Recurring repetition rules, how many times charge the customer card |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "storeId", type: "String", required: true, description: "Store ID" },
+    { name: "email", type: "String", required: true, description: "Customer email" },
+    { name: "name", type: "String", required: true, description: "Customer name" },
+    { name: "countryCode", type: "String", required: true, description: "Customer country code" },
+    { name: "phoneNumber", type: "String", required: true, description: "Customer phone number" },
+    { name: "productName", type: "String", required: true, description: "Recurring product name" },
+    { name: "productDescription", type: "String", required: true, description: "Recurring product description" },
+    { name: "currency", type: "String", required: true, description: "Recurring payment currency" },
+    { name: "amount", type: "Uint64", required: true, description: "Recurring payment amount" },
+    { name: "redirectUrl", type: "String", required: true, description: "Redirect URL after customer bind card" },
+    { name: "notifyUrl", type: "String", required: true, description: "Notify URL when payment has made" },
+    { name: "recurringInterval", type: "String", required: true },
+    { name: "recurringTarget", type: "String", required: true, description: "Recurring target rules can be different values based on interval" },
+    { name: "recurringRepetition", type: "Uint64", required: true, description: "Recurring repetition rules, how many times charge the customer card" }
+  ]}
+/>
 
 
 <strong>Recurring Target Rules:</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
+
+
 
 | Interval | Target | Payment Behaviour                     |
 | -------- | ------ | ------------------------------------- |
@@ -110,7 +108,7 @@ Recurring payment is for your customer to bind their card and our system able to
 | MONTHLY  | 0      | Start of every month, e.g. 2022/10/01 |
 | MONTHLY  | 1 - 28 | Day of month                          |
 
-</details>
+
 
 
 ```json title="Example Request"
@@ -134,38 +132,36 @@ Recurring payment is for your customer to bind their card and our system able to
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                                   | Type   | Validation                         | Description                                                                               |
-| ------------------------------------------- | ------ | ---------------------------------- | ----------------------------------------------------------------------------------------- |
-| `item.id`                                   | String |                                    | Recurring payment id                                                                      |
-| `item.merchantId`                           | String |                                    | Merchant ID                                                                               |
-| `item.storeId`                              | String |                                    | Store ID                                                                                  |
-| `item.label`                                | String |                                    | Customer card front six last four digits                                                  |
-| `item.email`                                | String |                                    | Customer email                                                                            |
-| `item.countryCode`                          | String |                                    | Customer country code                                                                     |
-| `item.phoneNumber`                          | String |                                    | Customer phone number                                                                     |
-| `item.productName`                          | String |                                    | Recurring product name                                                                    |
-| `item.productDescription`                   | String |                                    | Recurring product description                                                             |
-| `item.isActive`                             | String |                                    | Recurring payment is active, when card bind successfully will automatically become active |
-| `item.createdAt`                            | String | RFC3339                            | Recurring created date time                                                               |
-| `item.updatedAt`                            | String | RFC3339                            | Recurring last updated date time                                                          |
-| `item.clientKey`                            | String |                                    | Internal usage only                                                                       |
-| `item.redirectUrl`                          | String |                                    | URL for customer to redirect after card bind                                              |
-| `item.notifyUrl`                            | String |                                    | URL for notify when transaction made                                                      |
-| `item.paymentUrl`                           | String |                                    | URL for customer bind their card                                                          |
-| `item.recurringPayment.amount`              | Uint64 |                                    | Recurring payment amount                                                                  |
-| `item.recurringPayment.currency`            | Uint64 | ENUM("MYR")                        | Recurring payment currency                                                                |
-| `item.recurringPayment.recurringInterval`   | Uint64 | ENUM("MONTHLY", "WEEKLY", "DAILY") | Recurring payment interval                                                                |
-| `item.recurringPayment.recurringTarget`     | Uint64 |                                    | Recurring target rules can be different values based on interval                          |
-| `item.recurringPayment.recurringRepetition` | Uint64 |                                    | Recurring repetition rules, how many times charge the customer card                       |
-| `code`                                      | String | ENUM("SUCCESS")                    | Determine request have success                                                            |
-| `error.code`                                | String |                                    | Error code                                                                                |
-| `error.message`                             | String |                                    | Error message                                                                             |
-| `error.debug`                               | String |                                    | Debug message ( sandbox only )                                                            |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.id", type: "String", description: "Recurring payment id" },
+    { name: "item.merchantId", type: "String", description: "Merchant ID" },
+    { name: "item.storeId", type: "String", description: "Store ID" },
+    { name: "item.label", type: "String", description: "Customer card front six last four digits" },
+    { name: "item.email", type: "String", description: "Customer email" },
+    { name: "item.countryCode", type: "String", description: "Customer country code" },
+    { name: "item.phoneNumber", type: "String", description: "Customer phone number" },
+    { name: "item.productName", type: "String", description: "Recurring product name" },
+    { name: "item.productDescription", type: "String", description: "Recurring product description" },
+    { name: "item.isActive", type: "String", description: "Recurring payment is active, when card bind successfully will automatically become active" },
+    { name: "item.createdAt", type: "String", description: "Recurring created date time" },
+    { name: "item.updatedAt", type: "String", description: "Recurring last updated date time" },
+    { name: "item.clientKey", type: "String", description: "Internal usage only" },
+    { name: "item.redirectUrl", type: "String", description: "URL for customer to redirect after card bind" },
+    { name: "item.notifyUrl", type: "String", description: "URL for notify when transaction made" },
+    { name: "item.paymentUrl", type: "String", description: "URL for customer bind their card" },
+    { name: "item.recurringPayment.amount", type: "Uint64", description: "Recurring payment amount" },
+    { name: "item.recurringPayment.currency", type: "Uint64", description: "Recurring payment currency" },
+    { name: "item.recurringPayment.recurringInterval", type: "Uint64", description: "Recurring payment interval" },
+    { name: "item.recurringPayment.recurringTarget", type: "Uint64", description: "Recurring target rules can be different values based on interval" },
+    { name: "item.recurringPayment.recurringRepetition", type: "Uint64", description: "Recurring repetition rules, how many times charge the customer card" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 
@@ -177,16 +173,14 @@ Redirect URL to redirect your customer back to your page after card bind, it's c
 
 **Method :** <span style={{ color: "orange", fontWeight: "bold" }}>GET</span><br/>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Validation                             | Required | Description           |
-| ------------ | ------ | -------------------------------------- | -------- | --------------------- |
-| `status`     | String | Enum("SUCCESS", "FAILED", "CANCELLED") | Yes      | Card bind status      |
-| `customerId` | String |                                        | Yes      | Card bind customer id |
-| `reason`     | String |                                        | No       | Card bind fail reason |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "status", type: "String", required: true, description: "Card bind status" },
+    { name: "customerId", type: "String", required: true, description: "Card bind customer id" },
+    { name: "reason", type: "String", description: "Card bind fail reason" }
+  ]}
+/>
 
 
 ### Notify Response
@@ -201,27 +195,25 @@ Reference: [Query Transaction](./query-transaction.md)
 
 **Method :** <span style={{ color: "orange", fontWeight: "bold" }}>GET</span><br/>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter          | Type   | Validation                | Required | Description                       |
-| ------------------ | ------ | ------------------------- | -------- | --------------------------------- |
-| `eventType`        | String | Enum("RECURRING_PAYMENT") | Yes      | Notify event type                 |
-| `data.amount`      | Uint64 |                           | Yes      | Recurring payment amount          |
-| `data.currency`    | String | ENUM("MYR")               | Yes      | Recurring order currency          |
-| `data.countryCode` | String |                           | Yes      | Recurring customer country code   |
-| `data.phoneNumber` | String |                           | Yes      | Recurring customer phone number   |
-| `data.customerId`  | String |                           | Yes      | Recurring customer id             |
-| `data.email`       | String |                           | Yes      | Recurring customer email          |
-| `data.name`        | String |                           | Yes      | Recurring customer name           |
-| `data.merchantId`  | String |                           | Yes      | Merchant id                       |
-| `data.storeId`     | String |                           | Yes      | Store id                          |
-| `data.orderId`     | String |                           | Yes      | Recurring transaction order id    |
-| `data.status`      | String | ENUM("SUCCESS")           | Yes      |                                   |
-| `data.createdAt`   | String | RFC3339                   | Yes      | Recurring order created date time |
-| `data.updatedAt`   | String | RFC3339                   | Yes      | Recurring order updated date time |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "eventType", type: "String", required: true, description: "Notify event type" },
+    { name: "data.amount", type: "Uint64", required: true, description: "Recurring payment amount" },
+    { name: "data.currency", type: "String", required: true, description: "Recurring order currency" },
+    { name: "data.countryCode", type: "String", required: true, description: "Recurring customer country code" },
+    { name: "data.phoneNumber", type: "String", required: true, description: "Recurring customer phone number" },
+    { name: "data.customerId", type: "String", required: true, description: "Recurring customer id" },
+    { name: "data.email", type: "String", required: true, description: "Recurring customer email" },
+    { name: "data.name", type: "String", required: true, description: "Recurring customer name" },
+    { name: "data.merchantId", type: "String", required: true, description: "Merchant id" },
+    { name: "data.storeId", type: "String", required: true, description: "Store id" },
+    { name: "data.orderId", type: "String", required: true, description: "Recurring transaction order id" },
+    { name: "data.status", type: "String", required: true },
+    { name: "data.createdAt", type: "String", required: true, description: "Recurring order created date time" },
+    { name: "data.updatedAt", type: "String", required: true, description: "Recurring order updated date time" }
+  ]}
+/>
 
 
 ## Tokenization: Tokenized Payment
@@ -233,21 +225,19 @@ Tokenized payment is for your to let your customer bind their card and you can t
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter            | Type   | Validation | Required | Description                           |
-| -------------------- | ------ | ---------- | -------- | ------------------------------------- |
-| `storeId`            | String |            | Yes      | Store ID                              |
-| `email`              | String |            | Yes      | Customer email                        |
-| `name`               | String |            | Yes      | Customer name                         |
-| `countryCode`        | String |            | Yes      | Customer country code                 |
-| `phoneNumber`        | String |            | Yes      | Customer phone number                 |
-| `productName`        | String |            | Yes      | Tokenized product name                |
-| `productDescription` | String |            | Yes      | Tokenized product description         |
-| `redirectUrl`        | String |            | Yes      | Redirect URL after customer bind card |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "storeId", type: "String", required: true, description: "Store ID" },
+    { name: "email", type: "String", required: true, description: "Customer email" },
+    { name: "name", type: "String", required: true, description: "Customer name" },
+    { name: "countryCode", type: "String", required: true, description: "Customer country code" },
+    { name: "phoneNumber", type: "String", required: true, description: "Customer phone number" },
+    { name: "productName", type: "String", required: true, description: "Tokenized product name" },
+    { name: "productDescription", type: "String", required: true, description: "Tokenized product description" },
+    { name: "redirectUrl", type: "String", required: true, description: "Redirect URL after customer bind card" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -265,33 +255,31 @@ Tokenized payment is for your to let your customer bind their card and you can t
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                 | Type   | Validation      | Description                                                                               |
-| ------------------------- | ------ | --------------- | ----------------------------------------------------------------------------------------- |
-| `item.id`                 | String |                 | Recurring payment id                                                                      |
-| `item.merchantId`         | String |                 | Merchant ID                                                                               |
-| `item.storeId`            | String |                 | Store ID                                                                                  |
-| `item.label`              | String |                 | Customer card front six last four digits                                                  |
-| `item.email`              | String |                 | Customer email                                                                            |
-| `item.countryCode`        | String |                 | Customer country code                                                                     |
-| `item.phoneNumber`        | String |                 | Customer phone number                                                                     |
-| `item.productName`        | String |                 | Recurring product name                                                                    |
-| `item.productDescription` | String |                 | Recurring product description                                                             |
-| `item.isActive`           | String |                 | Recurring payment is active, when card bind successfully will automatically become active |
-| `item.createdAt`          | String | RFC3339         | Recurring created date time                                                               |
-| `item.updatedAt`          | String | RFC3339         | Recurring last updated date time                                                          |
-| `item.clientKey`          | String |                 | Internal usage only                                                                       |
-| `item.redirectUrl`        | String |                 | URL for customer to redirect after card bind                                              |
-| `notifyUrl`               | String |                 | Notify URL when payment has made                                                          |
-| `item.paymentUrl`         | String |                 | URL for customer bind their card                                                          |
-| `code`                    | String | ENUM("SUCCESS") | Determine request have success                                                            |
-| `error.code`              | String |                 | Error code                                                                                |
-| `error.message`           | String |                 | Error message                                                                             |
-| `error.debug`             | String |                 | Debug message ( sandbox only )                                                            |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.id", type: "String", description: "Recurring payment id" },
+    { name: "item.merchantId", type: "String", description: "Merchant ID" },
+    { name: "item.storeId", type: "String", description: "Store ID" },
+    { name: "item.label", type: "String", description: "Customer card front six last four digits" },
+    { name: "item.email", type: "String", description: "Customer email" },
+    { name: "item.countryCode", type: "String", description: "Customer country code" },
+    { name: "item.phoneNumber", type: "String", description: "Customer phone number" },
+    { name: "item.productName", type: "String", description: "Recurring product name" },
+    { name: "item.productDescription", type: "String", description: "Recurring product description" },
+    { name: "item.isActive", type: "String", description: "Recurring payment is active, when card bind successfully will automatically become active" },
+    { name: "item.createdAt", type: "String", description: "Recurring created date time" },
+    { name: "item.updatedAt", type: "String", description: "Recurring last updated date time" },
+    { name: "item.clientKey", type: "String", description: "Internal usage only" },
+    { name: "item.redirectUrl", type: "String", description: "URL for customer to redirect after card bind" },
+    { name: "notifyUrl", type: "String", description: "Notify URL when payment has made" },
+    { name: "item.paymentUrl", type: "String", description: "URL for customer bind their card" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ### Redirect Response
@@ -302,16 +290,14 @@ Redirect URL to redirect your customer back to your page after card bind, it's c
 
 **Method :** <span style={{ color: "orange", fontWeight: "bold" }}>GET</span><br/>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter    | Type   | Validation                             | Required | Description           |
-| ------------ | ------ | -------------------------------------- | -------- | --------------------- |
-| `status`     | String | Enum("SUCCESS", "FAILED", "CANCELLED") | Yes      | Card bind status      |
-| `customerId` | String |                                        | Yes      | Card bind customer id |
-| `reason`     | String |                                        | No       | Card bind fail reason |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "status", type: "String", required: true, description: "Card bind status" },
+    { name: "customerId", type: "String", required: true, description: "Card bind customer id" },
+    { name: "reason", type: "String", description: "Card bind fail reason" }
+  ]}
+/>
 
 
 ## Tokenization Customer API
@@ -327,50 +313,46 @@ These API will be available only when the customer been binded once else you wil
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter     | Type  | Validation | Required | Description                                                                  |
-| ------------- | ----- | ---------- | -------- | ---------------------------------------------------------------------------- |
-| `customer_id` | Param |            | Yes      | Customer ID return from the creation of recurring payment / tokenize payment |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "customer_id", type: "Param", required: true, description: "Customer ID return from the creation of recurring payment / tokenize payment" }
+  ]}
+/>
 
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                                   | Type   | Validation                         | Description                                                                               |
-| ------------------------------------------- | ------ | ---------------------------------- | ----------------------------------------------------------------------------------------- |
-| `item.id`                                   | String |                                    | Recurring payment id                                                                      |
-| `item.merchantId`                           | String |                                    | Merchant ID                                                                               |
-| `item.storeId`                              | String |                                    | Store ID                                                                                  |
-| `item.label`                                | String |                                    | Customer card front six last four digits                                                  |
-| `item.email`                                | String |                                    | Customer email                                                                            |
-| `item.countryCode`                          | String |                                    | Customer country code                                                                     |
-| `item.phoneNumber`                          | String |                                    | Customer phone number                                                                     |
-| `item.productName`                          | String |                                    | Recurring product name                                                                    |
-| `item.productDescription`                   | String |                                    | Recurring product description                                                             |
-| `item.isActive`                             | String |                                    | Recurring payment is active, when card bind successfully will automatically become active |
-| `item.createdAt`                            | String | RFC3339                            | Recurring created date time                                                               |
-| `item.updatedAt`                            | String | RFC3339                            | Recurring last updated date time                                                          |
-| `item.clientKey`                            | String |                                    | Internal usage only                                                                       |
-| `item.redirectUrl`                          | String |                                    | URL for customer to redirect after card bind                                              |
-| `item.notifyUrl`                            | String |                                    | URL for notify when transaction made                                                      |
-| `item.paymentUrl`                           | String |                                    | URL for customer bind their card                                                          |
-| `item.recurringPayment.amount`              | Uint64 |                                    | Recurring payment amount                                                                  |
-| `item.recurringPayment.currency`            | Uint64 | ENUM("MYR")                        | Recurring payment currency                                                                |
-| `item.recurringPayment.recurringInterval`   | Uint64 | ENUM("MONTHLY", "WEEKLY", "DAILY") | Recurring payment interval                                                                |
-| `item.recurringPayment.recurringTarget`     | Uint64 |                                    | Recurring target rules can be different values based on interval                          |
-| `item.recurringPayment.recurringRepetition` | Uint64 |                                    | Recurring repetition rules, how many times charge the customer card                       |
-| `code`                                      | String | ENUM("SUCCESS")                    | Determine request have success                                                            |
-| `error.code`                                | String |                                    | Error code                                                                                |
-| `error.message`                             | String |                                    | Error message                                                                             |
-| `error.debug`                               | String |                                    | Debug message ( sandbox only )                                                            |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.id", type: "String", description: "Recurring payment id" },
+    { name: "item.merchantId", type: "String", description: "Merchant ID" },
+    { name: "item.storeId", type: "String", description: "Store ID" },
+    { name: "item.label", type: "String", description: "Customer card front six last four digits" },
+    { name: "item.email", type: "String", description: "Customer email" },
+    { name: "item.countryCode", type: "String", description: "Customer country code" },
+    { name: "item.phoneNumber", type: "String", description: "Customer phone number" },
+    { name: "item.productName", type: "String", description: "Recurring product name" },
+    { name: "item.productDescription", type: "String", description: "Recurring product description" },
+    { name: "item.isActive", type: "String", description: "Recurring payment is active, when card bind successfully will automatically become active" },
+    { name: "item.createdAt", type: "String", description: "Recurring created date time" },
+    { name: "item.updatedAt", type: "String", description: "Recurring last updated date time" },
+    { name: "item.clientKey", type: "String", description: "Internal usage only" },
+    { name: "item.redirectUrl", type: "String", description: "URL for customer to redirect after card bind" },
+    { name: "item.notifyUrl", type: "String", description: "URL for notify when transaction made" },
+    { name: "item.paymentUrl", type: "String", description: "URL for customer bind their card" },
+    { name: "item.recurringPayment.amount", type: "Uint64", description: "Recurring payment amount" },
+    { name: "item.recurringPayment.currency", type: "Uint64", description: "Recurring payment currency" },
+    { name: "item.recurringPayment.recurringInterval", type: "Uint64", description: "Recurring payment interval" },
+    { name: "item.recurringPayment.recurringTarget", type: "Uint64", description: "Recurring target rules can be different values based on interval" },
+    { name: "item.recurringPayment.recurringRepetition", type: "Uint64", description: "Recurring repetition rules, how many times charge the customer card" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ### Get Customer Orders
@@ -378,38 +360,34 @@ These API will be available only when the customer been binded once else you wil
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter     | Type  | Validation | Required | Description                                                                  |
-| ------------- | ----- | ---------- | -------- | ---------------------------------------------------------------------------- |
-| `customer_id` | Param |            | Yes      | Customer ID return from the creation of recurring payment / tokenize payment |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "customer_id", type: "Param", required: true, description: "Customer ID return from the creation of recurring payment / tokenize payment" }
+  ]}
+/>
 
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                    | Type   | Validation      | Description                            |
-| ---------------------------- | ------ | --------------- | -------------------------------------- |
-| `item.*.id`                  | String |                 | Recurring order id                     |
-| `item.merchantId`            | String |                 | Merchant ID                            |
-| `item.storeId`               | String |                 | Store ID                               |
-| `item.*.recurringCustomerId` | String |                 | Customer ID                            |
-| `item.*.transactionId`       | String |                 | Transaction ID                         |
-| `item.*.createdAt`           | String | RFC3339         | Recurring order created date time      |
-| `item.*.updatedAt`           | String | RFC3339         | Recurring order last updated date time |
-| `item.*.amount`              | Uint64 |                 | Recurring order payment amount         |
-| `item.*.currency`            | String | ENUM("MYR")     | Recurring order currency               |
-| `code`                       | String | ENUM("SUCCESS") | Determine request have success         |
-| `error.code`                 | String |                 | Error code                             |
-| `error.message`              | String |                 | Error message                          |
-| `error.debug`                | String |                 | Debug message ( sandbox only )         |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.*.id", type: "String", description: "Recurring order id" },
+    { name: "item.merchantId", type: "String", description: "Merchant ID" },
+    { name: "item.storeId", type: "String", description: "Store ID" },
+    { name: "item.*.recurringCustomerId", type: "String", description: "Customer ID" },
+    { name: "item.*.transactionId", type: "String", description: "Transaction ID" },
+    { name: "item.*.createdAt", type: "String", description: "Recurring order created date time" },
+    { name: "item.*.updatedAt", type: "String", description: "Recurring order last updated date time" },
+    { name: "item.*.amount", type: "Uint64", description: "Recurring order payment amount" },
+    { name: "item.*.currency", type: "String", description: "Recurring order currency" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ### Toggle Customer Status
@@ -417,51 +395,47 @@ These API will be available only when the customer been binded once else you wil
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter     | Type  | Validation | Required | Description                                                                  |
-| ------------- | ----- | ---------- | -------- | ---------------------------------------------------------------------------- |
-| `customer_id` | Param |            | Yes      | Customer ID return from the creation of recurring payment / tokenize payment |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "customer_id", type: "Param", required: true, description: "Customer ID return from the creation of recurring payment / tokenize payment" }
+  ]}
+/>
 
 
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter                                   | Type   | Validation                         | Description                                                                               |
-| ------------------------------------------- | ------ | ---------------------------------- | ----------------------------------------------------------------------------------------- |
-| `item.id`                                   | String |                                    | Recurring payment id                                                                      |
-| `item.merchantId`                           | String |                                    | Merchant ID                                                                               |
-| `item.storeId`                              | String |                                    | Store ID                                                                                  |
-| `item.label`                                | String |                                    | Customer card front six last four digits                                                  |
-| `item.email`                                | String |                                    | Customer email                                                                            |
-| `item.countryCode`                          | String |                                    | Customer country code                                                                     |
-| `item.phoneNumber`                          | String |                                    | Customer phone number                                                                     |
-| `item.productName`                          | String |                                    | Recurring product name                                                                    |
-| `item.productDescription`                   | String |                                    | Recurring product description                                                             |
-| `item.isActive`                             | String |                                    | Recurring payment is active, when card bind successfully will automatically become active |
-| `item.createdAt`                            | String | RFC3339                            | Recurring created date time                                                               |
-| `item.updatedAt`                            | String | RFC3339                            | Recurring last updated date time                                                          |
-| `item.clientKey`                            | String |                                    | Internal usage only                                                                       |
-| `item.redirectUrl`                          | String |                                    | URL for customer to redirect after card bind                                              |
-| `item.notifyUrl`                            | String |                                    | URL for notify when transaction made                                                      |
-| `item.paymentUrl`                           | String |                                    | URL for customer bind their card                                                          |
-| `item.recurringPayment.amount`              | Uint64 |                                    | Recurring payment amount                                                                  |
-| `item.recurringPayment.currency`            | Uint64 | ENUM("MYR")                        | Recurring payment currency                                                                |
-| `item.recurringPayment.recurringInterval`   | Uint64 | ENUM("MONTHLY", "WEEKLY", "DAILY") | Recurring payment interval                                                                |
-| `item.recurringPayment.recurringTarget`     | Uint64 |                                    | Recurring target rules can be different values based on interval                          |
-| `item.recurringPayment.recurringRepetition` | Uint64 |                                    | Recurring repetition rules, how many times charge the customer card                       |
-| `code`                                      | String | ENUM("SUCCESS")                    | Determine request have success                                                            |
-| `error.code`                                | String |                                    | Error code                                                                                |
-| `error.message`                             | String |                                    | Error message                                                                             |
-| `error.debug`                               | String |                                    | Debug message ( sandbox only )                                                            |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item.id", type: "String", description: "Recurring payment id" },
+    { name: "item.merchantId", type: "String", description: "Merchant ID" },
+    { name: "item.storeId", type: "String", description: "Store ID" },
+    { name: "item.label", type: "String", description: "Customer card front six last four digits" },
+    { name: "item.email", type: "String", description: "Customer email" },
+    { name: "item.countryCode", type: "String", description: "Customer country code" },
+    { name: "item.phoneNumber", type: "String", description: "Customer phone number" },
+    { name: "item.productName", type: "String", description: "Recurring product name" },
+    { name: "item.productDescription", type: "String", description: "Recurring product description" },
+    { name: "item.isActive", type: "String", description: "Recurring payment is active, when card bind successfully will automatically become active" },
+    { name: "item.createdAt", type: "String", description: "Recurring created date time" },
+    { name: "item.updatedAt", type: "String", description: "Recurring last updated date time" },
+    { name: "item.clientKey", type: "String", description: "Internal usage only" },
+    { name: "item.redirectUrl", type: "String", description: "URL for customer to redirect after card bind" },
+    { name: "item.notifyUrl", type: "String", description: "URL for notify when transaction made" },
+    { name: "item.paymentUrl", type: "String", description: "URL for customer bind their card" },
+    { name: "item.recurringPayment.amount", type: "Uint64", description: "Recurring payment amount" },
+    { name: "item.recurringPayment.currency", type: "Uint64", description: "Recurring payment currency" },
+    { name: "item.recurringPayment.recurringInterval", type: "Uint64", description: "Recurring payment interval" },
+    { name: "item.recurringPayment.recurringTarget", type: "Uint64", description: "Recurring target rules can be different values based on interval" },
+    { name: "item.recurringPayment.recurringRepetition", type: "Uint64", description: "Recurring repetition rules, how many times charge the customer card" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>
 
 
 ### Create Customer Order ( Payment )
@@ -473,18 +447,16 @@ This API will use the customer binded card to make a payment, it's not a manual 
 
 **Request Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter     | Type   | Validation  | Required | Description                                                                  |
-| ------------- | ------ | ----------- | -------- | ---------------------------------------------------------------------------- |
-| `customer_id` | Param  |             | Yes      | Customer ID return from the creation of recurring payment / tokenize payment |
-| `currency`    | String | ENUM("MYR") | Yes      | Payment currency                                                             |
-| `amount`      | Uint64 |             | Yes      | Payment amount                                                               |
-| `title`       | String |             | No       | Payment information title                                                    |
-| `description` | String |             | No       | Payment information description                                              |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "customer_id", type: "Param", required: true, description: "Customer ID return from the creation of recurring payment / tokenize payment" },
+    { name: "currency", type: "String", required: true, description: "Payment currency" },
+    { name: "amount", type: "Uint64", required: true, description: "Payment amount" },
+    { name: "title", type: "String", description: "Payment information title" },
+    { name: "description", type: "String", description: "Payment information description" }
+  ]}
+/>
 
 
 ```json title="Example Request"
@@ -498,15 +470,13 @@ This API will use the customer binded card to make a payment, it's not a manual 
 
 **Response Parameters**
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter       | Type   | Validation                                                      | Description                    |
-| --------------- | ------ | --------------------------------------------------------------- | ------------------------------ |
-| `item`          | JSON   | [Transaction Object](./query-transaction.md#transaction-object) | Transaction response           |
-| `code`          | String | ENUM("SUCCESS")                                                 | Determine request have success |
-| `error.code`    | String |                                                                 | Error code                     |
-| `error.message` | String |                                                                 | Error message                  |
-| `error.debug`   | String |                                                                 | Debug message ( sandbox only ) |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "item", type: "JSON", description: "Transaction response" },
+    { name: "code", type: "String", description: "Determine request have success" },
+    { name: "error.code", type: "String", description: "Error code" },
+    { name: "error.message", type: "String", description: "Error message" },
+    { name: "error.debug", type: "String", description: "Debug message ( sandbox only )" }
+  ]}
+/>

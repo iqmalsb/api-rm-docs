@@ -73,37 +73,33 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter | Type   | Required | Description                              | Example                |
-| --------- | ------ | -------- | ---------------------------------------- | ---------------------- |
-| `userId`  | String | Yes      | User ID provided by us during enrollment | "1699331101742889953"  |
-| `cardPan` | String | Yes      | Card number of the user                  | "4364484100392451"     |
-| `name`    | String | Yes      | Name of the card                         | "Ambank Visa Infinite" |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "userId", type: "String", required: true, description: "User ID provided by us during enrollment", example: "\"1699331101742889953\"" },
+    { name: "cardPan", type: "String", required: true, description: "Card number of the user", example: "\"4364484100392451\"" },
+    { name: "name", type: "String", required: true, description: "Name of the card", example: "\"Ambank Visa Infinite\"" }
+  ]}
+/>
 
 
 <br />
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter          | Type   | Description                  | Example                |
-| ------------------ | ------ | ---------------------------- | ---------------------- |
-| `item.id`          | String | RM VOP Card ID               | "1699331146943520156"  |
-| `item.userId`      | String | RM VOP User ID               | "1699331101742889953"  |
-| `item.name`        | String | Name of the card             | "Ambank Visa Infinite" |
-| `item.panLastFour` | String | Last four number of the card | "2451"                 |
-| `item.type`        | String | Type of card                 | "CREDIT"               |
-| `item.createdAt`   | String | User Enrolled Time           | "2023-11-07T04:25:46Z" |
-| `item.updatedAt`   | String | User Enrolled Time           | "2023-11-07T04:25:46Z" |
-| `code`             | String | Status of the enrollment     | "SUCCESS"              |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item.id", type: "String", description: "RM VOP Card ID", example: "\"1699331146943520156\"" },
+    { name: "item.userId", type: "String", description: "RM VOP User ID", example: "\"1699331101742889953\"" },
+    { name: "item.name", type: "String", description: "Name of the card", example: "\"Ambank Visa Infinite\"" },
+    { name: "item.panLastFour", type: "String", description: "Last four number of the card", example: "\"2451\"" },
+    { name: "item.type", type: "String", description: "Type of card", example: "\"CREDIT\"" },
+    { name: "item.createdAt", type: "String", description: "User Enrolled Time", example: "\"2023-11-07T04:25:46Z\"" },
+    { name: "item.updatedAt", type: "String", description: "User Enrolled Time", example: "\"2023-11-07T04:25:46Z\"" },
+    { name: "code", type: "String", description: "Status of the enrollment", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br />

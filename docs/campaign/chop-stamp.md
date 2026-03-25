@@ -65,48 +65,42 @@ Give a stamp to customer
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter | Type   | Description      | Example                                                                                                          |
-| --------- | ------ | ---------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `code`    | String | QR code Url link | EhQKCE1lcmNoYW50EJXVzd3wraqTORIgChRMb3lhbHR5Q2hvcFN0YW1wQ2FyZBCm1qHe2eDX_BU:d439a47d-3cd3-48bc-aae7-1effda5c7e1b |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "code", type: "String", description: "QR code Url link", example: "EhQKCE1lcmNoYW50EJXVzd3wraqTORIgChRMb3lhbHR5Q2hvcFN0YW1wQ2FyZBCm1qHe2eDX_BU:d439a47d-3cd3-48bc-aae7-1effda5c7e1b" }
+  ]}
+/>
 
 
 ![images](/img/campaign/chop-stamp.png)
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description                                                                                               | Example                      |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `item`    | Object | Transaction object                                                                                        | (Refer to explanation below) |
-| `code`    | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "item", type: "Object", description: "Transaction object", example: "(Refer to explanation below)" },
+    { name: "code", type: "String", description: "Successfully call this endpoint. If fail, will return error code object (Refer Appendix 1: Error Codes)", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br/>
 
 <strong>Transaction object (item):</strong>
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter          | Type     | Description           | Example                                                                       |
-| ------------------ | -------- | --------------------- | ----------------------------------------------------------------------------- |
-| `id`               | String   | Chop Stamp ID         | "1583401221690518310"                                                         |
-| `key`              | String   | Chop Stamp Key        | "EhQKCE1lcmNoYW50EJXVzd3wraqTORIgChRMb3lhbHR5Q2hvcFN0YW1wQ2FyZBCm1qHe2eDX_BU" |
-| `noOfChoppedStamp` | Uint     | Number of redeem      | 2                                                                             |
-| `isCompleted`      | Bool     | True or False         | false                                                                         |
-| `startAt`          | DateTime | Time Start            | "2020-03-02T13:49:08Z"                                                        |
-| `endAt`            | DateTime | Time End              | "2021-04-02T13:49:08Z"                                                        |
-| `createdAt`        | DateTime | Creation date time    | "2020-03-05T09:40:21Z"                                                        |
-| `updatedAt`        | DateTime | Last update date time | "2020-03-05T09:40:21Z"                                                        |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "id", type: "String", description: "Chop Stamp ID", example: "\"1583401221690518310\"" },
+    { name: "key", type: "String", description: "Chop Stamp Key", example: "\"EhQKCE1lcmNoYW50EJXVzd3wraqTORIgChRMb3lhbHR5Q2hvcFN0YW1wQ2FyZBCm1qHe2eDX_BU\"" },
+    { name: "noOfChoppedStamp", type: "Uint", description: "Number of redeem", example: "2" },
+    { name: "isCompleted", type: "Bool", description: "True or False", example: "false" },
+    { name: "startAt", type: "DateTime", description: "Time Start", example: "\"2020-03-02T13:49:08Z\"" },
+    { name: "endAt", type: "DateTime", description: "Time End", example: "\"2021-04-02T13:49:08Z\"" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time", example: "\"2020-03-05T09:40:21Z\"" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2020-03-05T09:40:21Z\"" }
+  ]}
+/>
 

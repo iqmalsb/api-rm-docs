@@ -61,28 +61,24 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter | Type   | Required | Description                                   | Example               |
-| --------- | ------ | -------- | --------------------------------------------- | --------------------- |
-| `userId`  | String | Yes      | User ID provided by us during user enrollment | "1699331101742889953" |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "userId", type: "String", required: true, description: "User ID provided by us during user enrollment", example: "\"1699331101742889953\"" }
+  ]}
+/>
 
 
 <br />
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter | Type   | Description              | Example   |
-| --------- | ------ | ------------------------ | --------- |
-| `code`    | String | Status of the enrollment | "SUCCESS" |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "code", type: "String", description: "Status of the enrollment", example: "\"SUCCESS\"" }
+  ]}
+/>
 
 
 <br />

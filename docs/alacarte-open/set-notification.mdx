@@ -86,43 +86,37 @@ import { Box, Heading, Text, Card, Image, Button, Flex } from "rebass";
 
 ### Request Parameters
 
-<details>
-<summary><strong>Request Parameters</strong></summary>
-
-| Parameter  | Type   | Description                       | Example                      |
-| ---------- | ------ | --------------------------------- | ---------------------------- |
-| `service`  | String | alacarte service                  | "alacarte"                   |
-| `version`  | String | Currently only support 'v1"       | "v1"                         |
-| `function` | String | Function that provide by alacarte | "set.notification.webhook"   |
-| `request`  | Object | Refer to explanation below        | (Refer to explanation below) |
-
-</details>
+<ParamTable
+  title="Request Parameters"
+  rows={[
+    { name: "service", type: "String", description: "alacarte service", example: "\"alacarte\"" },
+    { name: "version", type: "String", description: "Currently only support 'v1\"", example: "\"v1\"" },
+    { name: "function", type: "String", description: "Function that provide by alacarte", example: "\"set.notification.webhook\"" },
+    { name: "request", type: "Object", description: "Refer to explanation below", example: "(Refer to explanation below)" }
+  ]}
+/>
 
 
-<details>
-<summary><strong>Details</strong></summary>
-
-| Parameter          | Type  | Required | Description                       | Example                                                       |
-| ------------------ | ----- | -------- | --------------------------------- | ------------------------------------------------------------- |
-| `notificationUrls` | Array | Yes      | Maximum webhook url is 3          | ["https://webhook.site/2688336e-7b61-4cd2-b2bb-40592a3e353a"] |
-| `storeIds`         | Array | Optional | Merchant can set multi `storeIds` | ["5eabf31ee0e9cd7b01a3a35e"]                                  |
-
-</details>
+<ParamTable
+  title="Details"
+  rows={[
+    { name: "notificationUrls", type: "Array", required: true, description: "Maximum webhook url is 3", example: "[\"https://webhook.site/2688336e-7b61-4cd2-b2bb-40592a3e353a\"]" },
+    { name: "storeIds", type: "Array", description: "Merchant can set multi storeIds", example: "[\"5eabf31ee0e9cd7b01a3a35e\"]" }
+  ]}
+/>
 
 
 ### Response Parameters
 
-<details>
-<summary><strong>Response Parameters</strong></summary>
-
-| Parameter          | Type     | Description                                              | Example                                                       |
-| ------------------ | -------- | -------------------------------------------------------- | ------------------------------------------------------------- |
-| `clientId`         | String   | Client ID                                                | "3416044707690227346"                                         |
-| `createdAt`        | DateTime | Creation date time                                       | "2020-09-22T04:44:57.950398414Z"                              |
-| `merchantId`       | String   | Merchant ID                                              | "Describe"                                                    |
-| `notificationUrls` | Array    | Maximum webhook url is 3                                 | ["https://webhook.site/2688336e-7b61-4cd2-b2bb-40592a3e353a"] |
-| `storeIds`         | Array    | When store ID's is **null** mean will apply to all store | null                                                          |
-| `updatedAt`        | DateTime | Last update date time                                    | "2020-09-22T04:44:57.950398414Z"                              |
-
-</details>
+<ParamTable
+  title="Response Parameters"
+  rows={[
+    { name: "clientId", type: "String", description: "Client ID", example: "\"3416044707690227346\"" },
+    { name: "createdAt", type: "DateTime", description: "Creation date time", example: "\"2020-09-22T04:44:57.950398414Z\"" },
+    { name: "merchantId", type: "String", description: "Merchant ID", example: "\"Describe\"" },
+    { name: "notificationUrls", type: "Array", description: "Maximum webhook url is 3", example: "[\"https://webhook.site/2688336e-7b61-4cd2-b2bb-40592a3e353a\"]" },
+    { name: "storeIds", type: "Array", description: "When store ID's is null mean will apply to all store", example: "null" },
+    { name: "updatedAt", type: "DateTime", description: "Last update date time", example: "\"2020-09-22T04:44:57.950398414Z\"" }
+  ]}
+/>
 
