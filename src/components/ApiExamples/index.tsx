@@ -17,6 +17,211 @@ function isBlank(val: any): boolean {
   return str.toLowerCase().startsWith("there is no");
 }
 
+function formatCurl(cmd: string): string {
+  return cmd
+    .replace(/\\n/g, "\n")
+    .replace(/ \\\n/g, "\n")
+    .split("\n")
+    .map(line => line.trim())
+    .filter(line => line.length > 0)
+    .join(" \\\n  ")
+    .trim();
+}
+
+type CurlToken = { text: string; color: string };
+
+function tokenizeCurl(cmd: string): CurlToken[] {
+  const tokens: CurlToken[] = [];
+  const lines = cmd.split("\n");
+
+  for (let li = 0; li < lines.length; li++) {
+    const line = lines[li];
+    let pos = 0;
+
+    while (pos < line.length) {
+      const rest = line.slice(pos);
+
+      // curl keyword
+      const curlMatch = rest.match(/^curl\b/);
+      if (curlMatch) {
+        tokens.push({ text: curlMatch[0], color: "#c792ea" });
+        pos += curlMatch[0].length;
+        continue;
+      }
+
+      // HTTP method after --request
+      const methodMatch = rest.match(/^(GET|POST|PUT|PATCH|DELETE)\b/);
+      if (methodMatch) {
+        tokens.push({ text: methodMatch[0], color: "#ffcb6b" });
+        pos += methodMatch[0].length;
+        continue;
+      }
+
+      // flags --word
+      const flagMatch = rest.match(/^--[\w-]+/);
+      if (flagMatch) {
+        tokens.push({ text: flagMatch[0], color: "#82aaff" });
+        pos += flagMatch[0].length;
+        continue;
+      }
+
+      // quoted string — handle in one shot
+      if (rest[0] === '"') {
+        const end = rest.indexOf('"', 1);
+        if (end !== -1) {
+          const full = rest.slice(0, end + 1);
+          const inner = rest.slice(1, end);
+
+          // URL
+          if (inner.match(/^https?:\/\//)) {
+            tokens.push({ text: '"', color: "#e2e8f0" });
+            tokens.push({ text: inner, color: "#80cbc4" });
+            tokens.push({ text: '"', color: "#e2e8f0" });
+          }
+          // Bearer token value
+          else if (inner.startsWith("Bearer ")) {
+            tokens.push({ text: '"Bearer ', color: "#e2e8f0" });
+            tokens.push({ text: inner.slice(7), color: "#ffcb6b" });
+            tokens.push({ text: '"', color: "#e2e8f0" });
+          }
+          // Header with sha256
+          else if (inner.includes("sha256 ")) {
+            const idx = inner.indexOf("sha256 ");
+            tokens.push({ text: '"' + inner.slice(0, idx), color: "#e2e8f0" });
+            tokens.push({ text: "sha256 ", color: "#c3e88d" });
+            tokens.push({ text: inner.slice(idx + 7), color: "#f78c6c" });
+            tokens.push({ text: '"', color: "#e2e8f0" });
+          }
+          // Header key:value
+          else if (inner.includes(": ")) {
+            const colonIdx = inner.indexOf(": ");
+            tokens.push({ text: '"', color: "#e2e8f0" });
+            tokens.push({ text: inner.slice(0, colonIdx), color: "#f78c6c" });
+            tokens.push({ text: ": ", color: "#e2e8f0" });
+            tokens.push({ text: inner.slice(colonIdx + 2), color: "#c3e88d" });
+            tokens.push({ text: '"', color: "#e2e8f0" });
+          }
+          else {
+            tokens.push({ text: full, color: "#c3e88d" });
+          }
+          pos += full.length;
+          continue;
+        }
+      }
+
+      // single quoted string (--data-raw body)
+      if (rest[0] === "'") {
+        const end = rest.indexOf("'", 1);
+        if (end !== -1) {
+          const full = rest.slice(0, end + 1);
+          tokens.push({ text: full, color: "#c3e88d" });
+          pos += full.length;
+          continue;
+        }
+      }
+
+      // line continuation backslash at end
+      if (rest === "\\") {
+        tokens.push({ text: "\\", color: "#546e7a" });
+        pos++;
+        continue;
+      }
+
+      // default
+      tokens.push({ text: rest[0], color: "#e2e8f0" });
+      pos++;
+    }
+
+    if (li < lines.length - 1) {
+      tokens.push({ text: "\n", color: "#e2e8f0" });
+    }
+  }
+
+  return tokens;
+}
+
+type JsonToken = { text: string; color: string };
+
+function tokenizeJson(json: string): JsonToken[] {
+  const tokens: JsonToken[] = [];
+  let pos = 0;
+
+  while (pos < json.length) {
+    const rest = json.slice(pos);
+
+    // quoted key or value
+    if (rest[0] === '"') {
+      const end = rest.indexOf('"', 1);
+      if (end !== -1) {
+        const inner = rest.slice(1, end);
+        const after = rest.slice(end + 1).trimStart();
+        const isKey = after.startsWith(":");
+
+        tokens.push({ text: '"', color: "#e2e8f0" });
+        if (isKey) {
+          tokens.push({ text: inner, color: "#82aaff" });
+        } else {
+          tokens.push({ text: inner, color: inner.length > 40 ? "#ffcb6b" : "#c3e88d" });
+        }
+        tokens.push({ text: '"', color: "#e2e8f0" });
+        pos += end + 1;
+        continue;
+      }
+    }
+
+    // numbers
+    const numMatch = rest.match(/^-?\d+(\.\d+)?/);
+    if (numMatch) {
+      tokens.push({ text: numMatch[0], color: "#f78c6c" });
+      pos += numMatch[0].length;
+      continue;
+    }
+
+    // booleans
+    const boolMatch = rest.match(/^(true|false)/);
+    if (boolMatch) {
+      tokens.push({ text: boolMatch[0], color: "#c792ea" });
+      pos += boolMatch[0].length;
+      continue;
+    }
+
+    // null
+    const nullMatch = rest.match(/^null/);
+    if (nullMatch) {
+      tokens.push({ text: nullMatch[0], color: "#546e7a" });
+      pos += nullMatch[0].length;
+      continue;
+    }
+
+    tokens.push({ text: rest[0], color: "#e2e8f0" });
+    pos++;
+  }
+
+  return tokens;
+}
+
+function CurlHighlight({ text }: { text: string }) {
+  const tokens = tokenizeCurl(formatCurl(text));
+  return (
+    <pre className={styles.terminalPre}>
+      {tokens.map((t, i) => (
+        <span key={i} style={{ color: t.color }}>{t.text}</span>
+      ))}
+    </pre>
+  );
+}
+
+function JsonHighlight({ text }: { text: string }) {
+  const tokens = tokenizeJson(text);
+  return (
+    <pre className={styles.terminalPre}>
+      {tokens.map((t, i) => (
+        <span key={i} style={{ color: t.color }}>{t.text}</span>
+      ))}
+    </pre>
+  );
+}
+
 type Props = {
   shared: SharedState;
 };
@@ -28,10 +233,11 @@ type RequestTerminalProps = {
 };
 
 function TerminalPrompt({ env }: { env: "sandbox" | "prod" }) {
-  const host = env === "sandbox" ? "sandbox-revenuemonster" : "prod-revenuemonster";
   return (
     <span className={styles.terminalPrompt}>
-      <span className={styles.terminalPromptHost}>{host}</span>
+      <span className={styles.terminalPromptHost}>
+        {env === "sandbox" ? "SB" : "PROD"}
+      </span>
       <span className={styles.terminalPromptDollar}>$</span>
     </span>
   );
@@ -123,18 +329,20 @@ function RequestTerminal({ rawCurl, env, onDone }: RequestTerminalProps) {
             <span className={`${styles.terminalCursor} ${!cursorVisible ? styles.terminalCursorHidden : ""}`} />
           </div>
         )}
+
         {isTyping && (
           <div className={styles.terminalLine}>
             <TerminalPrompt env={env} />
-            <span className={styles.terminalCmd}>{typedText}</span>
+            <CurlHighlight text={typedText} />
             <span className={`${styles.terminalCursor} ${!cursorVisible ? styles.terminalCursorHidden : ""}`} />
           </div>
         )}
+
         {requestDone && (
           <>
             <div className={styles.terminalLine}>
               <TerminalPrompt env={env} />
-              <span className={styles.terminalCmd}>{snippet}</span>
+              <CurlHighlight text={curlCommand} />
             </div>
             <div className={styles.terminalLine}>
               <TerminalPrompt env={env} />
@@ -196,7 +404,7 @@ function ResponseTerminal({ response, env }: ResponseTerminalProps) {
           <span className={styles.terminalSuccess}>HTTP 200 OK</span>
         </div>
         <div className={styles.terminalLine}>
-          <span className={styles.terminalOutput}>{response}</span>
+          <JsonHighlight text={response} />
         </div>
         <div className={styles.terminalLine}>
           <TerminalPrompt env={env} />
